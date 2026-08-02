@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -332,6 +355,15 @@
 
 
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -340,6 +372,7 @@
         <li><a href="#sec2">2. テクスチャパックを適用する方法</a></li>
         <li><a href="#sec3">3. 導入前に確認すべき注意点</a></li>
         <li><a href="#sec4">4. 自分好みの見た目を選ぶコツ</a></li>
+        <li><a href="#sec5">5. 「反映されない」と不安になったら</a></li>
         <li><a href="#twist">反映されないと思ったら実は順番の問題だった話</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -356,10 +389,10 @@
 
 
     <h2 id="intro" class="reveal">はじめに：スキンとテクスチャパックの違い</h2>
-    <p class="reveal">「見た目を変える」と一口に言っても、統合版には「スキン（自分のキャラクターの外見）」と「テクスチャパック（ワールド全体のブロックやアイテムの見た目）」という2つの異なる仕組みがあります。この違いを理解しておくと、導入時に迷うことがぐっと減ります。</p>
+    <p class="reveal">「見た目を変える」と一口に言っても、統合版には「スキン（自分のキャラクターの外見）」と「テクスチャパック（ワールド全体のブロックやアイテムの見た目）」という2つの異なる仕組みがあります。この違いがよくわからないまま、なんとなく設定画面を触っていた人もいるのではないでしょうか。この違いを理解しておくと、導入時に迷うことがぐっと減ります。</p>
 
     <h2 id="sec1" class="reveal">1. スキンを変更する基本手順</h2>
-    <p class="reveal">スキンの変更は、メニューの「スキン選択」画面から行えます。用意されているスキンの中から選ぶだけでなく、マーケットプレイスで配布・販売されているスキンパックを追加することもできます。自作のスキンを取り込みたい場合は、対応した画像ファイルをインポートする方法もあります。</p>
+    <p class="reveal">スキンの変更は、メニューの「スキン選択」画面から行えます。用意されているスキンの中から選ぶだけでなく、マーケットプレイスで配布・販売されているスキンパックを追加することもできます。自作のスキンを取り込みたい場合は、対応した画像ファイルをインポートする方法もあります。自分だけのキャラクターで冒険できると、愛着もぐっと増しますよね。</p>
 
     <h2 id="sec2" class="reveal">2. テクスチャパックを適用する方法</h2>
     <p class="reveal">テクスチャパックは、まず入手した「.mcpack」形式のファイルを開くとマイクラ本体に自動でインポートされます。その後、設定の「グローバルリソース」もしくはワールドごとの「リソースパック」画面から、有効化したいパックを選んで適用する流れです。</p>
@@ -370,10 +403,13 @@
     </ul>
 
     <h2 id="sec3" class="reveal">3. 導入前に確認すべき注意点</h2>
-    <p class="reveal">テクスチャパックの中には、対応しているマイクラのバージョンが古いものも存在します。導入してもうまく反映されない場合は、まずパックの対応バージョンを確認してみましょう。また、非公式の配布サイトからのダウンロードは安全性の面で注意が必要なため、<strong>できるだけ信頼できる配布元を選ぶ</strong>ことが大切です。</p>
+    <p class="reveal">テクスチャパックの中には、対応しているマイクラのバージョンが古いものも存在します。導入してもうまく反映されない場合は、まずパックの対応バージョンを確認してみましょう。また、非公式の配布サイトからのダウンロードは安全性の面で注意が必要なため、<strong>できるだけ信頼できる配布元を選ぶ</strong>ことが大切です。せっかく楽しみにしていたのに不安な思いをしないよう、最初の一手間を惜しまないようにしましょう。</p>
 
     <h2 id="sec4" class="reveal">4. 自分好みの見た目を選ぶコツ</h2>
-    <p class="reveal">リアル系、シンプル系、アニメ調など、テクスチャパックにはさまざまな方向性があります。まずは無料で試せるものをいくつか導入して見比べてみると、自分のプレイスタイルに合った見た目が見つかりやすくなります。</p>
+    <p class="reveal">リアル系、シンプル系、アニメ調など、テクスチャパックにはさまざまな方向性があります。まずは無料で試せるものをいくつか導入して見比べてみると、自分のプレイスタイルに合った見た目が見つかりやすくなります。「これだ」と思えるものに出会えた時の感動は、ぜひ体験してほしいです。</p>
+
+    <h2 id="sec5" class="reveal">5. 「反映されない」と不安になったら</h2>
+    <p class="reveal">導入したはずなのに見た目が変わらないと、「壊れちゃったのかな」「もう一度買い直さないとダメなのかな」と不安になってしまう人もいるかもしれません。でも安心してください。ほとんどの場合は設定画面の優先順位や適用範囲のちょっとした見落としが原因です。落ち着いて、一つずつ設定を確認してみましょう。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">反映されないと思ったら実は順番の問題だった話</span>
@@ -385,12 +421,14 @@
     <div class="info-box reveal"><strong>Q. テクスチャパックは無料で使えますか？</strong><br>A. 無料で配布されているものも多くありますが、マーケットプレイスでは有料で販売されているクオリティの高いパックも存在します。まずは無料のものから試してみるのがおすすめです。</div>
     <div class="info-box reveal"><strong>Q. 導入したのに見た目が変わりません。なぜですか？</strong><br>A. 複数のパックを重ねて適用している場合、優先順位の並び順によって反映されるパックが変わります。設定画面で並び順を確認し、優先したいパックを一番上に移動してみてください。</div>
     <div class="info-box reveal"><strong>Q. 自作のスキンを使うことはできますか？</strong><br>A. はい。対応した形式の画像ファイルを用意すれば、スキン選択画面からインポートして自分だけのオリジナルスキンを使うことができます。</div>
+    <div class="info-box reveal"><strong>Q. いくつも試しすぎて、どれが原因かわからなくなりました。</strong><br>A. 一度すべてのパックを無効化してから、一つずつ順番に有効化して確認していくと、原因の切り分けがしやすくなります。焦らず一つずつ試してみてください。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -426,7 +464,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>見た目が変わるだけで、同じ世界が新しく見えてくる。</h2>
-      <p>スキンやテクスチャパックは、プレイに直接影響しない部分だからこそ、自分らしさを一番表現しやすいポイントでもあります。色々なパックを試しながら、自分だけのお気に入りの世界を見つけてみてください。</p>
+      <p>スキンやテクスチャパックは、プレイに直接影響しない部分だからこそ、自分らしさを一番表現しやすいポイントでもあります。色々なパックを試しながら、自分だけのお気に入りの世界を見つけてみてください。うまくいかなくても、それはただの通過点です。</p>
     </section>
   </main>
 
@@ -449,6 +487,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

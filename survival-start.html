@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -332,6 +355,15 @@
 
 
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -340,6 +372,7 @@
         <li><a href="#sec2">2. 初日の食料確保の優先順位</a></li>
         <li><a href="#sec3">3. 夜が来る前に済ませておくこと</a></li>
         <li><a href="#sec4">4. 初心者がやりがちな死因ランキング</a></li>
+        <li><a href="#sec5">5. 何度も死んでしまう人へ伝えたいこと</a></li>
         <li><a href="#twist">序盤最大の分かれ道になった一夜の話</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -356,14 +389,15 @@
 
 
     <h2 id="intro" class="reveal">はじめに：初日の行動がすべてを決める</h2>
-    <p class="reveal">サバイバルモードで新しいワールドに降り立った瞬間、多くの初心者は「とりあえず木を集めよう」くらいの感覚で動き始めます。それ自体は間違いではありませんが、<strong>最初の1日でどれだけ効率よく動けるかで、その後のプレイの快適さが大きく変わります</strong>。本記事では、序盤に絶対にやるべき行動を時系列で整理しました。</p>
+    <p class="reveal">サバイバルモードで新しいワールドに降り立った瞬間、何もない草原にポツンと立たされて、「え、何からすればいいの…？」と不安になった経験はありませんか。僕もそうでした。周りには何もヒントがなくて、ただただ広い世界に放り出される。あの心細さは、統合版を始めた人なら誰もが一度は感じるものだと思います。</p>
+    <p class="reveal">多くの初心者は「とりあえず木を集めよう」くらいの感覚で動き始めます。それ自体は間違いではありませんが、<strong>最初の1日でどれだけ効率よく動けるかで、その後のプレイの快適さが大きく変わります</strong>。逆に言えば、最初の1日さえ乗り切ってしまえば、あとはぐっと気持ちが楽になります。本記事では、序盤に絶対にやるべき行動を時系列で整理しました。難しいことは一切書いていないので、安心して読み進めてください。</p>
 
     <h2 id="sec1" class="reveal">1. スポーンしたらまず何をするか</h2>
-    <p class="reveal">スポーンした直後にやるべきことは、周囲の地形の把握です。木材が豊富な森、動物がいる草原、水源に近い場所などを見渡し、<strong>拠点を作る場所の当たりをつける</strong>ところから始めましょう。焦って遠くまで移動してしまうと、いざという時にスポーン地点へ戻れず迷子になりがちです。</p>
-    <p class="reveal">地形の確認と同時並行で、目に入った木を5〜10本ほど伐採します。木材があれば作業台と最低限の道具（木のツルハシ・斧・剣）が揃い、石器時代への移行がスムーズになります。</p>
+    <p class="reveal">スポーンした直後にやるべきことは、周囲の地形の把握です。木材が豊富な森、動物がいる草原、水源に近い場所などを見渡し、<strong>拠点を作る場所の当たりをつける</strong>ところから始めましょう。焦って遠くまで移動してしまうと、いざという時にスポーン地点へ戻れず迷子になりがちです。実際、僕も最初の頃は「もっといい場所があるはずだ」と欲張って遠くまで歩き回り、気づいたら日が暮れかけていて焦った経験があります。</p>
+    <p class="reveal">地形の確認と同時並行で、目に入った木を5〜10本ほど伐採します。木材があれば作業台と最低限の道具（木のツルハシ・斧・剣）が揃い、石器時代への移行がスムーズになります。「木を切る」というシンプルな作業ですが、これがその後のすべての土台になると考えると、意外と大事な一歩なんです。</p>
 
     <h2 id="sec2" class="reveal">2. 初日の食料確保の優先順位</h2>
-    <p class="reveal">満腹度が減ると移動速度や体力回復に影響が出るため、序盤の食料確保は最優先事項の一つです。優先順位としては、まず近くにいる動物（牛・羊・鶏）を狩ること、次にリンゴが落ちている樫の木や、道中に生えている小麦・にんじんなどの作物を探すことです。</p>
+    <p class="reveal">満腹度が減ると移動速度や体力回復に影響が出るため、序盤の食料確保は最優先事項の一つです。優先順位としては、まず近くにいる動物（牛・羊・鶏）を狩ること、次にリンゴが落ちている樫の木や、道中に生えている小麦・にんじんなどの作物を探すことです。お腹が空いた状態で戦闘になると、思うように動けずどんどん不利になっていくので、「まだ大丈夫」と油断せず早めに確保しておくのが安心です。</p>
     <ul class="check-list reveal">
       <li><strong>動物を狩る：</strong> 牛や豚は満腹度回復量が多く、初日の食料源として優秀。</li>
       <li><strong>種を集める：</strong> 草を刈って手に入る種は、拠点近くの畑づくりに使える。</li>
@@ -371,33 +405,34 @@
     </ul>
 
     <h2 id="sec3" class="reveal">3. 夜が来る前に済ませておくこと</h2>
-    <p class="reveal">統合版の1日は現実の約20分。スポーンしてから10分ほど経つと空が暗くなり始め、モンスターが湧きやすくなります。<strong>夜が来る前に「四方を囲んだだけの簡易シェルター」を必ず作っておく</strong>のが鉄則です。土ブロックを積み上げただけの箱でも十分に命を守ってくれます。</p>
-    <p class="reveal">シェルターの中では、たいまつを設置して明るさを確保しておくとモンスターが湧きにくくなります。余裕があればベッドも用意しておくと、夜をスキップできて翌朝から効率よく動けます。</p>
+    <p class="reveal">統合版の1日は現実の約20分。スポーンしてから10分ほど経つと空が暗くなり始め、モンスターが湧きやすくなります。<strong>夜が来る前に「四方を囲んだだけの簡易シェルター」を必ず作っておく</strong>のが鉄則です。土ブロックを積み上げただけの箱でも十分に命を守ってくれます。見た目なんて気にしなくて大丈夫。まずは「生き延びること」が最優先です。</p>
+    <p class="reveal">シェルターの中では、たいまつを設置して明るさを確保しておくとモンスターが湧きにくくなります。余裕があればベッドも用意しておくと、夜をスキップできて翌朝から効率よく動けます。初日からベッドまで用意できなくても、まったく焦る必要はありません。少しずつで大丈夫です。</p>
 
     <h2 id="sec4" class="reveal">4. 初心者がやりがちな死因ランキング</h2>
-    <p class="reveal">筆者がこれまで見てきた・経験してきた序盤の死因の中で、特に多いものを3つ紹介します。</p>
+    <p class="reveal">筆者がこれまで見てきた・経験してきた序盤の死因の中で、特に多いものを3つ紹介します。「あるある」と共感してもらえたら嬉しいです。</p>
     <ul class="check-list reveal">
       <li><strong>第3位：溶岩への落下。</strong> 洞窟探索中、足元の確認を怠って一瞬で即死するケース。</li>
       <li><strong>第2位：飢餓状態からのモンスター遭遇。</strong> 食料切れで体力が回復せず、そのまま倒される。</li>
       <li><strong>第1位：夜のシェルター未完成。</strong> 「あと少しだけ」と作業を続け、暗くなってから囲まれる。</li>
     </ul>
 
-    <div class="twist-box reveal" id="twist">
-      <span class="twist-label">序盤最大の分かれ道になった一夜の話</span>
-      <p style="margin-bottom:0;">筆者が新しいワールドで、拠点作りに夢中になりすぎて日没に気づかず、気づいたときには周囲をゾンビ3体とクリーパー1体に囲まれていたことがあります。そこからどう切り抜けたのか、そしてその経験から生まれた「絶対に安全な簡易シェルターの作り方」は、サイト本編のチェックリストで詳しく紹介しています。</p>
-    </div>
+    <h2 id="sec5" class="reveal">5. 何度も死んでしまう人へ伝えたいこと</h2>
+    <p class="reveal">「何度もやってるのに、毎回初日で死んでしまう…」そんな悩みを抱えている人は、決して珍しくありません。むしろ、それだけ真剣にサバイバルを楽しもうとしている証拠だと思います。大切なのは、死んだ原因を一つずつ振り返ることです。「溶岩で死んだ」「夜にシェルターがなくて死んだ」など、原因さえわかれば次からは確実に避けられるようになります。</p>
+    <p class="reveal">僕自身も、最初のワールドでは3日と持たずに何度もやり直していました。それでも諦めずに続けていくうちに、いつの間にか自然とパターンが体に染み込んでいったんです。今うまくいっていなくても、それは君の腕が悪いからではありません。ただ、まだコツを知らないだけです。</p>
 
 
     <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
     <div class="info-box reveal"><strong>Q. 拠点はどこに作るのが一番いいですか？</strong><br>A. 水源が近く、木材の入手がしやすい平地または小さな丘の上がおすすめです。海や川に隣接していると移動や食料確保の面でも有利になります。</div>
     <div class="info-box reveal"><strong>Q. シェルターは簡単なものでも大丈夫ですか？</strong><br>A. はい。土ブロックで四方と天井を塞いだだけの簡易シェルターでも、初日を生き延びるには十分な効果があります。翌日以降にゆっくり拡張していきましょう。</div>
     <div class="info-box reveal"><strong>Q. 夜を安全に過ごすコツはありますか？</strong><br>A. 明るさを保つためにたいまつを複数設置し、隙間なくブロックで囲うことが基本です。ベッドを用意できれば夜をスキップできるため、序盤の安定感が大きく変わります。</div>
+    <div class="info-box reveal"><strong>Q. 何度も同じところで失敗してしまいます。おかしいのでしょうか？</strong><br>A. まったくおかしくありません。誰もが最初は同じ場所でつまずくものです。失敗した原因を一つずつメモしておくと、次第にパターンが見えてきて、驚くほど死ににくくなっていきます。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -433,7 +468,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>最初の一夜を越えた君は、もう立派な冒険者だ。</h2>
-      <p>誰だって最初は右も左も分からず、何度も同じ失敗を繰り返します。でも大丈夫。今日紹介した行動を一つずつ試していけば、きっと安定して生き延びられるようになります。失敗した夜の記憶さえも、いつかは笑い話になる。焦らず、自分のペースで冒険を進めていこう。</p>
+      <p>誰だって最初は右も左も分からず、何度も同じ失敗を繰り返します。それは恥ずかしいことでも、才能がないことでもありません。今日紹介した行動を一つずつ試していけば、きっと安定して生き延びられるようになります。失敗した夜の記憶さえも、いつかは笑い話になる。焦らず、自分のペースで冒険を進めていこう。君ならきっと大丈夫。</p>
     </section>
   </main>
 
@@ -456,6 +491,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

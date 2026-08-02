@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -332,6 +355,15 @@
 
 
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -340,6 +372,7 @@
         <li><a href="#sec2">2. 感圧板で作る自動ドア</a></li>
         <li><a href="#sec3">3. レバー・ボタンで作る手動トラップ</a></li>
         <li><a href="#sec4">4. 一歩進んだ自動化のヒント</a></li>
+        <li><a href="#sec5">5. 「センスがない」とあきらめる前に</a></li>
         <li><a href="#twist">たった1マスの配置ミスで失敗した話</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -356,10 +389,11 @@
 
 
     <h2 id="intro" class="reveal">はじめに：レッドストーンは電気の授業と同じ</h2>
-    <p class="reveal">レッドストーンと聞くと「上級者向けの難しい仕組み」というイメージを持つ人が多いですが、実は<strong>基本ルールはとてもシンプル</strong>です。電流が流れる場所と流れない場所を意識するだけで、驚くほどいろいろな装置が作れるようになります。この記事では、その第一歩として「自動ドア」と「簡単なトラップ」の作り方を紹介します。</p>
+    <p class="reveal">レッドストーンと聞くと「上級者向けの難しい仕組み」というイメージを持つ人が多いですよね。YouTubeやマーケットプレイスで見る複雑な装置を見て、「自分には絶対作れない」と諦めてしまった経験がある人もいるかもしれません。でも実は、<strong>基本ルールはとてもシンプル</strong>です。電流が流れる場所と流れない場所を意識するだけで、驚くほどいろいろな装置が作れるようになります。この記事では、その第一歩として「自動ドア」と「簡単なトラップ」の作り方を紹介します。</p>
 
     <h2 id="sec1" class="reveal">1. レッドストーンの超基本ルール</h2>
     <p class="reveal">レッドストーン回路の基本は「信号源」「伝達装置」「動作するブロック」の3つで成り立っています。信号源にはレバー・ボタン・感圧板などがあり、これらが「電気を流すスイッチ」の役割を果たします。レッドストーンダストは電気を運ぶ「電線」、そして最終的にドアやピストンなどが「動作するブロック」として反応します。</p>
+    <p class="reveal">この3つの役割さえ意識できれば、どんなに複雑に見える装置でも「どこがスイッチで、どこが電線で、どこが動作する部分なのか」を分解して考えられるようになります。実は上級者が作る複雑な装置も、このシンプルな仕組みの組み合わせでできているだけなんです。</p>
     <ul class="check-list reveal">
       <li><strong>信号源：</strong> レバー・ボタン・感圧板・トリップワイヤーなど。</li>
       <li><strong>伝達：</strong> レッドストーンダストは基本的に横方向に信号を伝える。</li>
@@ -367,8 +401,8 @@
     </ul>
 
     <h2 id="sec2" class="reveal">2. 感圧板で作る自動ドア</h2>
-    <p class="reveal">最も簡単な自動化の第一歩が「感圧板を使った自動ドア」です。木の扉のすぐ外側と内側の地面に感圧板を設置するだけで、乗った瞬間にドアが開き、離れると自動で閉まる仕組みが完成します。配線は不要で、感圧板とドアが隣接してさえいれば動作するのが最大のメリットです。</p>
-    <p class="reveal">より本格的な「自動でスライドして開く鉄の扉」を作りたい場合は、感圧板と鉄の扉の間にレッドストーンダストを伸ばして信号を伝える必要があります。まずは木の扉の簡易版から試して、仕組みに慣れてから鉄の扉に挑戦するのがおすすめです。</p>
+    <p class="reveal">最も簡単な自動化の第一歩が「感圧板を使った自動ドア」です。木の扉のすぐ外側と内側の地面に感圧板を設置するだけで、乗った瞬間にドアが開き、離れると自動で閉まる仕組みが完成します。配線は不要で、感圧板とドアが隣接してさえいれば動作するのが最大のメリットです。初めてでも5分もかからずに作れるので、まずはここから挑戦してみてください。</p>
+    <p class="reveal">より本格的な「自動でスライドして開く鉄の扉」を作りたい場合は、感圧板と鉄の扉の間にレッドストーンダストを伸ばして信号を伝える必要があります。まずは木の扉の簡易版から試して、仕組みに慣れてから鉄の扉に挑戦するのがおすすめです。一歩ずつ、段階を踏んで進めば大丈夫です。</p>
 
     <h2 id="sec3" class="reveal">3. レバー・ボタンで作る手動トラップ</h2>
     <p class="reveal">友達と遊ぶときに盛り上がるのが、レバーやボタンで発動する簡単なトラップです。落とし穴の上に一時的な床（例えば粘着ピストンで動かせるブロック）を用意し、離れた場所のレバーを操作すると床が引っ込んで落下する、というシンプルな仕組みでも十分に驚いてもらえます。</p>
@@ -380,6 +414,10 @@
     <h2 id="sec4" class="reveal">4. 一歩進んだ自動化のヒント</h2>
     <p class="reveal">自動ドアとトラップに慣れたら、次は「リピーター」を使った信号の遅延や増幅に挑戦してみましょう。リピーターを挟むことで、信号が届く距離を伸ばしたり、動作するタイミングを少しずらしたりできるようになります。仕組みを理解すればするほど、自分だけのオリジナル装置が作れるようになっていくのがレッドストーンの面白さです。</p>
 
+    <h2 id="sec5" class="reveal">5. 「センスがない」とあきらめる前に</h2>
+    <p class="reveal">レッドストーンで挫折してしまう人の多くは、最初から複雑な装置を作ろうとして失敗し、「自分にはセンスがない」と思い込んでしまいます。でも実際は、センスの有無ではなく、基本の積み重ね方の問題であることがほとんどです。今日紹介した自動ドアとトラップは、その基本の積み重ねの第一歩にすぎません。</p>
+    <p class="reveal">筆者自身も、最初は感圧板一つの動きすら理解できていませんでした。それでも一つずつ小さな成功体験を積み重ねていくうちに、少しずつ複雑な装置にも挑戦できるようになっていきました。焦らず、今日できることから始めてみてください。</p>
+
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">たった1マスの配置ミスで失敗した話</span>
       <p style="margin-bottom:0;">筆者が初めて自動ドアを作ったとき、感圧板をドアから1マス離して設置してしまい、「何度乗っても反応しない」と半日近く悩んだことがあります。原因はレッドストーンの伝達距離のごく基本的な仕組みにあったのですが、当時はそれに気づけませんでした。同じ失敗をしないための「配置チェックポイント」は、サイト本編で図解イメージつきにまとめています。</p>
@@ -390,12 +428,14 @@
     <div class="info-box reveal"><strong>Q. レッドストーンダストはどこまで信号を伝えられますか？</strong><br>A. 何もない状態では最大15マス先まで信号が伝わりますが、進むごとに少しずつ弱くなります。距離が長い場合はリピーターを挟んで信号を増幅・延長するのが基本です。</div>
     <div class="info-box reveal"><strong>Q. 感圧板の種類によって違いはありますか？</strong><br>A. 木の感圧板はプレイヤーやモブなど幅広い対象で反応し、石の感圧板はプレイヤーとモブのみ、金の感圧板・鉄の感圧板はアイテムの重さなど反応条件が異なります。用途に合わせて使い分けましょう。</div>
     <div class="info-box reveal"><strong>Q. トラップを作るときの注意点はありますか？</strong><br>A. 友達と遊ぶ場合は、必ず「ここから先はトラップがあるかもしれない」というルールを事前に共有しておくとトラブルになりません。落とし穴の深さも、ダメージが大きくなりすぎないよう調整するのがおすすめです。</div>
+    <div class="info-box reveal"><strong>Q. 何度やってもうまく動きません。センスがないのでしょうか？</strong><br>A. センスの問題ではありません。ほとんどの失敗は配置のズレなどの単純なミスです。信号源・伝達・動作の3つを一つずつ確認していけば、必ず原因が見つかります。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -431,7 +471,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>電線1本の理解が、装置作りの世界を広げてくれる。</h2>
-      <p>レッドストーンは最初こそ「意味がわからない」と感じるものですが、信号源・伝達・動作という3つの役割さえ意識すれば、驚くほどシンプルな仕組みだと気づくはずです。今日作った自動ドアやトラップは、これから作る大きな装置への第一歩。失敗を重ねながら、少しずつ自分だけの回路を組み上げていってください。</p>
+      <p>レッドストーンは最初こそ「意味がわからない」と感じるものですが、信号源・伝達・動作という3つの役割さえ意識すれば、驚くほどシンプルな仕組みだと気づくはずです。今日作った自動ドアやトラップは、これから作る大きな装置への第一歩。失敗を重ねながら、少しずつ自分だけの回路を組み上げていってください。センスがないなんて思わないで。君はちゃんと前に進んでいます。</p>
     </section>
   </main>
 
@@ -454,6 +494,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

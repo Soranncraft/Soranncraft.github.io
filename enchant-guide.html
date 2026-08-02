@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -332,6 +355,15 @@
 
 
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -340,6 +372,7 @@
         <li><a href="#sec2">2. 武器につけるべき優先順位</a></li>
         <li><a href="#sec3">3. 防具につけるべき優先順位</a></li>
         <li><a href="#sec4">4. 道具（ツルハシ・斧）の優先順位</a></li>
+        <li><a href="#sec5">5. レベルがなかなか貯まらず焦っている人へ</a></li>
         <li><a href="#twist">本棚の数で結果が変わると知らなかった頃の話</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -356,10 +389,10 @@
 
 
     <h2 id="intro" class="reveal">はじめに：エンチャントは「順番」が9割</h2>
-    <p class="reveal">エンチャントテーブルの前に立って「どれを選べばいいかわからない」と固まった経験がある人は多いはずです。実はエンチャントには<strong>装備の種類ごとにつけるべき優先順位</strong>があり、それを知っているかどうかでレベル消費の効率が大きく変わります。本記事では、統合版での実践に基づいた優先順位を紹介します。</p>
+    <p class="reveal">エンチャントテーブルの前に立って「どれを選べばいいかわからない」と固まった経験がある人は多いはずです。せっかく貯めた経験値レベルを使うのに、外れを引いてしまったらどうしよう…と不安になる気持ち、すごくよくわかります。実はエンチャントには<strong>装備の種類ごとにつけるべき優先順位</strong>があり、それを知っているかどうかでレベル消費の効率が大きく変わります。本記事では、統合版での実践に基づいた優先順位を紹介します。</p>
 
     <h2 id="sec1" class="reveal">1. エンチャントテーブルの基本</h2>
-    <p class="reveal">エンチャントテーブルは、周囲に本棚を設置することで最大レベル30までのエンチャントが選べるようになります。本棚とテーブルの間には1マスの隙間を空ける必要があり、テーブルを中心に本棚をびっしり15冊分配置するのが理想的な配置です。</p>
+    <p class="reveal">エンチャントテーブルは、周囲に本棚を設置することで最大レベル30までのエンチャントが選べるようになります。本棚とテーブルの間には1マスの隙間を空ける必要があり、テーブルを中心に本棚をびっしり15冊分配置するのが理想的な配置です。この配置を知らずに本棚を数個だけ置いていた頃の自分を思い出すと、もっと早く知りたかったと感じます。</p>
     <ul class="check-list reveal">
       <li><strong>本棚の配置：</strong> テーブルとの間に1マスの隙間を空けて設置するのがルール。</li>
       <li><strong>ラピスラズリ：</strong> エンチャントには経験値レベルに加えてラピスラズリも必要。</li>
@@ -367,13 +400,16 @@
     </ul>
 
     <h2 id="sec2" class="reveal">2. 武器につけるべき優先順位</h2>
-    <p class="reveal">剣には「ダメージ増加」系と「特殊効果」系のエンチャントがありますが、初心者がまず優先すべきは<strong>耐久力</strong>と<strong>ダメージ増加</strong>系です。特に序盤は道具を頻繁に作り直すのが面倒なので、耐久力を早めにつけておくと快適さが段違いになります。</p>
+    <p class="reveal">剣には「ダメージ増加」系と「特殊効果」系のエンチャントがありますが、初心者がまず優先すべきは<strong>耐久力</strong>と<strong>ダメージ増加</strong>系です。特に序盤は道具を頻繁に作り直すのが面倒なので、耐久力を早めにつけておくと快適さが段違いになります。「せっかく育てた剣がすぐ壊れる」というストレスからも解放されます。</p>
 
     <h2 id="sec3" class="reveal">3. 防具につけるべき優先順位</h2>
-    <p class="reveal">防具については、まず「耐久力」、次に「防御力向上」系のエンチャントを優先するのが定番です。長時間の探索を前提にするなら、経験値の吸収効率を上げるエンチャントもあわせて狙うと、その後のエンチャント効率がさらに上がっていきます。</p>
+    <p class="reveal">防具については、まず「耐久力」、次に「防御力向上」系のエンチャントを優先するのが定番です。長時間の探索を前提にするなら、経験値の吸収効率を上げるエンチャントもあわせて狙うと、その後のエンチャント効率がさらに上がっていきます。防具が整うと、単純に安心して探索できる範囲がぐっと広がるので、精神的な余裕にも直結します。</p>
 
     <h2 id="sec4" class="reveal">4. 道具（ツルハシ・斧）の優先順位</h2>
-    <p class="reveal">ツルハシは「効率強化」を最優先にするのが鉄則です。採掘速度が大幅に上がり、鉱石集めの効率が段違いになります。次点で「幸運」を狙うと、ダイヤモンドや貴重な鉱石のドロップ数が増えるため、経済的なメリットも大きくなります。</p>
+    <p class="reveal">ツルハシは「効率強化」を最優先にするのが鉄則です。採掘速度が大幅に上がり、鉱石集めの効率が段違いになります。次点で「幸運」を狙うと、ダイヤモンドや貴重な鉱石のドロップ数が増えるため、経済的なメリットも大きくなります。地道な採掘作業も、この2つがあるだけで驚くほど快適に感じられるようになります。</p>
+
+    <h2 id="sec5" class="reveal">5. レベルがなかなか貯まらず焦っている人へ</h2>
+    <p class="reveal">「エンチャントしたいのに、経験値レベルがなかなか貯まらない」という悩みを抱えている人も多いと思います。焦って狩りや採掘を急ぐと、思わぬ事故につながることもあるので、まずは落ち着いて、日々の探索の中で少しずつ貯めていく気持ちで大丈夫です。無理に一気に貯めようとせず、日常のプレイの延長線上で自然に貯まっていくものだと考えると、気持ちがかなり楽になります。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">本棚の数で結果が変わると知らなかった頃の話</span>
@@ -385,12 +421,14 @@
     <div class="info-box reveal"><strong>Q. 本棚は何冊あれば最大レベルになりますか？</strong><br>A. テーブルの周囲、1マスの隙間を空けた位置に本棚を最大15冊分配置すると、エンチャントの最大レベルである30まで選択できるようになります。</div>
     <div class="info-box reveal"><strong>Q. エンチャント本と直接エンチャントするのはどちらがいいですか？</strong><br>A. 狙ったエンチャントだけを確実につけたい場合は金床とエンチャント本の組み合わせがおすすめです。効率重視でとにかく色々試したい場合はエンチャントテーブルが向いています。</div>
     <div class="info-box reveal"><strong>Q. エンチャントの経験値はどうやって集めればいいですか？</strong><br>A. モンスターを倒す、鉱石を採掘する、動物を繁殖させるなど様々な方法で経験値が手に入ります。序盤は洞窟での採掘と並行して経験値を稼ぐのが効率的です。</div>
+    <div class="info-box reveal"><strong>Q. 欲しいエンチャントが全然出てきません。運が悪いのでしょうか？</strong><br>A. 運の要素はありますが、本棚の配置が正しくない場合、そもそも高レベルの選択肢自体が出ていない可能性があります。まずは配置を見直し、常にレベル30で挑戦できる環境を整えましょう。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -426,7 +464,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>順番を知っているだけで、限られたレベルが何倍にも輝く。</h2>
-      <p>エンチャントは運の要素も大きいですが、優先順位を知っているかどうかで納得のいく結果に近づくスピードは大きく変わります。何度も本棚の配置をやり直した経験も、今となっては良い思い出です。今日紹介した優先順位を参考に、自分だけの最強装備を育てていってください。</p>
+      <p>エンチャントは運の要素も大きいですが、優先順位を知っているかどうかで納得のいく結果に近づくスピードは大きく変わります。何度も本棚の配置をやり直した経験も、今となっては良い思い出です。今日紹介した優先順位を参考に、自分だけの最強装備を焦らず育てていってください。</p>
     </section>
   </main>
 
@@ -449,6 +487,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

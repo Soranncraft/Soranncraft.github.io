@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -335,6 +358,15 @@
       <p>コマンドを使いこなせば、統合版の遊び方は何倍にも広がる。</p>
     </div>
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -343,6 +375,7 @@
         <li><a href="#sec2">2. まず覚えたい基本コマンド4つ</a></li>
         <li><a href="#sec3">3. 座標とターゲットセレクターの考え方</a></li>
         <li><a href="#sec4">4. コマンドブロックへの第一歩</a></li>
+        <li><a href="#sec5">5. 「文字だらけで拒否反応が出る」人へ</a></li>
         <li><a href="#twist">1文字のミスで起きた珍事件</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -359,10 +392,12 @@
 
 
     <h2 id="intro" class="reveal">はじめに：コマンドは難しくない</h2>
-    <p class="reveal">「コマンド」と聞くとプログラミングみたいで難しそう、と感じる人は多いと思います。でも安心してください。<strong>コマンドの正体は、決まった書式に沿ってチャット欄に文字を打つだけ</strong>です。この記事では、統合版でまず覚えておくと便利な基本コマンドだけに絞って、実例つきで紹介します。</p>
+    <p class="reveal">「コマンド」と聞くとプログラミングみたいで難しそう、と感じる人は多いと思います。長い文字列がずらっと並んでいるのを見ただけで、「自分には無理だ」と思って画面を閉じてしまった経験がある人もいるかもしれません。その気持ち、すごくわかります。僕も最初は同じでした。</p>
+    <p class="reveal">でも安心してください。<strong>コマンドの正体は、決まった書式に沿ってチャット欄に文字を打つだけ</strong>です。難しい理屈を全部理解する必要はありません。この記事では、統合版でまず覚えておくと便利な基本コマンドだけに絞って、実例つきで、できるだけかみ砕いて紹介します。読み終わる頃には、「思ったより簡単じゃん」と感じてもらえるはずです。</p>
 
     <h2 id="sec1" class="reveal">1. コマンドを使う準備</h2>
     <p class="reveal">コマンドを使うには、ワールド作成時に「チートを有効化」しておく必要があります。すでに作ったワールドでオフのまま始めてしまった場合は、設定画面から途中でオンにすることも可能です（実績への影響がある場合があるので注意）。準備ができたら、チャット欄（統合版ではチャットアイコンやスマホの入力欄）を開いて、<code>/</code>から始まる文字列を入力するだけでコマンドが実行できます。</p>
+    <p class="reveal">最初のうちは、間違えても全く問題ありません。コマンドは基本的に何度でもやり直せますし、間違えたところで大きな損害が出ることはほとんどないので、失敗を恐れずどんどん試してみるのが上達の近道です。</p>
 
     <h2 id="sec2" class="reveal">2. まず覚えたい基本コマンド4つ</h2>
     <p class="reveal">数えきれないほどあるコマンドの中でも、初心者がまず使えるようになると便利なのはこの4つです。</p>
@@ -382,9 +417,14 @@
 
     <h2 id="sec3" class="reveal">3. 座標とターゲットセレクターの考え方</h2>
     <p class="reveal">コマンドを使いこなす鍵は「誰に」「どこで」効果を及ぼすかを指定する部分です。<strong>@s は自分自身、@p は最も近いプレイヤー、@a は全プレイヤー</strong>を指すターゲットセレクターで、これを覚えるだけで応用範囲が一気に広がります。座標については、F3キーやデバッグ画面で自分の現在地を確認しながら数値を入れると失敗が減ります。</p>
+    <p class="reveal">最初は座標の意味がピンとこないかもしれません。でも実際に何度か/tpを試して、数値を変えるとどう動くのかを体感していくうちに、自然と感覚が身についていきます。頭で理解するより先に、手を動かして試してみるのが一番の近道です。</p>
 
     <h2 id="sec4" class="reveal">4. コマンドブロックへの第一歩</h2>
     <p class="reveal">チャット欄への直接入力に慣れてきたら、次のステップは「コマンドブロック」です。<code>/give @s command_block</code>で入手でき、設置してタップ（クリック）すると、あらかじめコマンドを仕込んでおいて、レバーやボタンで発動させる仕組みを作れます。これができるようになると、レッドストーン回路と組み合わせた自動化ギミックの幅が一気に広がります。</p>
+
+    <h2 id="sec5" class="reveal">5. 「文字だらけで拒否反応が出る」人へ</h2>
+    <p class="reveal">コマンドの画面を見て「英単語だらけで無理」と感じる人は多いです。でも実は、覚える必要がある単語はそこまで多くありません。今日紹介した4つのコマンドと、@s・@pという2つのターゲットセレクターだけでも、かなりの範囲のことができるようになります。全部を一気に覚えようとせず、まずはこの記事の内容だけを繰り返し使ってみてください。</p>
+    <p class="reveal">僕自身、最初にコマンドを打ち込んだときは、スペルミスだらけで全然反映されず「向いてないのかも」と思ったことがあります。でも、それは向き不向きの問題ではなく、単純に慣れの問題でした。今では当たり前のように使えるようになった自分を見て、当時の自分に「大丈夫、ちゃんとできるようになるよ」と伝えたい気持ちです。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">1文字のミスで起きた珍事件</span>
@@ -396,12 +436,14 @@
     <div class="info-box reveal"><strong>Q. コマンドを使うと実績は取得できなくなりますか？</strong><br>A. チートを有効化した状態でプレイすると、そのワールドでは実績（アチーブメント）が無効になる場合があります。実績を狙いたい場合はコマンドなしでのプレイをおすすめします。</div>
     <div class="info-box reveal"><strong>Q. コマンドを打っても反応がありません。原因は？</strong><br>A. スペルミスや半角・全角の入力ミスが最も多い原因です。チャット欄に表示されるエラーメッセージをよく読み、赤文字の指摘箇所を確認してみましょう。</div>
     <div class="info-box reveal"><strong>Q. ターゲットセレクターの@sと@pの違いがわかりません。</strong><br>A. @sは「コマンドを実行した本人」、@pは「実行地点から最も近いプレイヤー」を指します。自分専用のコマンドブロックなら@s、誰が使うか分からない場合は@pを使うのが基本です。</div>
+    <div class="info-box reveal"><strong>Q. 覚えることが多すぎて挫折しそうです。</strong><br>A. 一度に全部覚える必要はまったくありません。今日紹介した4つのコマンドだけを、まずは1週間くらい繰り返し使ってみてください。自然と手が覚えてくれます。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -437,7 +479,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>たった1行のコマンドが、遊び方を無限に広げてくれる。</h2>
-      <p>最初はスペルミスだらけでも大丈夫。コマンドは書いて、失敗して、直して、を繰り返すことで少しずつ体に染み込んでいくものです。僕自身も最初は/tpの座標を毎回間違えていました。焦らず一つずつ試していけば、いつの間にか自分の思い通りにワールドを操れるようになっているはずです。</p>
+      <p>最初はスペルミスだらけでも大丈夫。コマンドは書いて、失敗して、直して、を繰り返すことで少しずつ体に染み込んでいくものです。僕自身も最初は/tpの座標を毎回間違えていました。焦らず一つずつ試していけば、いつの間にか自分の思い通りにワールドを操れるようになっているはずです。今うまくいかなくても、それは通過点。ちゃんとできるようになります。</p>
     </section>
   </main>
 
@@ -460,6 +502,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -332,6 +355,15 @@
 
 
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -340,6 +372,7 @@
         <li><a href="#sec2">2. インベントリのオートソート機能</a></li>
         <li><a href="#sec3">3. 大きな倉庫を作るときのレイアウト</a></li>
         <li><a href="#sec4">4. 看板やアイテムフレームでラベリング</a></li>
+        <li><a href="#sec5">5. 「整理が苦手」と感じている人へ</a></li>
         <li><a href="#twist">チェスト30個を全部開けて探した黒歴史</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -356,10 +389,10 @@
 
 
     <h2 id="intro" class="reveal">はじめに：整理は「見つけやすさ」がすべて</h2>
-    <p class="reveal">プレイ時間が増えるほど、アイテムの数もチェストの数もどんどん増えていきます。<strong>整理のルールを決めずに何となく詰め込んでいくと、いざという時に欲しいアイテムが見つからず時間を無駄にしてしまいます</strong>。この記事では、統合版で実践しやすいチェスト収納・整理のコツを紹介します。</p>
+    <p class="reveal">プレイ時間が増えるほど、アイテムの数もチェストの数もどんどん増えていきます。「あの木材、どのチェストに入れたっけ…」と、全部のチェストを開けて回った経験がある人も多いのではないでしょうか。<strong>整理のルールを決めずに何となく詰め込んでいくと、いざという時に欲しいアイテムが見つからず時間を無駄にしてしまいます</strong>。この記事では、統合版で実践しやすいチェスト収納・整理のコツを紹介します。</p>
 
     <h2 id="sec1" class="reveal">1. カテゴリー分けの基本ルール</h2>
-    <p class="reveal">まず意識したいのが「用途ごとにチェストを分ける」ことです。建材系、食料系、道具・装備系、レア素材系というように大きなカテゴリーを決め、それぞれ専用のチェストを用意するだけで、探す手間が大幅に減ります。</p>
+    <p class="reveal">まず意識したいのが「用途ごとにチェストを分ける」ことです。建材系、食料系、道具・装備系、レア素材系というように大きなカテゴリーを決め、それぞれ専用のチェストを用意するだけで、探す手間が大幅に減ります。最初は面倒に感じるかもしれませんが、一度ルールを決めてしまえば、あとは自然とその通りに片付けられるようになります。</p>
     <ul class="check-list reveal">
       <li><strong>建材チェスト：</strong> 石・木材・ガラスなど建築でよく使うブロック類。</li>
       <li><strong>食料チェスト：</strong> 種類ごとにまとめておくと、料理や繁殖の際にすぐ取り出せる。</li>
@@ -368,13 +401,16 @@
     </ul>
 
     <h2 id="sec2" class="reveal">2. インベントリのオートソート機能</h2>
-    <p class="reveal">統合版のインベントリ画面には、アイテムを自動で並び替えてくれる機能があります。手持ちがごちゃごちゃしてきたら、この機能を使うだけで一瞬で整理できるので、探索から帰ってきたタイミングで習慣的に使うのがおすすめです。</p>
+    <p class="reveal">統合版のインベントリ画面には、アイテムを自動で並び替えてくれる機能があります。手持ちがごちゃごちゃしてきたら、この機能を使うだけで一瞬で整理できるので、探索から帰ってきたタイミングで習慣的に使うのがおすすめです。小さな習慣ですが、積み重なると大きな差になります。</p>
 
     <h2 id="sec3" class="reveal">3. 大きな倉庫を作るときのレイアウト</h2>
     <p class="reveal">プレイが進んでチェストの数が増えてきたら、専用の倉庫部屋を作るのがおすすめです。壁一面にチェストを並べる場合は、カテゴリーごとにブロックの1列を割り当てるなど、<strong>視覚的にひと目でわかるレイアウト</strong>を意識すると、後から探す時のストレスが大きく減ります。</p>
 
     <h2 id="sec4" class="reveal">4. 看板やアイテムフレームでラベリング</h2>
     <p class="reveal">チェストの上や横に看板を立てて、何が入っているかを文字で書いておくのも効果的です。さらに凝りたい場合は、アイテムフレームに代表的なアイテムを飾っておくことで、文字を読まなくても一目で中身がわかる見た目の良い倉庫が完成します。</p>
+
+    <h2 id="sec5" class="reveal">5. 「整理が苦手」と感じている人へ</h2>
+    <p class="reveal">現実の片付けが苦手な人にとって、ゲーム内の整理も同じように苦手意識を持ってしまうことがあるかもしれません。でも安心してください。マイクラの収納は、現実の片付けよりずっとシンプルなルールで成り立っています。今日紹介したカテゴリー分けを一つ取り入れるだけでも、驚くほど探しやすくなるはずです。完璧を目指さず、少しずつで大丈夫です。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">チェスト30個を全部開けて探した黒歴史</span>
@@ -386,12 +422,14 @@
     <div class="info-box reveal"><strong>Q. チェストはいくつくらい用意すればいいですか？</strong><br>A. 序盤は5〜6個程度で十分ですが、プレイが進むにつれて増えていきます。数が増える前提で、最初からカテゴリーごとに配置場所を決めておくと後が楽になります。</div>
     <div class="info-box reveal"><strong>Q. オートソートはどこで使えますか？</strong><br>A. インベントリ画面やチェストを開いた画面に、アイテムを自動で並び替えるボタンが用意されています。端末によって操作方法が異なる場合があるので、画面のアイコンを確認してみてください。</div>
     <div class="info-box reveal"><strong>Q. 看板の文字が読みにくいです。何か工夫はありますか？</strong><br>A. 看板の色を変えたり、チェストの周りをカテゴリーごとに違う色のブロックで統一したりすると、文字を読まなくても直感的に分かりやすくなります。</div>
+    <div class="info-box reveal"><strong>Q. 整理を始めても、すぐにまた散らかってしまいます。</strong><br>A. 最初のうちは誰でもそうなりがちです。探索から帰ってきたタイミングで「とりあえず一度オートソートする」など、小さな習慣を一つ決めておくと、徐々に散らかりにくくなっていきます。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -427,7 +465,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>整った倉庫は、これまでの冒険の記録そのもの。</h2>
-      <p>整理整頓は地味な作業に思えるかもしれませんが、積み重なったチェストの中身は、これまで君が歩んできた冒険の証です。今日紹介したルールを一つ取り入れるだけで、次に何かを探す時のストレスがぐっと減るはずです。</p>
+      <p>整理整頓は地味な作業に思えるかもしれませんが、積み重なったチェストの中身は、これまで君が歩んできた冒険の証です。今日紹介したルールを一つ取り入れるだけで、次に何かを探す時のストレスがぐっと減るはずです。完璧を目指さなくて大丈夫、少しずつ整えていきましょう。</p>
     </section>
   </main>
 
@@ -450,6 +488,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

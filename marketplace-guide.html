@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -332,6 +355,15 @@
 
 
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -340,6 +372,7 @@
         <li><a href="#sec2">2. 無料コンテンツの探し方</a></li>
         <li><a href="#sec3">3. 購入前に確認すべきポイント</a></li>
         <li><a href="#sec4">4. マインコインを無駄にしないコツ</a></li>
+        <li><a href="#sec5">5. 「課金しないと楽しめない」と思っている人へ</a></li>
         <li><a href="#twist">「実質無料」の意味を勘違いしていた話</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -356,10 +389,10 @@
 
 
     <h2 id="intro" class="reveal">はじめに：マーケットプレイスは無料でも楽しめる</h2>
-    <p class="reveal">「マーケットプレイス」と聞くと課金前提のコーナーだと思われがちですが、実は<strong>無料で楽しめるコンテンツもたくさん用意されています</strong>。この記事では、マーケットプレイスの仕組みと、無料コンテンツを見つけるコツ、購入時に失敗しないためのポイントを紹介します。</p>
+    <p class="reveal">「マーケットプレイス」と聞くと課金前提のコーナーだと思われがちですが、実は<strong>無料で楽しめるコンテンツもたくさん用意されています</strong>。「お小遣いが少ないから諦めよう」と思ってしまった経験がある人もいるかもしれません。でも心配しないでください。この記事では、マーケットプレイスの仕組みと、無料コンテンツを見つけるコツ、購入時に失敗しないためのポイントを紹介します。</p>
 
     <h2 id="sec1" class="reveal">1. マーケットプレイスとは何か</h2>
-    <p class="reveal">マーケットプレイスは、公式や公認クリエイターが制作したワールド・スキン・テクスチャパック・アドオンなどを購入・ダウンロードできる公式ストアです。中には有料のものだけでなく、期間限定や常時無料で配布されているコンテンツも存在します。</p>
+    <p class="reveal">マーケットプレイスは、公式や公認クリエイターが制作したワールド・スキン・テクスチャパック・アドオンなどを購入・ダウンロードできる公式ストアです。中には有料のものだけでなく、期間限定や常時無料で配布されているコンテンツも存在します。まずはこの事実を知っておくだけで、マーケットプレイスへの見方が少し変わるはずです。</p>
 
     <h2 id="sec2" class="reveal">2. 無料コンテンツの探し方</h2>
     <p class="reveal">マーケットプレイスのカテゴリーには「無料」や「Free」で絞り込める表示があります。まずはこのフィルターを使って一覧を見てみましょう。定期的に新しい無料コンテンツが追加されるため、時々チェックする習慣をつけておくとお得なコンテンツを逃しにくくなります。</p>
@@ -370,10 +403,13 @@
     </ul>
 
     <h2 id="sec3" class="reveal">3. 購入前に確認すべきポイント</h2>
-    <p class="reveal">有料コンテンツを購入する前には、<strong>対応バージョンと、必要な容量</strong>を必ず確認しましょう。特に大型のワールドデータは端末の空き容量を大きく圧迫することがあります。また、購入したコンテンツはアカウントに紐づくため、機種変更をしても再ダウンロードできる点も覚えておくと安心です。</p>
+    <p class="reveal">有料コンテンツを購入する前には、<strong>対応バージョンと、必要な容量</strong>を必ず確認しましょう。特に大型のワールドデータは端末の空き容量を大きく圧迫することがあります。また、購入したコンテンツはアカウントに紐づくため、機種変更をしても再ダウンロードできる点も覚えておくと安心です。せっかくのお小遣いを無駄にしないためにも、確認は惜しまないようにしましょう。</p>
 
     <h2 id="sec4" class="reveal">4. マインコインを無駄にしないコツ</h2>
     <p class="reveal">マーケットプレイスでの購入には「マインコイン」という専用通貨を使います。まとめ買いをするとコインあたりの単価が下がる場合が多いため、欲しいものが複数ある場合はまとめて購入を検討するのも一つの手です。衝動買いを避けるため、事前にウィッシュリスト的に欲しいものをメモしておくのもおすすめです。</p>
+
+    <h2 id="sec5" class="reveal">5. 「課金しないと楽しめない」と思っている人へ</h2>
+    <p class="reveal">課金コンテンツの華やかさを見ていると、「無料だと十分に楽しめないのでは」と感じてしまうこともあるかもしれません。でも実際は、無料の範囲だけでも十分に工夫次第で世界は広がります。今日紹介した探し方を使えば、課金に頼らなくても新しい発見や楽しみ方をたくさん見つけられるはずです。焦らず、自分のペースで色々試してみてください。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">「実質無料」の意味を勘違いしていた話</span>
@@ -385,12 +421,14 @@
     <div class="info-box reveal"><strong>Q. マーケットプレイスの利用にお金は必ずかかりますか？</strong><br>A. いいえ、無料で配布されているワールドやスキン、アドオンも多く存在します。「無料」フィルターを使って探せば、課金なしでも十分に楽しめます。</div>
     <div class="info-box reveal"><strong>Q. マインコインはどこで購入できますか？</strong><br>A. マーケットプレイス内の専用画面から、実際のお金でマインコインを購入できます。端末のストア（アプリストアなど）を経由して決済する仕組みです。</div>
     <div class="info-box reveal"><strong>Q. 購入したコンテンツは他の端末でも使えますか？</strong><br>A. 同じアカウントでサインインしていれば、機種変更後や別の対応端末でも再ダウンロードして利用できます。購入履歴はアカウントに紐づいて保存されます。</div>
+    <div class="info-box reveal"><strong>Q. 無料版だけで本当に楽しめますか？物足りなくならないか心配です。</strong><br>A. 無料コンテンツだけでも十分に楽しめる作りのものが多くあります。まずは無料の範囲で試してみて、本当に気に入ったものがあれば有料版を検討する、という順番でも遅くありません。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -449,6 +487,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

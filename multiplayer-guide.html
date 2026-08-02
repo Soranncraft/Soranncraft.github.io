@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -335,6 +358,15 @@
       <p>友達や家族と一緒に遊べば、統合版の世界はもっと楽しくなる。</p>
     </div>
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -343,6 +375,7 @@
         <li><a href="#sec2">2. フレンド招待の基本手順</a></li>
         <li><a href="#sec3">3. 「繋がらない」時のチェックリスト</a></li>
         <li><a href="#sec4">4. 一緒に遊ぶときのマナー設定</a></li>
+        <li><a href="#sec5">5. 何度試してもうまくいかず心が折れそうな人へ</a></li>
         <li><a href="#twist">原因がまさかの1文字だった接続トラブル</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -359,7 +392,7 @@
 
 
     <h2 id="intro" class="reveal">はじめに：一人で悩まず切り分けよう</h2>
-    <p class="reveal">「フレンドと一緒に遊びたいのに、なぜか接続できない」という悩みは、統合版初心者の多くがぶつかる壁です。原因はネットワーク・アカウント設定・アプリのバージョン違いなど様々ですが、<strong>一つずつ順番に確認していけば、ほとんどのケースは自力で解決できます</strong>。本記事ではマルチプレイの基本と、つながらない時の切り分け方を紹介します。</p>
+    <p class="reveal">「フレンドと一緒に遊びたいのに、なぜか接続できない」という悩みは、統合版初心者の多くがぶつかる壁です。せっかく約束していたのに繋がらなくて、友達をがっかりさせてしまった…なんて経験がある人もいるかもしれません。その悔しさ、よくわかります。原因はネットワーク・アカウント設定・アプリのバージョン違いなど様々ですが、<strong>一つずつ順番に確認していけば、ほとんどのケースは自力で解決できます</strong>。本記事ではマルチプレイの基本と、つながらない時の切り分け方を紹介します。</p>
 
     <h2 id="sec1" class="reveal">1. マルチプレイの3つの方法</h2>
     <p class="reveal">統合版でのマルチプレイには、大きく分けて「同じネットワーク内でのローカル通信」「フレンドをオンラインで招待する方法」「Realms（有料の常設サーバー）」の3種類があります。まずは一番手軽な、フレンド招待から試してみるのがおすすめです。</p>
@@ -370,10 +403,10 @@
     </ul>
 
     <h2 id="sec2" class="reveal">2. フレンド招待の基本手順</h2>
-    <p class="reveal">フレンドと遊ぶには、まずお互いにXboxアカウントでサインインし、フレンド登録を済ませておく必要があります。その後、ワールドの設定で「フレンドに公開」をオンにし、フレンド側のプレイ画面から参加をリクエストしてもらう流れが基本です。</p>
+    <p class="reveal">フレンドと遊ぶには、まずお互いにXboxアカウントでサインインし、フレンド登録を済ませておく必要があります。その後、ワールドの設定で「フレンドに公開」をオンにし、フレンド側のプレイ画面から参加をリクエストしてもらう流れが基本です。手順自体はシンプルなので、一度覚えてしまえば次からはすぐにできるようになります。</p>
 
     <h2 id="sec3" class="reveal">3. 「繋がらない」時のチェックリスト</h2>
-    <p class="reveal">接続トラブルが起きたら、以下の順番で確認してみてください。多くの場合、この中のどれかが原因です。</p>
+    <p class="reveal">接続トラブルが起きたら、以下の順番で確認してみてください。多くの場合、この中のどれかが原因です。慌てず、一つずつ確認していけば大丈夫です。</p>
     <ul class="check-list reveal">
       <li><strong>マイクラのバージョン：</strong> お互いのバージョンが異なると接続できないことが多い。両方とも最新版に更新する。</li>
       <li><strong>Xboxアカウントのサインイン状態：</strong> サインインが切れていると招待自体が届かない。</li>
@@ -382,7 +415,10 @@
     </ul>
 
     <h2 id="sec4" class="reveal">4. 一緒に遊ぶときのマナー設定</h2>
-    <p class="reveal">複数人で遊ぶ場合、建築物を勝手に壊されてトラブルになるケースもあります。ワールド設定で「他プレイヤーの建築物を破壊できるか」といった項目を事前に確認し、遊ぶ前にルールを共有しておくと安心です。</p>
+    <p class="reveal">複数人で遊ぶ場合、建築物を勝手に壊されてトラブルになるケースもあります。ワールド設定で「他プレイヤーの建築物を破壊できるか」といった項目を事前に確認し、遊ぶ前にルールを共有しておくと安心です。せっかく楽しい時間のはずなのに、些細なことでケンカになってしまうのは避けたいですよね。</p>
+
+    <h2 id="sec5" class="reveal">5. 何度試してもうまくいかず心が折れそうな人へ</h2>
+    <p class="reveal">色々な方法を試してもどうしても繋がらないと、「もう無理なのかな」と諦めたくなる気持ち、すごくよくわかります。でも接続トラブルのほとんどは、本当にちょっとした設定のズレが原因です。焦って何度も同じ操作を繰り返すより、一度お互いの端末を再起動して、深呼吸してからもう一度チェックリストを順番に確認してみてください。きっと解決の糸口が見つかります。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">原因がまさかの1文字だった接続トラブル</span>
@@ -394,12 +430,14 @@
     <div class="info-box reveal"><strong>Q. フレンドと接続するのにお金はかかりますか？</strong><br>A. フレンド招待によるオンラインマルチプレイ自体は無料で利用できます。ただし、いつでも自由に出入りできる常設サーバー「Realms」を使う場合は月額料金が必要です。</div>
     <div class="info-box reveal"><strong>Q. 同じ家の中なら簡単に一緒に遊べますか？</strong><br>A. はい。同じWi-Fiに接続していれば「ローカル通信」でアカウント連携なしに近くの端末とすぐに遊べます。まずはこの方法から試すのがおすすめです。</div>
     <div class="info-box reveal"><strong>Q. 何度試しても接続できません。どうすればいいですか？</strong><br>A. バージョンの一致、アカウントのサインイン状態、ワールドの公開設定を順番に見直してください。それでも解決しない場合は、両方の端末を再起動してから再度試してみましょう。</div>
+    <div class="info-box reveal"><strong>Q. 繋がらなくて友達との約束の時間が過ぎてしまいそうです。焦ってしまいます。</strong><br>A. 焦る気持ちはよくわかりますが、慌てて色々な操作を同時にやってしまうとかえって原因がわかりにくくなります。深呼吸をして、一つずつ確認する方が結果的に早く解決できることが多いです。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -435,7 +473,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>一緒に遊べば、冒険の楽しさは何倍にもなる。</h2>
-      <p>接続トラブルに悩まされた時間も、無事につながって一緒に冒険できた瞬間の喜びを大きくしてくれるものです。今日紹介したチェックリストを一つずつ試して、大切な友達や家族との時間を思いっきり楽しんでください。</p>
+      <p>接続トラブルに悩まされた時間も、無事につながって一緒に冒険できた瞬間の喜びを大きくしてくれるものです。今日紹介したチェックリストを一つずつ試して、大切な友達や家族との時間を思いっきり楽しんでください。うまくいかない日があっても、それはきっと次への一歩です。</p>
     </section>
   </main>
 
@@ -458,6 +496,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

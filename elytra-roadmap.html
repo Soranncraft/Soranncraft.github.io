@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -332,6 +355,15 @@
 
 
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -340,6 +372,7 @@
         <li><a href="#sec2">2. ステップ2：エンドポータルを起動する</a></li>
         <li><a href="#sec3">3. ステップ3：エンダードラゴンを倒す</a></li>
         <li><a href="#sec4">4. ステップ4：エンドシップを見つける</a></li>
+        <li><a href="#sec5">5. 「道のりが長すぎて心が折れそう」な人へ</a></li>
         <li><a href="#twist">エンダーアイが1個足りず引き返した日の話</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -356,10 +389,10 @@
 
 
     <h2 id="intro" class="reveal">はじめに：エリトラは「段階」で考えると迷わない</h2>
-    <p class="reveal">空を自由に飛び回れるエリトラは、多くのプレイヤーにとって憧れの装備です。しかし入手までの道のりが長く、「何から手をつければいいのかわからない」と挫折してしまう人も少なくありません。この記事では、<strong>エリトラ入手までを4つの段階に分けて</strong>、迷わず進めるロードマップを紹介します。</p>
+    <p class="reveal">空を自由に飛び回れるエリトラは、多くのプレイヤーにとって憧れの装備です。しかし入手までの道のりが長く、「何から手をつければいいのかわからない」と挫折してしまう人も少なくありません。「エンダードラゴンって聞くだけで難しそう…」と最初から諦めてしまう気持ち、よくわかります。この記事では、<strong>エリトラ入手までを4つの段階に分けて</strong>、迷わず進めるロードマップを紹介します。一つずつクリアしていけば、必ずたどり着けます。</p>
 
     <h2 id="sec1" class="reveal">1. ステップ1：エンダーアイを揃える</h2>
-    <p class="reveal">最初の目標は「エンダーアイ」を12個前後揃えることです。エンダーアイはブレイズロッド（ネザーのブレイズから入手）とエンダーパール（エンダーマンから入手）を組み合わせて作成します。ネザー要塞でブレイズロッドを、オーバーワールドや取引でエンダーパールを集めておきましょう。</p>
+    <p class="reveal">最初の目標は「エンダーアイ」を12個前後揃えることです。エンダーアイはブレイズロッド（ネザーのブレイズから入手）とエンダーパール（エンダーマンから入手）を組み合わせて作成します。ネザー要塞でブレイズロッドを、オーバーワールドや取引でエンダーパールを集めておきましょう。この段階が一番地道で大変に感じるかもしれませんが、ここを乗り越えれば一気に視界が開けます。</p>
     <ul class="check-list reveal">
       <li><strong>ブレイズロッド：</strong> ネザー要塞のブレイズスポナー付近で入手可能。</li>
       <li><strong>エンダーパール：</strong> エンダーマンをたおす、または聖職者との取引で入手。</li>
@@ -367,13 +400,16 @@
     </ul>
 
     <h2 id="sec2" class="reveal">2. ステップ2：エンドポータルを起動する</h2>
-    <p class="reveal">エンダーアイを空に投げると進むべき方向を示してくれます。この方法でエンドポータルのある要塞を探し当てましょう。ポータルのフレームにエンダーアイをはめ込んでいき、すべて埋まると中央にポータルが出現します。</p>
+    <p class="reveal">エンダーアイを空に投げると進むべき方向を示してくれます。この方法でエンドポータルのある要塞を探し当てましょう。ポータルのフレームにエンダーアイをはめ込んでいき、すべて埋まると中央にポータルが出現します。この瞬間の高揚感は、一度体験すると忘れられません。</p>
 
     <h2 id="sec3" class="reveal">3. ステップ3：エンダードラゴンを倒す</h2>
-    <p class="reveal">ポータルに入るといよいよジ・エンドです。まずは<strong>エンドクリスタルの破壊</strong>を最優先で行いましょう。クリスタルが残っているとドラゴンが回復し続けてしまうため、弓矢で遠距離から一つずつ壊していくのが基本戦術です。</p>
+    <p class="reveal">ポータルに入るといよいよジ・エンドです。まずは<strong>エンドクリスタルの破壊</strong>を最優先で行いましょう。クリスタルが残っているとドラゴンが回復し続けてしまうため、弓矢で遠距離から一つずつ壊していくのが基本戦術です。緊張する戦いですが、しっかり準備をしていれば決して倒せない相手ではありません。</p>
 
     <h2 id="sec4" class="reveal">4. ステップ4：エンドシップを見つける</h2>
     <p class="reveal">ドラゴンを倒すとエンドゲートウェイが出現し、外周のエンドシティへ移動できるようになります。エリトラはこのエンドシティ内にある「エンドシップ」の宝箱から入手できます。エンドシップには「シュルカー」という浮遊するモブがいて、当たると浮遊状態にされるため、落下death（落下死）に注意しながら慎重に進みましょう。</p>
+
+    <h2 id="sec5" class="reveal">5. 「道のりが長すぎて心が折れそう」な人へ</h2>
+    <p class="reveal">エリトラまでの道のりを一気に全部やろうとすると、途方もなく感じてしまうと思います。でも、今日紹介した4つの段階を一つずつ、それぞれ別の日にクリアしていくくらいの気持ちで大丈夫です。「今日はエンダーアイを5個集めるだけ」でも、それは確実な前進です。小さな一歩の積み重ねが、いつか必ず空への切符に変わります。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">エンダーアイが1個足りず引き返した日の話</span>
@@ -385,12 +421,14 @@
     <div class="info-box reveal"><strong>Q. エンダーアイはどれくらい用意すればいいですか？</strong><br>A. ポータル探しの過程でも消費するため、実際に使う分よりも多めの12〜16個ほど用意しておくと安心です。ブレイズロッドとエンダーパールの両方を計画的に集めましょう。</div>
     <div class="info-box reveal"><strong>Q. エンダードラゴンを倒すのが怖いです。コツはありますか？</strong><br>A. まずはエンドクリスタルをすべて破壊することが最優先です。クリスタルさえ壊してしまえば、ドラゴンの回復手段がなくなり、落ち着いて弓や剣で戦えるようになります。</div>
     <div class="info-box reveal"><strong>Q. エンドシティは危険だと聞きました。何に気をつければいいですか？</strong><br>A. シュルカーの遠距離攻撃で浮遊状態にされ、そのまま落下してしまう事故が多いです。高所での戦闘は特に慎重に、足場を確認しながら進みましょう。</div>
+    <div class="info-box reveal"><strong>Q. 道のりが長すぎて途中でやる気がなくなりそうです。</strong><br>A. 一気に全部やろうとせず、今日紹介した4段階を1つずつ別の日に分けて進めるくらいの気持ちで大丈夫です。小さな前進の積み重ねが、確実にゴールへとつながります。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -426,7 +464,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>空を飛べるようになるまでの道のりは、決して遠くない。</h2>
-      <p>エリトラまでの道のりは長く感じるかもしれませんが、一つ一つのステップを着実にこなしていけば、必ずたどり着ける場所です。何度も引き返した日々も、空を飛べた瞬間の感動を何倍にもしてくれます。今日紹介したロードマップを片手に、最短ルートで空への切符を手に入れてください。</p>
+      <p>エリトラまでの道のりは長く感じるかもしれませんが、一つ一つのステップを着実にこなしていけば、必ずたどり着ける場所です。何度も引き返した日々も、空を飛べた瞬間の感動を何倍にもしてくれます。今日紹介したロードマップを片手に、焦らず最短ルートで空への切符を手に入れてください。</p>
     </section>
   </main>
 
@@ -449,6 +487,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

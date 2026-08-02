@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -335,6 +358,15 @@
       <p>村人との信頼関係を築ければ、序盤の装備集めが劇的にラクになる。</p>
     </div>
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -343,6 +375,7 @@
         <li><a href="#sec2">2. 取引価格が上がってしまう原因</a></li>
         <li><a href="#sec3">3. エメラルドを効率よく稼ぐ方法</a></li>
         <li><a href="#sec4">4. 村人を増やして村を発展させる</a></li>
+        <li><a href="#sec5">5. なかなかうまくいかず落ち込んでいる人へ</a></li>
         <li><a href="#twist">価格が高騰して絶望した日の話</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -359,7 +392,7 @@
 
 
     <h2 id="intro" class="reveal">はじめに：村人取引は「知識ゲー」</h2>
-    <p class="reveal">村人との取引は、統合版の中でも特に「知っているかどうか」で結果が大きく変わるシステムです。何も知らずに取引を繰り返していると、いつの間にか価格が高騰してまったく得しない…なんてこともよくあります。この記事では、<strong>村人取引の仕組みを理解して、効率よくエメラルドや装備を集める方法</strong>を紹介します。</p>
+    <p class="reveal">村人との取引は、統合版の中でも特に「知っているかどうか」で結果が大きく変わるシステムです。何も知らずに取引を繰り返していると、いつの間にか価格が高騰してまったく得しない…なんてこともよくあります。「せっかく貴重な素材を持って行ったのに全然もらえない」と悔しい思いをしたことがある人も多いはずです。この記事では、<strong>村人取引の仕組みを理解して、効率よくエメラルドや装備を集める方法</strong>を紹介します。</p>
 
     <h2 id="sec1" class="reveal">1. 職業ブロックの仕組み</h2>
     <p class="reveal">村人の職業は、近くに置かれた職業ブロックによって決まります。例えば「合成台」の近くにいる村人は道具鍛冶、「醸造台」の近くにいる村人は聖職者になります。すでに職業を持った村人でも、職業ブロックを一時的に壊してから別のものを置き直すことで、職業をリセットできる場合があります。</p>
@@ -371,13 +404,16 @@
     </ul>
 
     <h2 id="sec2" class="reveal">2. 取引価格が上がってしまう原因</h2>
-    <p class="reveal">同じ取引を繰り返すと、そのたびに価格がじわじわと上がっていきます。<strong>価格をリセットするには、一定時間村人を放置するか、村人を新しく職業ブロックで生成し直す</strong>必要があります。焦って同じ取引を連発すると損をしやすいので、複数の村人と交互に取引するのがコツです。</p>
+    <p class="reveal">同じ取引を繰り返すと、そのたびに価格がじわじわと上がっていきます。<strong>価格をリセットするには、一定時間村人を放置するか、村人を新しく職業ブロックで生成し直す</strong>必要があります。焦って同じ取引を連発すると損をしやすいので、複数の村人と交互に取引するのがコツです。仕組みさえ知っておけば、無駄に損をすることはなくなります。</p>
 
     <h2 id="sec3" class="reveal">3. エメラルドを効率よく稼ぐ方法</h2>
-    <p class="reveal">エメラルドを稼ぐ王道は、農民の村人に小麦やニンジンなどの作物を売ることです。畑を広げて作物を大量生産できる環境を整えれば、安定してエメラルドを稼ぎ続けられます。序盤の資金源として、まず畑作りとセットで考えるのがおすすめです。</p>
+    <p class="reveal">エメラルドを稼ぐ王道は、農民の村人に小麦やニンジンなどの作物を売ることです。畑を広げて作物を大量生産できる環境を整えれば、安定してエメラルドを稼ぎ続けられます。序盤の資金源として、まず畑作りとセットで考えるのがおすすめです。地道な作業に見えて、実は一番堅実な稼ぎ方だったりします。</p>
 
     <h2 id="sec4" class="reveal">4. 村人を増やして村を発展させる</h2>
     <p class="reveal">村人はベッドが十分にあり、食料が足りている状態が続くと自然に繁殖します。村人の数が増えるほど職業の種類も増え、取引の選択肢が広がっていきます。ベッドの数を増やし、村全体の食料備蓄を意識して管理すると、村がどんどん発展していきます。</p>
+
+    <h2 id="sec5" class="reveal">5. なかなかうまくいかず落ち込んでいる人へ</h2>
+    <p class="reveal">村人取引は、ルールを知らないうちは本当に理不尽に感じるシステムです。「なんでこんなに高いんだ」「さっきまで安かったのに」と、モヤモヤした気持ちになるのも当然だと思います。でも、それはあなたが悪いわけではなく、単に仕組みを知らなかっただけです。今日紹介した内容を知った今のあなたは、もう昨日までのあなたとは違います。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">価格が高騰して絶望した日の話</span>
@@ -389,12 +425,14 @@
     <div class="info-box reveal"><strong>Q. 村人の職業はあとから変更できますか？</strong><br>A. 職業ブロックを壊すことで、条件次第では職業がリセットされ、別の職業ブロックを近くに置くことで新しい職業に変わる場合があります。ただし一度「名前付き」の取引が確定した村人は変更できないこともあるため注意してください。</div>
     <div class="info-box reveal"><strong>Q. 取引価格を元に戻す方法はありますか？</strong><br>A. 村人を一定時間そのままにしておくと、少しずつ取引価格が下がっていきます。複数の村人を用意して交互に取引するのも、価格高騰を避ける有効な方法です。</div>
     <div class="info-box reveal"><strong>Q. 村人を安全に増やすにはどうすればいいですか？</strong><br>A. ベッドを人数分以上用意し、食料（パンや野菜など）を十分に村内へ供給することで自然に繁殖します。ゾンビなどの襲撃から守るため、村の周囲を柵や壁で囲っておくとより安全です。</div>
+    <div class="info-box reveal"><strong>Q. 価格が高騰してしまい、もう取り返しがつかないのでしょうか？</strong><br>A. 時間が経てば少しずつ価格は落ち着いていきます。焦らず別の村人と取引しながら、その村人を休ませてあげるつもりで待ってみてください。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -453,6 +491,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

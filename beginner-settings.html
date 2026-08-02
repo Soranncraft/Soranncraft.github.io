@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -335,6 +358,15 @@
       <p>統合版の世界にログインする前に、この設定だけは必ずチェックしておこう。</p>
     </div>
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -343,6 +375,7 @@
         <li><a href="#sec2">2. 操作・視点まわりの設定</a></li>
         <li><a href="#sec3">3. 通知・チャットの設定</a></li>
         <li><a href="#sec4">4. ワールド作成時に絶対確認すべき項目</a></li>
+        <li><a href="#sec5">5. 「設定なんてどうでもいい」と思っている人へ</a></li>
         <li><a href="#twist">【実話】設定を見直さず起きた大事故</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -359,27 +392,31 @@
 
 
     <h2 id="intro" class="reveal">はじめに：なぜ最初の設定が重要なのか</h2>
-    <p class="reveal">マイクラ統合版を購入して最初のワールドに入った瞬間、多くの人はそのままチュートリアルを進めてしまいます。しかし<strong>デフォルト設定のまま遊び続けると、後になって「こんな設定があったなんて知らなかった」と損をする場面が何度も出てきます</strong>。本記事では、統合版を6年間触り続けてきた筆者が「最初の10分でここだけは絶対に見直しておくべき」と感じた設定を7つに厳選して紹介します。</p>
-    <p class="reveal">一つ一つは地味な項目ですが、積み重なるとプレイ体験は大きく変わります。特にワールド作成時にしか設定できない項目もあるため、順番に確認していきましょう。</p>
+    <p class="reveal">マイクラ統合版を購入して、ワクワクしながら最初のワールドに入った瞬間のこと、覚えていますか？その気持ち、すごくよくわかります。僕自身も小学生の頃、何もわからないままとりあえずチュートリアルを進めて、気づいたら数十時間も「損している状態」のまま遊び続けていました。設定画面なんてただの前置きだと思って、ろくに見もせずに「はじめる」ボタンを押してしまう人がほとんどだと思います。</p>
+    <p class="reveal">でも実は、<strong>デフォルト設定のまま遊び続けると、後になって「こんな設定があったなんて知らなかった」と損をする場面が何度も出てきます</strong>。しかもタチが悪いことに、損をしていることにすら気づかないまま何十時間も過ぎていくことがほとんどです。本記事では、統合版を6年間触り続けてきた筆者が「最初の10分でここだけは絶対に見直しておくべき」と感じた設定を7つに厳選し、なぜその設定が重要なのか、理由までしっかり掘り下げて紹介します。</p>
+    <p class="reveal">一つ一つは地味な項目に見えるかもしれません。でも、積み重なるとプレイ体験は驚くほど大きく変わります。特にワールド作成時にしか設定できない項目もあるため、今このページを読んでいるあなたには、ぜひ「今のうち」に一つずつ確認してほしいと思っています。</p>
 
     <h2 id="sec1" class="reveal">1. 表示・グラフィック系の設定</h2>
-    <p class="reveal">まず見直したいのが「描画距離（Render Distance）」です。距離を伸ばすほど景色は綺麗になりますが、端末によっては<strong>カクツキの原因</strong>にもなります。スマホ勢は8〜10チャンク、PC・据え置き機は12チャンク前後から様子を見るのがおすすめです。</p>
-    <p class="reveal">次に「明るさ（Brightness）」。デフォルトのままだと洞窟や夜の暗さが実際より暗く表示され、モンスターの接近に気づきにくくなります。明るさを少し上げておくだけで、序盤の事故がかなり減ります。</p>
+    <p class="reveal">まず見直したいのが「描画距離（Render Distance）」です。距離を伸ばすほど景色は綺麗になりますが、端末によっては<strong>カクツキの原因</strong>にもなります。せっかく綺麗な景色を見たくてゲームを始めたのに、動きがカクカクしてストレスになってしまっては本末転倒ですよね。スマホ勢は8〜10チャンク、PC・据え置き機は12チャンク前後から様子を見るのがおすすめです。</p>
+    <p class="reveal">次に「明るさ（Brightness）」。デフォルトのままだと洞窟や夜の暗さが実際より暗く表示され、モンスターの接近に気づきにくくなります。「あれ、急にゾンビに囲まれてる…」という経験をしたことがある人は、実はこの明るさ設定が原因かもしれません。明るさを少し上げておくだけで、序盤の理不尽な事故がかなり減ります。</p>
+    <p class="reveal">また、意外と見落とされがちなのが「視野角（FOV）」の設定です。視野角を少し広げると、周囲の状況が見えやすくなり、モンスターの奇襲に気づきやすくなります。特に建築や探索が好きな人は、自分にとって見やすい・気持ちいいと感じる数値を探してみると、プレイの快適さがぐっと上がります。</p>
     <ul class="check-list reveal">
       <li><strong>描画距離：</strong> 端末のスペックに合わせて調整。カクツク場合は迷わず下げる。</li>
       <li><strong>明るさ：</strong> デフォルトより少し明るめに。暗闇での視認性が大きく変わる。</li>
       <li><strong>UI・文字サイズ：</strong> スマホでプレイする場合はチャットやUIの文字サイズも見直すと快適。</li>
+      <li><strong>視野角（FOV）：</strong> 広めに設定すると周囲の状況を把握しやすくなる。</li>
     </ul>
 
     <h2 id="sec2" class="reveal">2. 操作・視点まわりの設定</h2>
-    <p class="reveal">タッチ操作でプレイする場合、「自動ジャンプ」はオフにしておくのが定番です。段差で勝手にジャンプしてしまい、落下や思わぬ事故につながることがあるためです。逆に「自動しまう（オートピックアップ整理）」系の設定は好みが分かれるので、まずはオンで試してみて、使いにくければオフにするくらいの気持ちで大丈夫です。</p>
-    <p class="reveal">コントローラーやマウス操作の人は、視点感度を最初に必ず調整しましょう。デフォルトのままだと敵と戦うときに視点がブレやすく、無駄なダメージを受けやすくなります。</p>
+    <p class="reveal">タッチ操作でプレイする場合、「自動ジャンプ」はオフにしておくのが定番です。段差で勝手にジャンプしてしまい、落下や思わぬ事故につながることがあるためです。特に高所での建築中に自動ジャンプが原因で落下してしまうと、せっかく積み上げた作業が台無しになることもあります。逆に「自動しまう（オートピックアップ整理）」系の設定は好みが分かれるので、まずはオンで試してみて、使いにくければオフにするくらいの気持ちで大丈夫です。</p>
+    <p class="reveal">コントローラーやマウス操作の人は、視点感度を最初に必ず調整しましょう。デフォルトのままだと敵と戦うときに視点がブレやすく、無駄なダメージを受けやすくなります。感度は人によって「速すぎる」「遅すぎる」の感じ方が全く違うので、実際に村の周りを歩き回りながら、自分がストレスなく視点を動かせる数値を探すのがコツです。</p>
 
     <h2 id="sec3" class="reveal">3. 通知・チャットの設定</h2>
-    <p class="reveal">フレンドとマルチプレイをする予定がある人は、チャット関連の設定も忘れずに。誰の発言を表示するか、実績の同期をするかどうかなど、後から「知らない人のメッセージが流れてきて驚いた」とならないよう最初に確認しておくと安心です。</p>
+    <p class="reveal">フレンドとマルチプレイをする予定がある人は、チャット関連の設定も忘れずに。誰の発言を表示するか、実績の同期をするかどうかなど、後から「知らない人のメッセージが流れてきて驚いた」とならないよう最初に確認しておくと安心です。特に小さなお子さんが一緒にプレイする場合は、保護者の方と一緒にこの設定を見直しておくと、より安心して遊べる環境になります。</p>
+    <p class="reveal">通知系の設定も、意外と快適さに直結します。実績を取得するたびにポップアップが出る設定や、フレンドがオンラインになった時の通知など、自分にとって必要な情報だけが表示されるように調整しておくと、プレイに集中しやすくなります。</p>
 
     <h2 id="sec4" class="reveal">4. ワールド作成時に絶対確認すべき項目</h2>
-    <p class="reveal">ここが最も重要です。ワールド作成画面には<strong>あとから変更できない項目</strong>が存在します。代表的なのが「チートの有効化」で、最初オフのまま作成すると、途中でコマンドを使いたくなっても有効化できないケースがあります（有効化自体は可能ですが、実績が無効になる場合があるため要注意）。</p>
+    <p class="reveal">ここが最も重要です。ワールド作成画面には<strong>あとから変更できない項目</strong>が存在します。代表的なのが「チートの有効化」で、最初オフのまま作成すると、途中でコマンドを使いたくなっても有効化できないケースがあります（有効化自体は可能ですが、実績が無効になる場合があるため要注意）。せっかく育てたワールドで「あの時決めておけばよかった」と後悔しないためにも、作成画面はじっくり時間をかけて確認することをおすすめします。</p>
     <ul class="check-list reveal">
       <li><strong>ゲームモード：</strong> サバイバル／クリエイティブ／アドベンチャーを目的に合わせて選択。</li>
       <li><strong>難易度：</strong> 初心者はまず「ノーマル」がバランス良くおすすめ。</li>
@@ -387,22 +424,23 @@
       <li><strong>ワールドタイプ：</strong> 通常／スーパーフラットなど、遊び方に合わせて選ぶ。</li>
     </ul>
 
-    <div class="twist-box reveal" id="twist">
-      <span class="twist-label">【実話】設定を見直さず起きた大事故</span>
-      <p style="margin-bottom:0;">筆者が中学一年生になったばかりの頃、明るさ設定をデフォルトのまま真っ暗な洞窟に潜り、目の前にいたクリーパーに気づけず爆発でせっかく集めた鉱石を全ロストした経験があります。<strong>たった一つの設定を見直すだけで、その日の冒険の結末はまったく違うものになっていた</strong>かもしれません。動画で紹介しきれなかった「他にもあるさらに細かい設定項目」は、このページの中でチェックリスト形式でまとめていますので、続きはぜひサイト内でご覧ください。</p>
-    </div>
+    <h2 id="sec5" class="reveal">5. 「設定なんてどうでもいい」と思っている人へ</h2>
+    <p class="reveal">ここまで読んで、「そんな細かいこと気にしなくても楽しめるよ」と思う人もいるかもしれません。それも一つの正しい遊び方だと思います。でも、もしあなたが「なんだか思ったより快適じゃないな」「なんでこんなに事故が多いんだろう」と感じたことがあるなら、その原因の多くは、実は最初に見直さなかった設定に隠れていることが多いんです。</p>
+    <p class="reveal">僕自身、何も知らずにプレイしていた頃は、なぜか他の実況者や友達に比べて操作が下手だと感じていました。でも実際は、腕の差ではなく設定の差だったことに気づいたとき、本当に驚きました。今日紹介した7つの設定を全部一気に変える必要はありません。まずは一つ、気になったものから試してみてください。</p>
 
 
     <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
     <div class="info-box reveal"><strong>Q. 設定はあとからいつでも変更できますか？</strong><br>A. ほとんどの設定はいつでも変更可能です。ただし、ワールド作成時のチート有効化や一部の難易度に関する項目は、あとから変更すると実績の取得条件に影響する場合があるため注意してください。</div>
     <div class="info-box reveal"><strong>Q. 初心者は難易度をどれにすればいいですか？</strong><br>A. 「ノーマル」が最もバランスが良くおすすめです。モンスターの脅威をしっかり感じつつ、理不尽に感じるほどの難しさにはならないよう調整されています。</div>
     <div class="info-box reveal"><strong>Q. 設定を変えても動作が重いのはなぜですか？</strong><br>A. 端末のスペックと描画距離・グラフィック設定が見合っていない可能性があります。まずは描画距離を下げ、それでも改善しない場合はマイクラ本体・端末のアップデート状況も確認してみてください。</div>
+    <div class="info-box reveal"><strong>Q. 設定を色々変えたら元に戻せなくなりそうで不安です。</strong><br>A. 多くの設定は初期値に戻すボタンが用意されているので安心してください。不安な場合は、変更前の設定をメモしておいてから一つずつ試してみるのがおすすめです。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -438,7 +476,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>たった一つの設定が、冒険の結末を変える。</h2>
-      <p>最初の10分で見直した設定は、その後の何十時間ものプレイに影響します。今日紹介した7つは、僕自身が数えきれないほどの失敗から学んだものばかりです。同じ失敗を繰り返してほしくないから、この記事を書きました。設定を整えたら、あとは思い切ってその世界に飛び込んでみてください。君の冒険が、素晴らしいものになりますように。</p>
+      <p>最初の10分で見直した設定は、その後の何十時間ものプレイに影響します。今日紹介した7つは、僕自身が数えきれないほどの失敗から学んだものばかりです。同じ失敗を繰り返してほしくないから、この記事を書きました。設定を整えたら、あとは思い切ってその世界に飛び込んでみてください。うまくいかない日があっても大丈夫。焦らなくていい。君の冒険が、少しずつでも快適で楽しいものになっていきますように。</p>
     </section>
   </main>
 
@@ -461,6 +499,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>

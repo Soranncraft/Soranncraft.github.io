@@ -171,6 +171,20 @@
       margin: 10px 0; padding: 0; line-height:1.4;
     }
     .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .insta-banner {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color: #fff; padding: 18px 22px; border-radius: 14px; margin: 0 0 30px 0;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    .insta-banner-emoji { font-size: clamp(28px, 4vw, 38px); flex-shrink:0; }
+    .insta-banner-text { flex: 1; min-width: 180px; font-size: clamp(13px, 1.6vw, 15px); line-height: 1.5; }
+    .insta-banner-btn {
+      background: rgba(255,255,255,0.95); color: #8134af; text-decoration: none; font-weight: 900;
+      padding: 10px 20px; border-radius: 30px; font-size: clamp(12px, 1.6vw, 14px); white-space: nowrap;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .insta-banner { justify-content: center; text-align: center; } }
     .image-box {
       background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
       text-align: center; margin: 30px 0; border-radius: 12px;
@@ -315,6 +329,15 @@
       </div>
     </div>
 
+    <div class="sidebar-box insta-box">
+      <div class="sidebar-title" style="background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4);">📸 Instagramもチェック！</div>
+      <p style="font-size:13px; font-weight:700; text-align:center; margin:0 0 12px 0;">アドオン情報や面白動画を公開中！</p>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"
+         style="display:block; text-align:center; background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af,#515bd4); color:white; padding:10px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:900;">
+         @sorann426 をフォロー →
+      </a>
+    </div>
+
     <div class="sidebar-box">
       <div class="sidebar-title">🔗 関連記事</div>
       <ul class="update-list">
@@ -335,6 +358,15 @@
       <p>ワールド作成画面の一つ一つの意味を知っておくだけで、後悔しない選択ができる。</p>
     </div>
 
+    <div class="insta-banner reveal">
+      <span class="insta-banner-emoji">📸</span>
+      <div class="insta-banner-text">
+        <strong>Instagramでも活動中！</strong><br>
+        アドオン情報や面白動画を公開中！
+      </div>
+      <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="insta-banner-btn">@sorann426 をフォロー →</a>
+    </div>
+
     <div class="toc" id="toc">
       <span class="toc-title" id="tocTitle">この記事の目次</span>
       <ul>
@@ -343,6 +375,7 @@
         <li><a href="#sec2">2. 難易度4種類の違い</a></li>
         <li><a href="#sec3">3. ワールドタイプの選び方</a></li>
         <li><a href="#sec4">4. 詳細設定で見落としがちな項目</a></li>
+        <li><a href="#sec5">5. 「もう一度作り直したい」と思っている人へ</a></li>
         <li><a href="#twist">難易度をピースフルのまま数十時間気づかなかった話</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
@@ -359,7 +392,7 @@
 
 
     <h2 id="intro" class="reveal">はじめに：作成画面は「見た目以上に重要」</h2>
-    <p class="reveal">ワールド作成画面には数多くの項目が並んでいますが、<strong>意味をよく理解しないまま「とりあえずデフォルトで」進めてしまう人がとても多い</strong>です。実はこの画面の選択一つで、その後の遊び方が大きく変わります。本記事では、各項目の意味を一つずつ丁寧に解説します。</p>
+    <p class="reveal">ワールド作成画面には数多くの項目が並んでいますが、<strong>意味をよく理解しないまま「とりあえずデフォルトで」進めてしまう人がとても多い</strong>です。「早く遊びたい」という気持ちが先走って、細かい設定を飛ばしてしまう気持ち、すごくよくわかります。実はこの画面の選択一つで、その後の遊び方が大きく変わります。本記事では、各項目の意味を一つずつ丁寧に解説します。</p>
 
     <h2 id="sec1" class="reveal">1. ゲームモードの違いを理解する</h2>
     <ul class="check-list reveal">
@@ -369,13 +402,16 @@
     </ul>
 
     <h2 id="sec2" class="reveal">2. 難易度4種類の違い</h2>
-    <p class="reveal">難易度は「ピースフル」「イージー」「ノーマル」「ハード」の4段階です。ピースフルではモンスターがそもそも出現せず、ハードになるほど飢餓状態でのダメージが増えるなど、シビアな管理が求められます。<strong>初心者にはバランスの良いノーマルがおすすめ</strong>ですが、建築を楽しみたいだけならピースフルも良い選択です。</p>
+    <p class="reveal">難易度は「ピースフル」「イージー」「ノーマル」「ハード」の4段階です。ピースフルではモンスターがそもそも出現せず、ハードになるほど飢餓状態でのダメージが増えるなど、シビアな管理が求められます。<strong>初心者にはバランスの良いノーマルがおすすめ</strong>ですが、建築を楽しみたいだけならピースフルも良い選択です。自分がどんな遊び方をしたいのかを考えてから選ぶと、後悔が少なくなります。</p>
 
     <h2 id="sec3" class="reveal">3. ワールドタイプの選び方</h2>
     <p class="reveal">通常の起伏ある地形で遊びたい場合は「無限ワールド」、建築の練習や検証をしたい場合は真っ平らな「スーパーフラット」を選ぶのが基本です。目的に応じてワールドタイプを選ぶことで、無駄なく遊びたいスタイルに集中できます。</p>
 
     <h2 id="sec4" class="reveal">4. 詳細設定で見落としがちな項目</h2>
     <p class="reveal">詳細設定を開くと、「モブスポーンの有無」「昼夜サイクルの有無」「不朽アイテムのドロップ」など、より細かい項目が並んでいます。特に「チートの有効化」は<strong>一度設定すると印象が変わる重要な項目</strong>なので、コマンドを使う予定があるかどうかを事前に決めてから進めるのがおすすめです。</p>
+
+    <h2 id="sec5" class="reveal">5. 「もう一度作り直したい」と思っている人へ</h2>
+    <p class="reveal">「今のワールド、設定を間違えたかも」と気づいて、作り直したいと思っている人もいるかもしれません。時間をかけて育てたワールドを手放すのは寂しい気持ちになりますよね。でも、次のワールドではきっと今日学んだ知識を活かせます。今のワールドをそのまま楽しみ続けるのも、新しく始めるのも、どちらも間違いではありません。あなたのペースで決めて大丈夫です。</p>
 
     <div class="twist-box reveal" id="twist">
       <span class="twist-label">難易度をピースフルのまま数十時間気づかなかった話</span>
@@ -387,12 +423,14 @@
     <div class="info-box reveal"><strong>Q. 難易度はあとから変更できますか？</strong><br>A. はい、ワールド作成後でも設定メニューからいつでも変更可能です。プレイしていて物足りなさや難しさを感じたら、気軽に調整してみてください。</div>
     <div class="info-box reveal"><strong>Q. ゲームモードは途中で切り替えられますか？</strong><br>A. チートが有効なワールドであれば、コマンドや設定画面からいつでも切り替えられます。チートが無効なワールドの場合は変更できないことがあるため注意が必要です。</div>
     <div class="info-box reveal"><strong>Q. スーパーフラットはサバイバルでも遊べますか？</strong><br>A. はい、遊べます。ただし資源が少なく地形も単調なため、建築練習や特定の縛りプレイに向いています。通常のサバイバルを楽しみたい場合は無限ワールドがおすすめです。</div>
+    <div class="info-box reveal"><strong>Q. 設定を間違えたことに後から気づきました。作り直すべきですか？</strong><br>A. 必ずしも作り直す必要はありません。難易度などあとから変更できる項目も多いので、まずは設定画面を確認してみてください。それでも納得できない場合は、新しいワールドで再挑戦するのも良い選択です。</div>
 
     <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
     <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
     <ul class="check-list reveal">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+      <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
     <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
@@ -428,7 +466,7 @@
 
     <section id="cheer" class="message-hero reveal">
       <h2>選択の意味を知ることが、後悔しない冒険への第一歩。</h2>
-      <p>ワールド作成画面は最初の一歩に過ぎませんが、その一歩の選び方次第で、その後の何十時間もの体験が大きく変わります。今日紹介した内容を参考に、自分にぴったりの世界を選んで、思う存分冒険を楽しんでください。</p>
+      <p>ワールド作成画面は最初の一歩に過ぎませんが、その一歩の選び方次第で、その後の何十時間もの体験が大きく変わります。今日紹介した内容を参考に、自分にぴったりの世界を選んで、思う存分冒険を楽しんでください。もし選択を間違えたと感じても、それはやり直せる失敗です。</p>
     </section>
   </main>
 
@@ -451,6 +489,7 @@
     <a href="index.html" id="footHome">ホーム</a>
     <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
     <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+    <a href="https://www.instagram.com/sorann426?igsh=MXNveXV3bXJ6OW1nZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
 </footer>
