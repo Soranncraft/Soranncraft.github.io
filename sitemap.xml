@@ -29,6 +29,64 @@
   </url>
 
   <url>
+    <loc>https://sorann123.github.io/beginner-settings.html</loc>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/survival-start.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/command-beginner.html</loc>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/redstone-beginner.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/enchant-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/multiplayer-guide.html</loc>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/nether-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/storage-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/villager-trade.html</loc>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/elytra-roadmap.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/texturepack-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/worldsettings-guide.html</loc>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://sorann123.github.io/marketplace-guide.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://sorann123.github.io/rage_reaper.mcaddon</loc>
     <priority>0.5</priority>
   </url>
