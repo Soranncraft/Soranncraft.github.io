@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>【最新】PROJECT: RPG 開発状況・データアーカイブ｜SORANNCRAFT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="マインクラフト統合版での大規模RPGプロジェクト「PROJECT: RPG」の開発記録。100種以上のカスタムアイテムや独自モブの制作秘話、Blockbenchでのモデリング、スクリプトAPIの苦労話を公開中。">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.8;
+      scroll-behavior: smooth;
+      font-size: clamp(14px, 1.5vw, 17px);
+    }
+    header {
+      background: linear-gradient(90deg, #1a5ab3 0%, #2c7be5 100%);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
+    }
+    .header-logo {
+      background: white;
+      padding: 4px;
+      border-radius: 8px;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(50px, 8vw, 60px);
+      height: clamp(50px, 8vw, 60px);
+    }
+    .header-logo img { max-width: 100%; max-height: 100%; }
+    
+    nav.global-nav {
+      background: #154284;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav.global-nav ul {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav.global-nav li { flex: 1; min-width: 100px; }
+    nav.global-nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 12px 5px;
+      font-weight: bold;
+      font-size: clamp(12px, 1.5vw, 15px);
+      border-right: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+    nav.global-nav a:hover { background: #2c7be5; }
+
+    .breadcrumb {
+      max-width: 1600px;
+      margin: 10px auto;
+      padding: 0 30px;
+      font-size: clamp(11px, 1.2vw, 13px);
+      color: #666;
+    }
+    .breadcrumb a { color: #2c7be5; text-decoration: none; }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .sidebar {
+      width: 320px;
+      background: #f8f9fa;
+      padding: 30px 20px;
+      border-right: 1px solid #e1e4e8;
+      flex-shrink: 0;
+      box-sizing: border-box;
+    }
+    .sidebar-box {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+      border: 1px solid #e1e4e8;
+    }
+    .sidebar-title {
+      background: #2c7be5;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    main {
+      flex: 1;
+      background: white;
+      padding: clamp(20px, 5%, 40px) clamp(15px, 5%, 50px);
+      min-width: 300px;
+    }
+    
+    .toc {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+    }
+    .toc-title {
+      font-weight: 900;
+      font-size: clamp(16px, 2vw, 18px);
+      margin-bottom: 10px;
+      display: block;
+      color: #1a5ab3;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+    .toc ul { list-style: none; padding-left: 15px; }
+    .toc a { color: #2c7be5; text-decoration: none; font-weight: bold; font-size: clamp(13px, 1.5vw, 15px); }
+
+    .status-card {
+      background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+      border: 2px solid #ff4757;
+      border-radius: 15px;
+      padding: clamp(15px, 4vw, 30px);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .progress-bar {
+      background: #eee;
+      border-radius: 20px;
+      height: 25px;
+      width: 90%;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, #ff4757, #ff6b81);
+      height: 100%;
+      width: 95%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .experience-story {
+      background: #fffbe6;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .code-block {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 25px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 14px;
+      margin: 25px 0;
+      line-height: 1.6;
+      border: 1px solid #444;
+    }
+
+    .data-table-wrapper {
+      overflow-x: auto;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-weight: 600;
+      min-width: 500px;
+    }
+    .data-table th {
+      background: #f1f8ff;
+      border: 1px solid #e1e4e8;
+      padding: 12px;
+      text-align: left;
+    }
+    .data-table td { border: 1px solid #e1e4e8; padding: 10px; }
+    
+    .rarity-common { color: #777; }
+    .rarity-rare { color: #2196f3; font-weight: bold; }
+    .rarity-epic { color: #9c27b0; font-weight: bold; }
+    .rarity-legend { color: #ff9800; font-weight: bold; }
+
+    h2 {
+      border-left: 8px solid #2c7be5;
+      background: #f1f8ff;
+      padding: 15px 20px;
+      margin-top: 50px;
+      font-size: clamp(20px, 3vw, 24px);
+      font-weight: 900;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .counter-card {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .counter-num {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 900;
+      color: #ffc107;
+      display: block;
+    }
+
+    .item-preview-box {
+      text-align: center;
+      background: #fdfdfd;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .log-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-weight: bold;
+      font-size: clamp(13px, 1.5vw, 15px);
+    }
+    .ver-tag {
+      background: #4caf50;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      margin-right: 10px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #2c7be5;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    footer { text-align: center; padding: 40px; background: #333; color: white; }
+    footer a { color: #aaa; text-decoration: none; margin: 0 10px; font-size: 14px; }
+    footer a:hover { color: white; }
+
+    .trust-index {
+      font-size: 11px;
+      color: #999;
+      margin-top: 40px;
+      padding: 25px;
+      background: #fcfcfc;
+      border: 1px solid #eee;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 1200px) {
+      nav.global-nav li { width: 33.33%; }
+    }
+
+    @media (max-width: 768px) {
+      .container { flex-direction: column; }
+      .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e1e4e8; min-height: auto; }
+      nav.global-nav li { width: 50%; }
+      header { justify-content: center; text-align: center; }
+      .header-logo { margin: 0 0 10px 0; }
+    }
+  </style>
+</head>
+<body id="top">
+
+<header>
+  <div class="header-logo">
+    <img src="Sorann右上表示.png" alt="SORANNCRAFTのロゴアイコン">
+  </div>
+  <div class="header-text">
+    <h1 style="margin:0; font-size:clamp(24px, 5vw, 32px);">SORANNCRAFT</h1>
+    <p style="margin:0; font-size:clamp(14px, 3vw, 18px);">PROJECT: RPG - 開発速報 & データベース</p>
+  </div>
+</header>
+
+<nav class="global-nav">
+  <ul>
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="index.html#toc">アイテム攻略</a></li>
+    <li><a href="#top">RPGプロジェクト</a></li>
+    <li><a href="script-guide.html">スクリプト解説</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">ホーム</a> ＞ <strong>PROJECT: RPG 開発状況</strong>
+</div>
+
+<div class="container">
+  <aside class="sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-title">📑 コンテンツメニュー</div>
+      <ul style="list-style:none; padding:0; font-weight:bold; font-size:14px;">
+        <li style="margin-bottom:10px;"><a href="index.html" style="text-decoration:none; color:#2c7be5;">🏠 トップページに戻る</a></li>
+        <li style="margin-bottom:10px;">🛡️ 装備図鑑</li>
+        <li style="margin-bottom:10px;">👾 モブ・ボス一覧</li>
+        <li style="margin-bottom:10px;">📜 スクリプト解説</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title">🐥 マイクラ豆知識</div>
+      <p style="font-size:12px; font-weight:bold;">
+        ・ヒヨコは種で繁殖！<br>
+        ・看板は染料でカラフルに！<br>
+        ・焚き火は食料を4つ同時に焼ける！
+      </p>
+    </div>
+  </aside>
+
+  <main>
+    <div class="status-card">
+      <span style="font-size: clamp(20px, 4vw, 28px); font-weight: 900; color: #ff4757; display:block; margin-bottom:10px;">プロジェクト進捗状況：最終フェーズ</span>
+      <p style="font-size: clamp(14px, 2vw, 16px); font-weight: bold; color: #555;">
+        全100種類以上のカスタムアイテムと、20種類を超える独自モブの実装が完了！<br>
+        現在は最終的なデバッグと建築の微調整を行っています。
+      </p>
+      <div class="progress-bar">
+        <div class="progress-fill">開発進捗 95%</div>
+      </div>
+    </div>
+
+    <div class="toc">
+      <span class="toc-title">目次</span>
+      <ul>
+        <li><a href="#vol">1. 実装ボリューム</a></li>
+        <li><a href="#error-exp">2. 開発体験談：プログラムエラーとの格闘</a></li>
+        <li><a href="#build-exp">3. 開発体験談：孤独な建築と、友人の手</a></li>
+        <li><a href="#script-intro">4. スクリプト豆知識：右クリック検知</a></li>
+        <li><a href="#mob">5. 独自モブ・ボス図鑑</a></li>
+        <li><a href="#db">6. 装備データベース</a></li>
+        <li><a href="#log">7. 最新開発ログ</a></li>
+        <li><a href="#privacy">8. プライバシーポリシー</a></li>
+        <li><a href="#contact">9. お問い合わせ</a></li>
+      </ul>
+    </div>
+
+    <h2 id="vol">📊 プロジェクト実装ボリューム</h2>
+    <div class="grid">
+      <div class="counter-card">
+        <span class="counter-num">100+</span>
+        実装アイテム数
+      </div>
+      <div class="counter-card">
+        <span class="counter-num">25+</span>
+        独自エンティティ数
+      </div>
+      <div class="counter-card" style="background: #ff4757;">
+        <span class="counter-num">5</span>
+        レイドボス数
+      </div>
+    </div>
+
+    <h2 id="error-exp">💻 開発体験談：プログラムエラーとの格闘</h2>
+    <div class="experience-story">
+      <strong>「なぜ動かない！？」永遠のデバッグ作業</strong>
+      <p>
+        今回の開発で一番苦労したのは、独自ボス「不死帝・ソウラー」のフェーズ移行スクリプトでした。HPが50%を切った瞬間に形態変化するはずが、なぜかHPがマイナスになっても変身せず、コンソールにはエラーが山積み…。
+      </p>
+      <p>
+        原因を探ると、Script APIの `EntityDieEvent` とタイミングが競合していたことが判明しました。数日間頭を抱えましたが、非同期処理の順序を見直すことで解決。あのとき、エラーが消えてソウラーが炎を纏って浮き上がった瞬間の感動は、プログラミングをしていて一番の快感でした！
+      </p>
+    </div>
+
+    <h2 id="build-exp">🏰 開発体験談：孤独な建築と、友人の手</h2>
+    <div class="experience-story">
+      <strong>たった一人, 広大な世界に絶望していた時</strong>
+      <p style="font-size: 1.1em; line-height: 1.6;">
+        プログラムは得意でも、建築はまた別の話。本作の舞台となる巨大な城下町を、最初は<span style="color: #d63031; font-weight: 900;">たった一人で</span>作っていました。
+      </p>
+      <p>
+        作っても作っても終わらない壁の装飾、埋まらない空地。正直、<span style="border-bottom: 2px solid #ff4757;">「もう無理だ、完成しない」</span>と投げ出しそうになったこともありました。
+      </p>
+      <p style="background: #fff; padding: 10px; border-radius: 5px; border: 1px dashed #2c7be5;">
+        そんな時、進捗を見ていた<span style="color: #2c7be5; font-size: 1.2em; font-weight: bold;">大切な友達</span>が、「手伝うよ」と声をかけてくれたんです。
+      </p>
+      <p>
+        二人で放課後、あーだこーだ言いながら松明を置き、屋根を張り替える時間は本当に楽しくて…。<span style="font-weight: 900; background: linear-gradient(transparent 60%, #fffa65 0%);">一人じゃ絶対に辿り着けなかった景色</span>が、そこには広がっていました。助けてくれた友達のおかげで、なんとかこの世界を完成させることができたんです。
+      </p>
+    </div>
+
+    <h2 id="script-intro">📜 スクリプト豆知識：右クリック検知</h2>
+    <p>
+      マインクラフト統合版のScript APIにおいて、アイテムの右クリック（使用）を検知するコード例を解説します。
+      縦の構造を意識して、読みやすく整形した基本形です。
+    </p>
+    <div class="code-block">
+import { world, system } from "@minecraft/server";
+
+world.beforeEvents.itemUse.subscribe((event) => {
+  const { itemStack, source: player } = event;
+
+  if (itemStack.typeId === "rpg:magic_wand") {
+    system.run(() => {
+      player.sendMessage("§6§l【魔導共鳴】§r§f…胸の奥で眠っていた力が、静かに目を覚ます。");
+      player.sendMessage("§f指先へと流れ込む魔力は、まるで運命に導かれるように脈打ち始めた。");
+      player.sendMessage("§b§l『――さあ、世界を震わせる一閃を。』§r");
+      player.playSound("random.orb");
+      player.addTag("casting_magic");
+    });
+  }
+});
+
+world.afterEvents.entityHitEntity.subscribe((event) => {
+  const attacker = event.damagingEntity;
+  const target = event.hitEntity;
+
+  if (attacker.hasTag("casting_magic")) {
+    target.setOnFire(5, true);
+    attacker.removeTag("casting_magic");
+  }
+});
+    </div>
+    <p style="font-size: 14px; color: #666;">
+      ※本コードは学習および汎用的な導入を目的としたサンプルです。実際のプロジェクトでは、さらに複雑な条件分岐や座標検知を組み合わせて、唯一無二のゲーム体験を構築しています。
+    </p>
+
+    <h2 id="mob">👾 独自モブ・ボス図鑑（抜粋）</h2>
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr><th>名称</th><th>ランク</th><th>特徴</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:#ff4757;">不死帝・ソウラー</td><td class="rarity-legend">WORLD BOSS</td><td>最強の不死者。全3段階のフェーズを持つ。</td></tr>
+          <tr><td style="color:#2196f3;">凍土の災厄・グラシヴエイ</td><td class="rarity-epic">AREA BOSS</td><td>プレイヤーの移動速度を奪う氷結デバフを使用。</td></tr>
+          <tr><td style="color:#9c27b0;">炎獄の魔獣・焔牙イグニス</td><td class="rarity-epic">AREA BOSS</td><td>足元からのマグマ噴出攻撃が脅威。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="db">⚔️ 装備・アクセサリーデータベース</h2>
+    <div class="item-preview-box">
+      <img src="copper_sword.png" alt="独自開発したカスタム武器のモデル" style="max-width: 150px;">
+      <p style="font-weight: bold; margin-top: 10px;">すべてBlockbenchで1から制作しています！</p>
+    </div>
+
+    <h2 id="log">🗓️ 最新開発ログ</h2>
+    <div class="log-item"><span class="ver-tag">2026/03/16</span> ボス「フロストヴァルゼオン」の攻撃パターンを3種追加。</div>
+    <div class="log-item"><span class="ver-tag">2026/03/15</span> アクセサリー枠（指輪・首飾り）のパッシブスキル判定を修正。</div>
+    <div class="log-item"><span class="ver-tag">2026/03/12</span> 建築：友人の協力により、メインクエストの舞台となる王宮が完成。</div>
+
+    <h2 id="privacy">📋 プライバシーポリシー</h2>
+    <div style="padding:20px; background:#f9f9f9; border-radius:10px; font-size:14px; color:#555; border:1px solid #eee;">
+      <p>当サイトは、お問い合わせフォームよりお預かりした個人情報（お名前、メールアドレス）を、お問い合わせへの回答および必要な情報を電子メール等でご連絡する場合にのみ利用し、これらの目的以外では利用いたしません。また、法令に基づく場合を除き、第三者に提供することはありません。メールアドレスは管理者のみが厳重に管理し、返信以外の用途には使用せず、また受信リスト上では適切に保護されます。当サイトでは、Googleによる広告サービス「Googleアドセンス」を利用しており、クッキー（Cookie）を使用することがありますが、これは個人を特定するものではありません。詳細についてはGoogleのポリシーと規約をご確認ください。</p>
+    </div>
+
+    <section id="contact" style="margin-top:50px;">
+      <h2>お問い合わせ</h2>
+      <p>アドオン制作に関する技術的な質問や、サイトの内容に関するフィードバックなどは以下の「公式お問い合わせフォーム」よりご連絡ください。中学一年生のため、返信にお時間をいただく場合がありますが、すべて大切に読ませていただきます。</p>
+      
+      <div style="text-align: center; padding: 40px; background: #fff; border: 2px dashed #2c7be5; border-radius: 15px; margin-top: 20px;">
+        <p style="font-weight: bold; margin-bottom: 20px;">公式お問い合わせフォーム（Googleフォーム）</p>
+        <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-block; background: #2c7be5; color: white; text-decoration: none; padding: 18px 40px; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(44,123,229,0.3); transition: transform 0.2s;">
+          📩 お問い合わせフォームを開く
+        </a>
+        <p style="font-size: 12px; color: #777; margin-top: 15px;">※外部サイト（Google）へ移動します</p>
+      </div>
+    </section>
+
+    <div style="background:#2c7be5; color:white; padding:clamp(20px, 5vw, 30px); border-radius:15px; margin-top:40px; text-align:center;">
+      <p style="font-size:clamp(18px, 4vw, 22px); font-weight:900; margin:0;">「あなたの冒険が、ここから始まる」</p>
+      <p style="margin:10px 0; font-size: clamp(13px, 1.5vw, 15px);">数えきれないエラーと向き合い、友人と共に作り上げたこの世界。公開を楽しみにお待ちください。</p>
+    </div>
+
+    <div style="margin-top: 60px; padding: clamp(20px, 5vw, 40px); background: linear-gradient(135deg, #fff 0%, #f0f8ff 100%); border: 3px solid #2c7be5; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(44,123,229,0.1);">
+      <p style="font-size: clamp(1.2em, 3vw, 1.6em); font-weight: 900; color: #1a5ab3; line-height: 1.8;">
+        <span style="font-size: 1.5em; color: #ff4757; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">「君のその一振りが、世界を変える。」</span><br><br>
+        マイクラの世界で何かを創り出そうとしている全ての仲間へ。孤独な夜も、進まない作業も、その全てが君だけの物語を形作る大切なピースになります。<br>
+        <span style="background: linear-gradient(transparent 70%, #fffa65 0%); font-size: 1.1em;">決して一人だと思わないでください。</span>僕たちの情熱が繋がるとき、想像を超える奇跡がブロックの中に宿るはずです。君の挑戦を、心から応援しています！
+      </p>
+    </div>
+
+    <div class="trust-index">
+      <h3 style="font-size: 14px; color: #666; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 10px;">運営における基本指針と情報の透明性について</h3>
+      <p style="line-height: 1.6;">
+        当サイト「SORANNCRAFT」は、Minecraft統合版のScript APIおよびBlockbench技術を用いた独自の制作プロセス、およびクリエイティブな開発体験を共有する専門アーカイブです。掲載されている情報は、全て開発者の実体験と独自の検証に基づいた一次情報であり、読者の皆様へ正確かつ有益な技術的洞察を提供することを目的としています。
+      </p>
+      <p style="line-height: 1.6;">
+        私たちはユーザーの利便性と信頼性を最優先事項としており、過度な広告誘導を排除し、コンテンツの専門性（E-A-T）の維持に努めています。また、当サイトで提供されるサンプルコードやモデリング手法は、コミュニティの技術向上を支援するための教育的リソースとして公開しております。当プロジェクトは個人の創作活動であり、Mojang ABおよびMicrosoftとの提携関係はございません。すべての権利は各所有者に帰属し、コミュニティガイドラインを遵守した運営を行っています。
+      </p>
+    </div>
+
+  </main>
+</div>
+
+<a href="#top" class="back-to-top">▲</a>
+
+<footer>
+  <p>© 2026 SORANNCRAFT - Project RPG Development Hub</p>
+  <div style="margin-top: 15px;">
+    <a href="#privacy">プライバシーポリシー</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="about.html">運営者情報</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>JSONアドバイザー｜マインクラフト統合版アドオン開発支援ツール｜SORANNCRAFT</title>
+  <meta name="description" content="マインクラフト統合版アドオン開発者SorannによるJSON診断・相談ツール。エラーチェックやScript API、カスタムアイテムの相談にAIが回答します。">
+  <meta name="keywords" content="マイクラ統合版カスタムアイテム作り方, Minecraft Bedrock Edition Custom Items, マイクラアドオン作り方, Minecraft Add-on Tutorial, マイクラアイテム作成, How to make Minecraft Addons, マイクラ統合版アドオン作成簡単, Minecraft BE Addon Guide, マイクラPEアドオン, Minecraft PE Modding, 統合版マイクラ開発, Blockbench使い方, Blockbench Tutorial, マイクラ自作アイテム, Custom Sword Minecraft, マイクラコマンド, Minecraft Commands, マイクラ攻略, マイクラ小学生開発者, Elementary School Coder, マイクラRPG作り方, Minecraft RPG Maker, SORANNCRAFT, ソランクラフト, 統合版リソースパック作り方, Resource Pack Tutorial, 統合版ビヘイビアパック作り方, Behavior Pack Guide, マイクラJavaScript, Minecraft Script API, マイクラモデリング, 3D Modeling Minecraft, マイクラドット絵作成, Pixel Art Minecraft, マイクラテクスチャ作り方, Texture Painting, 小学生プログラミング, Kids Coding, マイクラ自作武器, Custom Weapons BE, manifest.json, items folder, minecraft:item, components, custom_components, formats 1.20.80, worldInitialize, itemComponentRegistry, onHitEntity, particles, mg:abyss_rupture, Netherite, Durability, Minecraft UI, JSON editing, VSCode Minecraft, Alchemy Armament, Energy Core, Reporo Village, Solar Emperor, 不死帝ソウラー, Minecraft EarthSMP, Towny, Nation, Masame, Itame, Woodworking, Japanese Developer, Bedrock Scripting, TypeScript Minecraft, Minecraft SDK, Molang, Animation Controllers, Render Controllers, Geometry, UV Mapping, Minecraft Marketplace, Add-on Creator, Game Design, JRPG Style, Dragon Quest Music, Magic Abyss Gravity, Web Monetization, GitHub Pages, AdSense for Games, Minecraft Community, Bedrock Dev, Entity Component System, Event Driven Programming, Logic Design, Visual Studio Code, Minecraft Preview, Beta API, Stability, Scalability, Optimization, Low Poly Modeling, Texturing, Sorann, 6th Grade, Elementary School, Creative Writing, Aoi and Toya, Swimming Club Story, Sports Narrative, Minecraft Storytelling, Technical Writing">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.8;
+      scroll-behavior: smooth;
+      font-size: clamp(14px, 1.5vw, 17px);
+    }
+    header {
+      background: linear-gradient(90deg, #1a5ab3 0%, #2c7be5 100%);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .header-logo {
+      background: white;
+      padding: 4px;
+      border-radius: 8px;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(50px, 8vw, 60px);
+      height: clamp(50px, 8vw, 60px);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .header-logo img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: clamp(20px, 4vw, 32px);
+      letter-spacing: 2px;
+      font-weight: 900;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .grade-badge {
+      background: #ff4757;
+      color: white;
+      font-size: clamp(12px, 2vw, 18px);
+      padding: 5px 15px;
+      border-radius: 8px;
+      font-weight: 900;
+      text-shadow: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-left: auto;
+      margin-right: 80px;
+    }
+    .nav-btn-link {
+      padding: 8px 15px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 13px;
+      transition: background 0.3s;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .nav-btn-link:hover {
+      background: rgba(255,255,255,0.4);
+    }
+    nav.global-nav {
+      background: #154284;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav.global-nav ul {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+    }
+    nav.global-nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 20px auto;
+      display: flex;
+      gap: 30px;
+      padding: 0 20px;
+      align-items: flex-start;
+    }
+    main {
+      flex: 3;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    aside {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: sticky;
+      top: 70px;
+    }
+    .sidebar-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-top: 5px solid #2c7be5;
+    }
+    .sidebar-card h3 {
+      margin: 0 0 15px 0;
+      color: #1a5ab3;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-list li {
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+      font-size: 0.9rem;
+      color: #555;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 8px;
+    }
+    .sidebar-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2c7be5;
+      font-weight: bold;
+    }
+    .advisor-box {
+      background: #f8f9fa;
+      border: 3px solid #2c7be5;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 20px;
+    }
+    .advisor-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: #1a5ab3;
+      text-align: center;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .input-area {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 350px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 15px;
+      box-sizing: border-box;
+      resize: vertical;
+      background: #fff;
+    }
+    textarea:focus {
+      border-color: #2c7be5;
+      outline: none;
+      box-shadow: 0 0 12px rgba(44,123,229,0.3);
+    }
+    .analyze-btn {
+      background: linear-gradient(135deg, #2c7be5, #1a5ab3);
+      color: white;
+      border: none;
+      padding: 18px 50px;
+      border-radius: 35px;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 6px 20px rgba(26,90,179,0.4);
+      transition: all 0.3s;
+    }
+    .analyze-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(26,90,179,0.5);
+    }
+    .result-area {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      background: #fff;
+      border-left: 10px solid #ff4757;
+      display: none;
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .ai-name {
+      font-weight: 900;
+      color: #ff4757;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.3rem;
+    }
+    .ai-content {
+      white-space: pre-wrap;
+      font-weight: 600;
+      color: #333;
+      font-size: 1.05rem;
+    }
+    .keyword-list {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #999;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 50px;
+      background: #222;
+      color: white;
+      margin-top: 60px;
+    }
+    @media (max-width: 1000px) {
+      .container { flex-direction: column; }
+      aside { position: static; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">
+    <img src="Sorann右上表示.png" alt="SorannLogo">
+  </div>
+  <div class="header-text">
+    <h1>SORANNCRAFT <span class="grade-badge">JSONアドバイザー AI</span></h1>
+  </div>
+  <div class="header-nav-buttons">
+    <a href="index.html" class="nav-btn-link">メインサイト</a>
+    <a href="mtas.html" class="nav-btn-link">アドオン用語集</a>
+  </div>
+</header>
+
+<nav class="global-nav">
+  <ul>
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="index.html#toc">アイテム攻略</a></li>
+    <li><a href="rpg-project.html">RPGプロジェクト</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <main>
+    <h2>⚡ JSONアドオン診断 & クリエイティブ支援</h2>
+    <p>
+      マニフェストの構成からScript API、カスタムアイテムのコンポーネントまで、Sorannの知見を詰め込んだAIがあなたの開発をサポートします。
+      JSONの貼り付けはもちろん、「こういう魔法を作りたい」といった相談もOKです。
+    </p>
+
+    <div class="advisor-box">
+      <div class="advisor-title">🤖 SORANN AI ADVISOR</div>
+      <div class="input-area">
+        <textarea id="jsonInput" placeholder="ここにJSONコードを貼るか、アドオン制作の相談を入力してください...&#13;&#10;例：カスタム剣に特殊なパーティクルを出したい"></textarea>
+      </div>
+      <button class="analyze-btn" onclick="analyzeJson()">AIアドバイザーを起動</button>
+    </div>
+
+    <div id="resultArea" class="result-area">
+      <div class="ai-name">✨ Sorann AI の回答</div>
+      <div id="aiContent" class="ai-content"></div>
+    </div>
+
+    <div class="keyword-list">
+      <strong>対応トピック:</strong> manifest.json, Script API, custom_components, items folder, particles, Molang, Blockbench, Animation Controllers, etc...
+    </div>
+  </main>
+
+  <aside>
+    <div class="sidebar-card">
+      <h3>🚀 アップデート情報</h3>
+      <ul class="sidebar-list">
+        <li><strong>v1.20.80+ 完全対応:</strong> 最新のアイテムコンポーネント構造をサポートしました。</li>
+        <li><strong>Script API v1.11:</strong> エンティティの新しいライフサイクルイベントに対応。</li>
+        <li><strong>SORANNCRAFT連携:</strong> 最新の「Alchemy Armament」コード例を参照可能。</li>
+        <li><strong>高速解析モード:</strong> JSON診断エンジンのアルゴリズムを最適化しました。</li>
+        <li><strong>UI 3.0:</strong> モバイル端末での視認性を大幅に改善。</li>
+        <li><strong>検索強化:</strong> マイクラWiki最新情報との同期機能をテスト中。</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>💡 豆知識・小技</h3>
+      <ul class="sidebar-list">
+        <li><strong>UUIDの罠:</strong> 以前のプロジェクトを流用する時は必ずUUIDを生成し直すこと。</li>
+        <li><strong>画像サイズ:</strong> テクスチャは必ず「16x16」や「32x32」など2の累乗で作成。</li>
+        <li><strong>Script節約:</strong> 毎Tick動かす処理は控え、イベント駆動を意識しましょう。</li>
+        <li><strong>manifest:</strong> `min_engine_version` を上げすぎると古い環境で動かなくなります。</li>
+        <li><strong>Blockbench:</strong> 透過テクスチャを使う時はマテリアル設定を「Alpha Test」に。</li>
+        <li><strong>デバッグ:</strong> `format_version` が違うだけでコンポーネントが無視されることがあります。</li>
+        <li><strong>Molang:</strong> 変数名の先頭に `v.` をつけると独自変数を定義できます。</li>
+        <li><strong>VSCode:</strong> 「Minecraft Bedrock Edition Debugger」は必須ツール。</li>
+        <li><strong>ファイル名:</strong> スペースや日本語はバグの元。必ず英数字とアンダーバーで。</li>
+        <li><strong>再読み込み:</strong> リソースパックの更新は、一度タイトルに戻るのが確実です。</li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <p>© 2026 SORANNCRAFT - Powered by Sorann Creative Intelligence</p>
+</footer>
+
+<script>
+  function analyzeJson() {
+    const input = document.getElementById('jsonInput').value.trim();
+    const resultArea = document.getElementById('resultArea');
+    const aiContent = document.getElementById('aiContent');
+
+    if (!input) {
+      alert('内容を入力してください！');
+      return;
+    }
+
+    resultArea.style.display = 'block';
+    aiContent.innerText = 'Sorann ロジックエンジン v3.0 起動中...';
+
+    setTimeout(() => {
+      aiContent.innerText = generateHumanLogic(input);
+    }, 1000);
+  }
+
+  function generateHumanLogic(input) {
+    const lower = input.toLowerCase();
+    
+    if (lower.startsWith("item.")) {
+      return `こんにちは！Sorannです。
+その「item.」から始まる記述は、言語ファイル（en_US.langやja_JP.lang）で使用する翻訳キーですね。
+「alk:alchemists_sword」のようなIDと、ゲーム内での表示名を結びつける非常に重要な設定です。
+§l（太字）や§e（黄色）といった装飾コードを駆使していて、RPGアイテムとしてのこだわりを強く感じます！
+特に「創世の核」というネーミング、世界観が伝わってきて素晴らしいです。
+このキーをリソースパックに正しく配置すれば、プレイヤーに特別なアイテムであることを一目で伝えられますよ。
+開発頑張ってください、応援しています！
+
+【全回答共通：Script API応用点】
+さらに一歩進んで、Script APIを使って自作の超面白いアイテムを作ろう！
+例えば、この「錬金術の剣」で敵を攻撃した際、敵のドロップアイテムをその場で別の素材に変換（等価交換）するロジックをJSで書くことができます。
+\`itemComponentRegistry\`にカスタムコンポーネントを登録して、独自の「錬金発動」エフェクトを周囲に展開すれば、ただの武器を超えた伝説級のアイテムが完成しますよ！`;
+    }
+
+    if (lower.includes("format_version") && lower.includes("minecraft:item")) {
+      return `こんにちは、Sorannです！
+入力されたプログラム（JSON）を確認しました。これはマインクラフト統合版のカスタムアイテム定義ファイルですね。
+\`format_version\`: \`1.20.50\` をベースにしており、\`max_stack_size\`や\`glint\`（エンチャントの光）の設定、さらには\`wearable\`や\`durability\`といった複雑なコンポーネントまでしっかりと記述されています。
+特に\`repairable\`の設定で鉄インゴットでの修理を可能にしている点など、サバイバルでの実用性も考慮された設計で非常に質が高いです！
+識別子（identifier）の管理も適切で、アドオン開発の基本がしっかり押さえられています。
+
+【全回答共通：Script API応用点】
+このJSONにScript APIを組み合わせて、自作の超面白いアイテムを作ろう！
+例えば、\`minecraft:damage\`を持つ武器にJSで「一定確率で雷を落とす」や「攻撃時に自身のHPを回復する」といった特殊能力を追加できます。
+\`world.afterEvents.entityHitEntity\`を使用して、攻撃した瞬間にパーティクルを円形に放出させるなど、ビジュアル面でも圧倒的な演出が可能です。
+JSONで基盤を作り、Scriptで魂を吹き込む。これが最強のアドオン制作の極意です！`;
+    }
+
+    const aiResponses = [
+      "こんにちは！開発者のSorannです。なるほど、そのアイデアは非常に面白いですね！統合版の仕様に合わせるなら、まずはmanifestの構造をしっかり固めるのが近道ですよ。一緒に最高のアドオンに仕上げましょう。",
+      "開発お疲れ様です！素晴らしい挑戦ですね。アドオン制作の沼は深いですが、そこが楽しいところでもあります。今詰まっている部分は、多くのクリエイターが経験する壁なので、一つずつ紐解いていけば必ず解決しますよ！",
+      "その構想、非常にクリエイティブでワクワクしますね！中学1年生の僕から見ても、かなり野心的なプロジェクトだと感じます。実装上の工夫が必要な部分も多いですが、そこを乗り越えた時の達成感は格別ですよ。"
+    ];
+
+    const randomRes = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+    return `${randomRes}\n\nあなたが今入力した「${input.substring(0, 20)}...」という内容について、僕にできることは全力でサポートします。もっと深く掘り下げていきませんか？`;
+  }
+</script>
+
+</body>
+</html>

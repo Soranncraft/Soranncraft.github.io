@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>【マイクラ統合版】エンチャント優先順位ガイド｜知らないと損する効率化の順番｜SORANNCRAFT</title>
+  <meta name="description" content="マイクラ統合版でエンチャントをどの順番でつければいいか迷っている初心者向けに、道具・防具・武器別の優先順位と、エンチャントテーブルの仕組みをわかりやすく解説します。">
+  <meta name="keywords" content="マイクラ統合版 エンチャント, Minecraft Bedrock enchant, マイクラ エンチャント 優先順位, マイクラ エンチャントテーブル 効率, マイクラ 本棚 配置, マイクラ おすすめエンチャント, 統合版 エンチャント一覧, SORANNCRAFT">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+    :root{
+      --accent: #8e44ad;
+      --accent-dark: #6c3483;
+      --accent-light: #f4ecf7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.8;
+      scroll-behavior: smooth;
+      font-size: clamp(14px, 1.5vw, 17px);
+    }
+    header {
+      background: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 100%);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .header-logo {
+      background: white;
+      color: var(--accent-dark);
+      border-radius: 8px;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(50px, 8vw, 60px);
+      height: clamp(50px, 8vw, 60px);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      font-weight: 900;
+      font-size: clamp(18px, 3vw, 26px);
+      flex-shrink: 0;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: clamp(20px, 4vw, 32px);
+      letter-spacing: 2px;
+      font-weight: 900;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .grade-badge {
+      background: #ff4757;
+      color: white;
+      font-size: clamp(12px, 2vw, 18px);
+      padding: 5px 15px;
+      border-radius: 8px;
+      font-weight: 900;
+      text-shadow: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-text p {
+      margin: 0;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: bold;
+      color: #e0eaff;
+    }
+    .header-nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-left: auto;
+      margin-right: 80px;
+      flex-wrap: wrap;
+    }
+    .nav-btn-link {
+      padding: 8px 15px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 13px;
+      transition: background 0.3s;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .nav-btn-link:hover { background: rgba(255,255,255,0.4); }
+    .lang-switch { position: absolute; top: 15px; right: 20px; z-index: 1100; }
+    .lang-btn {
+      background: #333; color: white; border: 1px solid #555;
+      padding: 5px 12px; border-radius: 4px; cursor: pointer;
+      font-size: 12px; font-weight: bold;
+    }
+    nav.global-nav {
+      background: var(--accent-dark);
+      position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav.global-nav ul {
+      max-width: 1600px; margin: 0 auto; padding: 0;
+      list-style: none; display: flex; flex-wrap: wrap;
+    }
+    nav.global-nav li { flex: 1; min-width: 100px; }
+    nav.global-nav a {
+      display: block; color: white; text-decoration: none; text-align: center;
+      padding: 12px 5px; font-weight: bold; font-size: clamp(12px, 1.5vw, 15px);
+      border-right: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;
+    }
+    nav.global-nav a:hover { background: var(--accent); }
+    .breadcrumb {
+      max-width: 1600px; margin: 10px auto; padding: 0 30px;
+      font-size: clamp(11px, 1.2vw, 13px); color: #666;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .container { max-width: 1600px; margin: 0 auto; display: flex; flex-direction: row; flex-wrap: wrap; }
+    .sidebar-left {
+      width: 320px; background: #f8f9fa; padding: 30px 20px;
+      border-right: 1px solid #e1e4e8; min-height: 100vh; flex-shrink: 0;
+    }
+    .sidebar-right {
+      width: 300px; background: #f8f9fa; padding: 30px 15px;
+      border-left: 1px solid #e1e4e8; flex-shrink: 0;
+    }
+    .sidebar-box {
+      background: white; border-radius: 12px; padding: 15px; margin-bottom: 25px;
+      border: 1px solid #e1e4e8; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .sidebar-title {
+      background: var(--accent); color: white; padding: 10px 15px; border-radius: 6px;
+      font-weight: bold; margin-bottom: 12px; font-size: 14px; display: flex; align-items: center;
+    }
+    .rpg-status { border: 2px solid #ff4757; background: #fff5f5; }
+    .rpg-status-title { color: #ff4757; font-weight: 900; font-size: 18px; display: block; margin-bottom: 10px; text-align: center; }
+    .update-list { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+    .update-list li { padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; line-height: 1.4; }
+    .update-list li a { text-decoration: none; color: var(--accent); }
+    .ver-tag { display: inline-block; background: #4caf50; color: white; padding: 1px 6px; border-radius: 4px; font-size: 10px; margin-right: 5px; margin-bottom: 3px; }
+    .ver-tag.new { background: #ff9800; }
+    .ver-tag.fix { background: #2196f3; }
+    .ver-tag.tips { background: #9c27b0; }
+    main { flex: 1; background: white; padding: clamp(20px, 5%, 40px) clamp(15px, 5%, 50px); min-width: 300px; }
+    .toc { background: #f9f9f9; border: 1px solid #ddd; padding: 20px; margin-bottom: 30px; border-radius: 8px; }
+    .toc-title { font-weight: 900; font-size: clamp(16px, 2vw, 18px); margin-bottom: 10px; display: block; color: var(--accent-dark); border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    .toc ul { list-style: none; padding-left: 15px; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { color: var(--accent); text-decoration: none; font-weight: bold; font-size: clamp(13px, 1.5vw, 15px); }
+    .toc a:hover { text-decoration: underline; }
+    p { font-weight: 600; margin-bottom: 1.5em; font-size: clamp(15px, 1.8vw, 17px); color: #333; }
+    h2 {
+      background: linear-gradient(to right, #f8f9fa, #ffffff);
+      border-left: 8px solid var(--accent);
+      border-bottom: 1px solid #eee;
+      padding: 15px 20px; margin: 50px 0 25px 0;
+      font-size: clamp(20px, 3vw, 24px); font-weight: 900;
+    }
+    .hero-title-box { text-align:center; margin-bottom: 30px; }
+    .hero-title-box h2.hero-h1 {
+      background:none; border:none; display:inline-block;
+      font-size: clamp(24px, 5vw, 40px); color: var(--accent-dark);
+      margin: 10px 0; padding: 0; line-height:1.4;
+    }
+    .hero-sub { color:#666; font-size: clamp(14px,2vw,18px); font-weight:700; margin-top:-10px;}
+    .image-box {
+      background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px);
+      text-align: center; margin: 30px 0; border-radius: 12px;
+    }
+    .image-box img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .image-box.hero-image img { max-width: 108%; margin: 0 -4%; }
+    .info-box { background: #fff8e1; border: 2px solid #ffeeba; padding: 25px; border-radius: 12px; margin: 30px 0; }
+    .twist-box {
+      background: linear-gradient(135deg, var(--accent-light) 0%, #ffffff 100%);
+      border: 2px dashed var(--accent);
+      padding: 25px; border-radius: 12px; margin: 35px 0;
+      position: relative;
+    }
+    .twist-box .twist-label {
+      display:inline-block; background: var(--accent); color:#fff; font-weight:900;
+      padding: 4px 14px; border-radius: 20px; font-size: 13px; margin-bottom: 12px;
+    }
+    ul.check-list { background: #f1f8ff; padding: 25px 25px 25px 40px; border-radius: 12px; border-left: 5px solid var(--accent); list-style-type: "✔ "; }
+    ul.check-list li { margin-bottom: 10px; font-weight: 700; }
+    code { background: #2d3436; color: #fab1a0; padding: 2px 6px; border-radius: 4px; font-family: Consolas, Monaco, monospace; }
+    pre code { display:block; }
+    .section-full { background: #fff; padding: 40px; margin-top: 40px; border-radius: 12px; border: 1px solid #e1e4e8; }
+    .message-hero {
+      background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+      color: white; padding: 60px 40px; border-radius: 20px; text-align: center;
+      margin: 60px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+    .message-hero h2 { background: none; border: none; color: white; margin: 0 0 20px 0; padding: 0; font-size: clamp(24px, 5vw, 36px); text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .message-hero p { color: #e0eaff; font-size: clamp(16px, 2.2vw, 20px); max-width: 800px; margin: 0 auto 30px auto; line-height: 2; }
+    .back-to-top {
+      position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white;
+      width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; font-size: 20px;
+    }
+    .ad-slot-container { margin: 40px 0; text-align: center; }
+    footer { text-align: center; padding: 60px 20px; background: #333; color: white; }
+    .footer-links { margin-bottom: 20px; }
+    .footer-links a { color: #aaa; text-decoration: none; margin: 0 15px; font-size: 14px; }
+    .footer-links a:hover { color: white; }
+    .pp-box { background: #fdfdfd; border: 1px solid #eee; padding: 20px; font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* ---- 強調スタイル（記事ごとに少し違う） ---- */
+    .emp-mark strong, .emp-mark b { background: linear-gradient(transparent 60%, var(--accent-light) 60%); font-weight: 900; padding: 0 2px; }
+    .emp-boldcolor strong, .emp-boldcolor b { color: var(--accent-dark); font-weight: 900; font-size: 1.06em; }
+    .emp-underline strong, .emp-underline b { text-decoration: underline wavy var(--accent); text-decoration-thickness: 2px; font-weight: 900; }
+    .emp-badge strong, .emp-badge b { background: var(--accent); color:#fff; padding: 1px 8px; border-radius: 6px; font-weight: 900; font-size: 0.92em; }
+
+    /* ---- スクロールアニメーション（記事ごとに種類が違う） ---- */
+    .reveal { opacity: 0; }
+    .reveal.in-view { opacity: 1; }
+    .anim-fadeup .reveal { transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .anim-fadeup .reveal.in-view { transform: translateY(0); }
+    .anim-fadein .reveal { transition: opacity .9s ease; }
+    .anim-zoom .reveal { transform: scale(.92); transition: opacity .6s ease, transform .6s ease; }
+    .anim-zoom .reveal.in-view { transform: scale(1); }
+    .anim-slideleft .reveal { transform: translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
+    .anim-slideleft .reveal.in-view { transform: translateX(0); }
+    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+    @keyframes pulseGlow { 0%,100%{box-shadow:0 10px 20px rgba(0,0,0,0.1);} 50%{box-shadow:0 10px 30px var(--accent);} }
+    .anim-float .image-box.hero-image img { animation: floatY 3.5s ease-in-out infinite; }
+    .anim-pulseglow .image-box.hero-image img { animation: pulseGlow 3s ease-in-out infinite; }
+
+    @media (max-width: 1200px) {
+      .sidebar-right { display: none; }
+      nav.global-nav li { flex: none; width: 33.33%; }
+      .header-nav-buttons { margin-right: 60px; }
+    }
+    @media (max-width: 768px) {
+      .container { flex-direction: column; }
+      .sidebar-left { width: 100%; border-right: none; border-bottom: 1px solid #e1e4e8; min-height: auto; box-sizing: border-box; }
+      nav.global-nav li { width: 50%; }
+      header { justify-content: center; text-align: center; }
+      .header-logo { margin: 0 0 10px 0; }
+      .header-text h1 { justify-content: center; }
+      .header-nav-buttons { width: 100%; justify-content: center; margin: 15px 0 0 0; }
+      .image-box.hero-image img { max-width: 100%; margin: 0; }
+    }
+    @media (max-width: 480px) {
+      main { padding: 18px 14px; }
+      h2 { padding: 12px 14px; margin: 36px 0 18px 0; }
+      .message-hero { padding: 36px 18px; }
+    }
+
+  </style>
+</head>
+<body id="top" class="anim-float emp-mark">
+
+<div class="lang-switch">
+  <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
+</div>
+
+<header>
+  <div class="header-logo">SC</div>
+  <div class="header-text">
+    <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
+    <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
+  </div>
+  <div class="header-nav-buttons">
+    <a href="js.html" class="nav-btn-link" id="navJs">JSONアドバイザー</a>
+    <a href="mtas.html" class="nav-btn-link" id="navMtas">マイクラ統合版アドオン専用用語集</a>
+  </div>
+</header>
+
+<nav class="global-nav">
+  <ul>
+    <li><a href="index.html" id="gnavHome">ホーム</a></li>
+    <li><a href="#toc" id="gnavItem">記事攻略</a></li>
+    <li><a href="rpg-project.html" id="gnavRpg">RPGプロジェクト</a></li>
+    <li><a href="#privacy" id="gnavPrivacy">プライバシーポリシー</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb" id="breadcrumb">
+  <a href="index.html">ホーム</a> ＞ <a href="#toc">統合版初心者攻略</a> ＞ <strong>エンチャント優先順位ガイド</strong>
+</div>
+
+<div class="container">
+  <aside class="sidebar-left">
+    <div class="sidebar-box rpg-status">
+      <span class="rpg-status-title" id="rpgStatusTitle">🔥 RPGプロジェクト進行中</span>
+      <p style="font-size: 16px; font-weight: 900; text-align: center; margin-bottom: 10px;" id="rpgStatusMsg1">あともう少しで最高傑作が完成します...</p>
+      <p style="font-size: 12px; color: #666; text-align: center; margin-bottom: 10px;" id="rpgStatusMsg2">かつてないシステムと壮大なストーリー。公開まで秒読み開始。</p>
+      <a href="rpg-project.html" style="display: block; text-align: center; background: #ff4757; color: white; padding: 10px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; box-shadow: 0 4px 0 #b3323d;" id="rpgStatusLink">開発状況を詳しく見る →</a>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="newsTitle">統合版 最新情報</div>
+      <ul class="update-list">
+        <li><span class="ver-tag new">1.20.7x</span><span id="news1">統合版のアップデートにより、ボルト関連の挙動が改善されました。</span></li>
+        <li><span class="ver-tag">1.21</span><span id="news2">試験的機能として、新たな構造物「トライアルチャンバー」が追加されています。</span></li>
+        <li><span class="ver-tag fix">修正</span><span id="news3">Script API における UI 表示に関する不具合が修正されました。</span></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="adminTitle">👤 運営者情報</div>
+      <div style="font-size: 13px;" id="adminInfo">
+        <strong>Sorann（ソラン）</strong><br>
+        マイクラ開発の最前線を走る中学一年生クリエイターが、6年にわたる研鑽の成果を「SORANNCRAFT」に凝縮。
+        初心者がつまずきやすいポイントを、実際の開発者視点でわかりやすく言語化したコンテンツが最大の特徴です。<br><br>
+        小学生の頃から自作アドオンやHTML5ゲームの制作に取り組み、実際に手を動かして得た知見だけを記事にしています。ご意見・ご質問はページ下部のお問い合わせフォームからお気軽にどうぞ。
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title">🔗 関連記事</div>
+      <ul class="update-list">
+        <li><a href="villager-trade.html">村人取引を極める攻略ガイド</a></li>
+        <li><a href="elytra-roadmap.html">エリトラ入手までのロードマップ</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <div class="hero-title-box reveal">
+      <h2 class="hero-h1">エンチャント優先順位ガイド</h2>
+      <p class="hero-sub">知らないと損する、つける順番のセオリー</p>
+    </div>
+
+
+
+    <div class="toc" id="toc">
+      <span class="toc-title" id="tocTitle">この記事の目次</span>
+      <ul>
+        <li><a href="#intro">はじめに：エンチャントは「順番」が9割</a></li>
+        <li><a href="#sec1">1. エンチャントテーブルの基本</a></li>
+        <li><a href="#sec2">2. 武器につけるべき優先順位</a></li>
+        <li><a href="#sec3">3. 防具につけるべき優先順位</a></li>
+        <li><a href="#sec4">4. 道具（ツルハシ・斧）の優先順位</a></li>
+        <li><a href="#twist">本棚の数で結果が変わると知らなかった頃の話</a></li>
+        <li><a href="#faq">よくある質問（FAQ）</a></li>
+        <li><a href="#references">参考資料・公式ドキュメント</a></li>
+        <li><a href="#admin-policy">サイト運営指針</a></li>
+        <li><a href="#privacy">プライバシーポリシー</a></li>
+        <li><a href="#cheer">みんなへの応援メッセージ</a></li>
+      </ul>
+    </div>
+
+    <div class="ad-slot-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6126950806811993" data-ad-slot="2282073310" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+
+    <h2 id="intro" class="reveal">はじめに：エンチャントは「順番」が9割</h2>
+    <p class="reveal">エンチャントテーブルの前に立って「どれを選べばいいかわからない」と固まった経験がある人は多いはずです。実はエンチャントには<strong>装備の種類ごとにつけるべき優先順位</strong>があり、それを知っているかどうかでレベル消費の効率が大きく変わります。本記事では、統合版での実践に基づいた優先順位を紹介します。</p>
+
+    <h2 id="sec1" class="reveal">1. エンチャントテーブルの基本</h2>
+    <p class="reveal">エンチャントテーブルは、周囲に本棚を設置することで最大レベル30までのエンチャントが選べるようになります。本棚とテーブルの間には1マスの隙間を空ける必要があり、テーブルを中心に本棚をびっしり15冊分配置するのが理想的な配置です。</p>
+    <ul class="check-list reveal">
+      <li><strong>本棚の配置：</strong> テーブルとの間に1マスの隙間を空けて設置するのがルール。</li>
+      <li><strong>ラピスラズリ：</strong> エンチャントには経験値レベルに加えてラピスラズリも必要。</li>
+      <li><strong>レベル30を狙う：</strong> 本棚をしっかり配置し、常に最大レベルで挑戦するのが基本。</li>
+    </ul>
+
+    <h2 id="sec2" class="reveal">2. 武器につけるべき優先順位</h2>
+    <p class="reveal">剣には「ダメージ増加」系と「特殊効果」系のエンチャントがありますが、初心者がまず優先すべきは<strong>耐久力</strong>と<strong>ダメージ増加</strong>系です。特に序盤は道具を頻繁に作り直すのが面倒なので、耐久力を早めにつけておくと快適さが段違いになります。</p>
+
+    <h2 id="sec3" class="reveal">3. 防具につけるべき優先順位</h2>
+    <p class="reveal">防具については、まず「耐久力」、次に「防御力向上」系のエンチャントを優先するのが定番です。長時間の探索を前提にするなら、経験値の吸収効率を上げるエンチャントもあわせて狙うと、その後のエンチャント効率がさらに上がっていきます。</p>
+
+    <h2 id="sec4" class="reveal">4. 道具（ツルハシ・斧）の優先順位</h2>
+    <p class="reveal">ツルハシは「効率強化」を最優先にするのが鉄則です。採掘速度が大幅に上がり、鉱石集めの効率が段違いになります。次点で「幸運」を狙うと、ダイヤモンドや貴重な鉱石のドロップ数が増えるため、経済的なメリットも大きくなります。</p>
+
+    <div class="twist-box reveal" id="twist">
+      <span class="twist-label">本棚の数で結果が変わると知らなかった頃の話</span>
+      <p style="margin-bottom:0;">筆者が統合版を始めたばかりの頃、本棚を3個くらいしか置かずに「レベル30が全然出てこない…」と不満に思っていた時期がありました。実は本棚の数と配置場所には明確なルールがあり、それを守るだけで結果は劇的に変わります。正しい配置図と、レベル別のおすすめエンチャント早見表はサイト本編にまとめています。</p>
+    </div>
+
+
+    <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
+    <div class="info-box reveal"><strong>Q. 本棚は何冊あれば最大レベルになりますか？</strong><br>A. テーブルの周囲、1マスの隙間を空けた位置に本棚を最大15冊分配置すると、エンチャントの最大レベルである30まで選択できるようになります。</div>
+    <div class="info-box reveal"><strong>Q. エンチャント本と直接エンチャントするのはどちらがいいですか？</strong><br>A. 狙ったエンチャントだけを確実につけたい場合は金床とエンチャント本の組み合わせがおすすめです。効率重視でとにかく色々試したい場合はエンチャントテーブルが向いています。</div>
+    <div class="info-box reveal"><strong>Q. エンチャントの経験値はどうやって集めればいいですか？</strong><br>A. モンスターを倒す、鉱石を採掘する、動物を繁殖させるなど様々な方法で経験値が手に入ります。序盤は洞窟での採掘と並行して経験値を稼ぐのが効率的です。</div>
+
+    <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
+    <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
+    <ul class="check-list reveal">
+      <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
+      <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
+    </ul>
+
+    <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
+    <p class="reveal" id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+
+    <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
+
+    <section id="privacy" class="section-full reveal">
+      <h2>プライバシーポリシー</h2>
+      <div class="pp-box">
+        <p><strong>広告の配信について</strong><br>
+        当サイトは、第三者配信の広告サービス「Googleアドセンス」を利用しています。広告配信事業者は、お客様の過去のアクセス情報に基づき、最適な広告を表示するためにCookie（クッキー）を使用することがあります。これにより、お客様の興味・関心に合わせた適切な広告提供が可能となります。なお、Cookieを通じて収集される情報には、お客様個人を特定する情報は含まれておりません。Cookieの使用を希望されない場合は、Googleの広告設定ページにてパーソナライズ広告を無効に設定することができます。</p>
+        <p><strong>アクセス解析ツールについて</strong><br>
+        当サイトでは、サイト利用状況の把握およびサービス向上を目的として、Googleによるアクセス解析ツール「Googleアナリティクス」を導入しています。Googleアナリティクスはデータの収集のためにCookieを使用しますが、このデータは匿名で収集されており、個人を特定するものではありません。この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。</p>
+        <p><strong>免責事項</strong><br>
+        当サイトで提供する記事内容およびプログラムコード、アドオンファイル等については、可能な限り正確を期し、動作確認を行っておりますが、その正確性や安全性を保証するものではありません。当サイトの情報を用いて生じたトラブル、損害、データの破損等について、運営者は一切の責任を負いかねます。設定変更やアドオンの導入は、必ず各自の責任において、ワールドのバックアップを取った上で行ってください。</p>
+        <p><strong>著作権・肖像権について</strong><br>
+        当サイト内に掲載されているすべての文章、画像、動画、およびプログラムコードの著作権は、特段の記載がない限り運営者に帰属します。これらの内容を無断で転載、複製、販売、二次配布することは固く禁じます。引用を行う場合は、著作権法に基づき適切な範囲で行ってください。また、当サイトは著作権や肖像権の侵害を目的としたものではありません。万が一、掲載内容に不都合がございましたら、お手数ですがお問い合わせフォームよりご連絡ください。迅速に対応させていただきます。</p>
+      </div>
+      <div style="text-align: center; padding: 40px; background: #fff; border: 2px dashed var(--accent); border-radius: 15px; margin-top: 20px;">
+        <p style="font-weight: bold; margin-bottom: 20px;">公式お問い合わせフォーム（Googleフォーム）</p>
+        <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" target="_blank" rel="noopener noreferrer"
+           style="display: inline-block; background: var(--accent); color: white; text-decoration: none; padding: 18px 40px; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+           📩 お問い合わせフォームを開く
+        </a>
+      </div>
+    </section>
+
+    <div class="ad-slot-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6126950806811993" data-ad-slot="2282073310" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <section id="cheer" class="message-hero reveal">
+      <h2>順番を知っているだけで、限られたレベルが何倍にも輝く。</h2>
+      <p>エンチャントは運の要素も大きいですが、優先順位を知っているかどうかで納得のいく結果に近づくスピードは大きく変わります。何度も本棚の配置をやり直した経験も、今となっては良い思い出です。今日紹介した優先順位を参考に、自分だけの最強装備を育てていってください。</p>
+    </section>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="rankingTitle">🔥 人気の記事ランキング</div>
+      <ul class="update-list">
+        <li><span style="color:#ff4757; font-weight:900;">1位</span> <a href="index.html">カスタムアイテムの作り方</a></li>
+        <li><span style="color:#ff9800; font-weight:900;">2位</span> <a href="rpg-project.html">RPGボス「不死帝ソウラー」設定</a></li>
+        <li><span style="color:var(--accent); font-weight:900;">3位</span> <a href="villager-trade.html">村人取引を極める攻略ガイド</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<a href="#top" class="back-to-top">▲</a>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html" id="footHome">ホーム</a>
+    <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
+    <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+  </div>
+  <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
+</footer>
+
+<script>
+  let currentLang = 'jp';
+  const translations = {
+    jp: {
+      langLabel: "English", navJs: "JSONアドバイザー", navMtas: "マイクラ統合版アドオン専用用語集",
+      gradeBadge: "中学一年生", headerSub: "統合版マイクラ攻略・アドオン開発の最前線",
+      gnavHome: "ホーム", gnavItem: "記事攻略", gnavRpg: "RPGプロジェクト", gnavPrivacy: "プライバシーポリシー",
+      rpgStatusTitle: "🔥 RPGプロジェクト進行中", rpgStatusMsg1: "あともう少しで最高傑作が完成します...",
+      rpgStatusMsg2: "かつてないシステムと壮大なストーリー。公開まで秒読み開始。", rpgStatusLink: "開発状況を詳しく見る →",
+      newsTitle: "⚡ 統合版 最新ニュース", adminTitle: "👤 運営者情報", rankingTitle: "🔥 人気の記事ランキング",
+      tocTitle: "この記事の目次", footHome: "ホーム", footPolicy: "サイト運営指針", footPrivacy: "プライバシーポリシー",
+      copyright: "© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)"
+    },
+    en: {
+      langLabel: "日本語", navJs: "JSON Advisor", navMtas: "Addon Glossary",
+      gradeBadge: "7th Grade", headerSub: "The Frontline of MCBE Guides & Addon Development",
+      gnavHome: "Home", gnavItem: "Guides", gnavRpg: "RPG Project", gnavPrivacy: "Privacy Policy",
+      rpgStatusTitle: "🔥 RPG Project in Progress", rpgStatusMsg1: "The masterpiece is nearly complete...",
+      rpgStatusMsg2: "Unprecedented systems and epic stories. Launching soon.", rpgStatusLink: "View Development Status →",
+      newsTitle: "⚡ Latest MCBE News", adminTitle: "👤 Admin Info", rankingTitle: "🔥 Popular Articles",
+      tocTitle: "Table of Contents", footHome: "Home", footPolicy: "Policy", footPrivacy: "Privacy",
+      copyright: "© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide"
+    }
+  };
+  function toggleLanguage() {
+    currentLang = currentLang === 'jp' ? 'en' : 'jp';
+    const t = translations[currentLang];
+    for (let id in t) { const el = document.getElementById(id); if (el) el.innerText = t[id]; }
+    document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

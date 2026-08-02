@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>【マイクラ統合版】カスタムアイテムの作り方徹底解説！Blockbench活用術｜SORANNCRAFT</title>
+  <meta name="description" content="マインクラフト統合版（BE/PE）で自分だけのカスタムアイテムを作成する方法を、現役中学生開発者のSorannがプロ並みに詳しく解説！中学一年生でもBlockbenchを使えば簡単にアドオン制作が可能です。">
+  <meta name="keywords" content="マイクラ統合版カスタムアイテム作り方, Minecraft Bedrock Edition Custom Items, マイクラアドオン作り方, Minecraft Add-on Tutorial, マイクラアイテム作成, How to make Minecraft Addons, マイクラ統合版アドオン作成簡単, Minecraft BE Addon Guide, マイクラPEアドオン, Minecraft PE Modding, 統合版マイクラ開発, Blockbench使い方, Blockbench Tutorial, マイクラ自作アイテム, Custom Sword Minecraft, マイクラコマンド, Minecraft Commands, マイクラ攻略, マイクラ中学生開発者, Elementary School Coder, マイクラRPG作り方, Minecraft RPG Maker, SORANNCRAFT, ソランクラフト, 統合版リソースパック作り方, Resource Pack Tutorial, 統合版ビヘイビアパック作り方, Behavior Pack Guide, マイクラJavaScript, Minecraft Script API, マイクラモデリング, 3D Modeling Minecraft, マイクラドット絵作成, Pixel Art Minecraft, マイクラテクスチャ作り方, Texture Painting, 小学生プログラミング, 中学生プログラミング,Kids Coding, マイクラ自作武器, Custom Weapons BE, manifest.json, items folder, minecraft:item, components, custom_components, formats 1.20.80, worldInitialize, itemComponentRegistry, onHitEntity, particles, mg:abyss_rupture, Netherite, Durability, Minecraft UI, JSON editing, VSCode Minecraft, Alchemy Armament, Energy Core, Reporo Village, Solar Emperor, 不死帝ソウラー, Minecraft EarthSMP, Towny, Nation, Masame, Itame, Woodworking, Japanese Developer, Bedrock Scripting, TypeScript Minecraft, Minecraft SDK, Molang, Animation Controllers, Render Controllers, Geometry, UV Mapping, Minecraft Marketplace, Add-on Creator, Game Design, JRPG Style, Dragon Quest Music, Magic Abyss Gravity, Web Monetization, GitHub Pages, AdSense for Games, Minecraft Community, Bedrock Dev, Entity Component System, Event Driven Programming, Logic Design, Visual Studio Code, Minecraft Preview, Beta API, Stability, Scalability, Optimization, Low Poly Modeling, Texturing, Sorann, 6th Grade, Elementary School, Creative Writing, Aoi and Toya, Swimming Club Story, Sports Narrative, Minecraft Storytelling, Technical Writing">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.8;
+      scroll-behavior: smooth;
+      font-size: clamp(14px, 1.5vw, 17px);
+    }
+    header {
+      background: linear-gradient(90deg, #1a5ab3 0%, #2c7be5 100%);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .header-logo {
+      background: white;
+      padding: 4px;
+      border-radius: 8px;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(50px, 8vw, 60px);
+      height: clamp(50px, 8vw, 60px);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .header-logo img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: clamp(20px, 4vw, 32px);
+      letter-spacing: 2px;
+      font-weight: 900;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .grade-badge {
+      background: #ff4757;
+      color: white;
+      font-size: clamp(12px, 2vw, 18px);
+      padding: 5px 15px;
+      border-radius: 8px;
+      font-weight: 900;
+      text-shadow: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-text p {
+      margin: 0;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: bold;
+      color: #e0eaff;
+    }
+    .header-nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-left: auto;
+      margin-right: 80px;
+    }
+    .nav-btn-link {
+      padding: 8px 15px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 13px;
+      transition: background 0.3s;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .nav-btn-link:hover {
+      background: rgba(255,255,255,0.4);
+    }
+    .lang-switch {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 1100;
+    }
+    .lang-btn {
+      background: #333;
+      color: white;
+      border: 1px solid #555;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    nav.global-nav {
+      background: #154284;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav.global-nav ul {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav.global-nav li {
+      flex: 1;
+      min-width: 100px;
+    }
+    nav.global-nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 12px 5px;
+      font-weight: bold;
+      font-size: clamp(12px, 1.5vw, 15px);
+      border-right: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+    nav.global-nav a:hover {
+      background: #2c7be5;
+    }
+    .breadcrumb {
+      max-width: 1600px;
+      margin: 10px auto;
+      padding: 0 30px;
+      font-size: clamp(11px, 1.2vw, 13px);
+      color: #666;
+    }
+    .breadcrumb a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .sidebar-left {
+      width: 320px;
+      background: #f8f9fa;
+      padding: 30px 20px;
+      border-right: 1px solid #e1e4e8;
+      min-height: 100vh;
+      flex-shrink: 0;
+    }
+    .sidebar-right {
+      width: 300px;
+      background: #f8f9fa;
+      padding: 30px 15px;
+      border-left: 1px solid #e1e4e8;
+      flex-shrink: 0;
+    }
+    .sidebar-box {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+      border: 1px solid #e1e4e8;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .sidebar-title {
+      background: #2c7be5;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+    .rpg-status {
+      border: 2px solid #ff4757;
+      background: #fff5f5;
+    }
+    .rpg-status-title {
+      color: #ff4757;
+      font-weight: 900;
+      font-size: 18px;
+      display: block;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .update-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+    }
+    .update-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .update-list li a {
+      text-decoration: none;
+      color: #2c7be5;
+    }
+    .ver-tag {
+      display: inline-block;
+      background: #4caf50;
+      color: white;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      margin-right: 5px;
+      margin-bottom: 3px;
+    }
+    .ver-tag.new { background: #ff9800; }
+    .ver-tag.fix { background: #2196f3; }
+    .ver-tag.tips { background: #9c27b0; }
+    main {
+      flex: 1;
+      background: white;
+      padding: clamp(20px, 5%, 40px) clamp(15px, 5%, 50px);
+      min-width: 300px;
+    }
+    .toc {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+    }
+    .toc-title {
+      font-weight: 900;
+      font-size: clamp(16px, 2vw, 18px);
+      margin-bottom: 10px;
+      display: block;
+      color: #1a5ab3;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+    .toc ul {
+      list-style: none;
+      padding-left: 15px;
+    }
+    .toc li {
+      margin-bottom: 5px;
+    }
+    .toc a {
+      color: #2c7be5;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: clamp(13px, 1.5vw, 15px);
+    }
+    .toc a:hover { text-decoration: underline; }
+    p {
+      font-weight: 600;
+      margin-bottom: 1.5em;
+      font-size: clamp(15px, 1.8vw, 17px);
+      color: #333;
+    }
+    h2 {
+      background: linear-gradient(to right, #f8f9fa, #ffffff);
+      border-left: 8px solid #2c7be5;
+      border-bottom: 1px solid #eee;
+      padding: 15px 20px;
+      margin: 50px 0 25px 0;
+      font-size: clamp(20px, 3vw, 24px);
+      font-weight: 900;
+    }
+    .image-box {
+      background: #f3f3f3;
+      border: 2px solid #ddd;
+      padding: clamp(10px, 3vw, 30px);
+      text-align: center;
+      margin: 30px 0;
+      border-radius: 12px;
+    }
+    .image-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .info-box {
+      background: #fff8e1;
+      border: 2px solid #ffeeba;
+      padding: 25px;
+      border-radius: 12px;
+      margin: 30px 0;
+    }
+    ul.check-list {
+      background: #f1f8ff;
+      padding: 25px 25px 25px 40px;
+      border-radius: 12px;
+      border-left: 5px solid #2c7be5;
+      list-style-type: "✔ ";
+    }
+    ul.check-list li {
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    code {
+      background: #2d3436;
+      color: #fab1a0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+    }
+    .section-full {
+      background: #fff;
+      padding: 40px;
+      margin-top: 40px;
+      border-radius: 12px;
+      border: 1px solid #e1e4e8;
+    }
+    .message-hero {
+      background: linear-gradient(135deg, #1a5ab3 0%, #2c7be5 100%);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 60px 0;
+      box-shadow: 0 20px 40px rgba(26,90,179,0.3);
+    }
+    .message-hero h2 {
+      background: none;
+      border: none;
+      color: white;
+      margin: 0 0 20px 0;
+      padding: 0;
+      font-size: clamp(24px, 5vw, 36px);
+      text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .message-hero p {
+      color: #e0eaff;
+      font-size: clamp(16px, 2.2vw, 20px);
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      line-height: 2;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #2c7be5;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+      font-size: 20px;
+    }
+    .ad-slot-container {
+      margin: 40px 0;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      background: #333;
+      color: white;
+    }
+    .footer-links {
+      margin-bottom: 20px;
+    }
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+    }
+    .footer-links a:hover {
+      color: white;
+    }
+    .pp-box {
+      background: #fdfdfd;
+      border: 1px solid #eee;
+      padding: 20px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+    @media (max-width: 1200px) {
+      .sidebar-right { display: none; }
+      nav.global-nav li { flex: none; width: 33.33%; }
+      .header-nav-buttons { margin-right: 60px; }
+    }
+    @media (max-width: 768px) {
+      .container { flex-direction: column; }
+      .sidebar-left { width: 100%; border-right: none; border-bottom: 1px solid #e1e4e8; min-height: auto; box-sizing: border-box; }
+      nav.global-nav li { width: 50%; }
+      header { justify-content: center; text-align: center; }
+      .header-logo { margin: 0 0 10px 0; }
+      .header-text h1 { justify-content: center; }
+      .header-nav-buttons { width: 100%; justify-content: center; margin: 15px 0 0 0; }
+    }
+  </style>
+</head>
+<body id="top">
+
+<div class="lang-switch">
+  <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
+</div>
+
+<header>
+  <div class="header-logo">
+    <img src="Sorann右上表示.png" alt="SorannLogo">
+  </div>
+  <div class="header-text">
+    <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
+    <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
+  </div>
+  <div class="header-nav-buttons">
+    <a href="js.html" class="nav-btn-link" id="navJs">JSONアドバイザー</a>
+    <a href="mtas.html" class="nav-btn-link" id="navMtas">マイクラ統合版アドオン専用用語集</a>
+  </div>
+</header>
+
+<nav class="global-nav">
+  <ul>
+    <li><a href="index.html" id="gnavHome">ホーム</a></li>
+    <li><a href="#toc" id="gnavItem">アイテム攻略</a></li>
+    <li><a href="rpg-project.html" id="gnavRpg">RPGプロジェクト</a></li>
+    <li><a href="#privacy" id="gnavPrivacy">プライバシーポリシー</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb" id="breadcrumb">
+  <a href="index.html">ホーム</a> ＞ <a href="#intro">統合版アドオン攻略</a> ＞ <strong>カスタムアイテムの作り方完全版</strong>
+</div>
+
+<div class="container">
+  <aside class="sidebar-left">
+    <div class="sidebar-box rpg-status">
+      <span class="rpg-status-title" id="rpgStatusTitle">🔥 RPGプロジェクト進行中</span>
+      <p style="font-size: 16px; font-weight: 900; text-align: center; margin-bottom: 10px;" id="rpgStatusMsg1">あともう少しで最高傑作が完成します...</p>
+      <p style="font-size: 12px; color: #666; text-align: center; margin-bottom: 10px;" id="rpgStatusMsg2">かつてないシステムと壮大なストーリー。公開まで秒読み開始。</p>
+      <a href="rpg-project.html" style="display: block; text-align: center; background: #ff4757; color: white; padding: 10px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; box-shadow: 0 4px 0 #b3323d;" id="rpgStatusLink">開発状況を詳しく見る →</a>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="newsTitle">統合版 最新情報</div>
+      <ul class="update-list">
+        <li>
+          <span class="ver-tag new">1.20.7x</span>
+          <span id="news1">統合版のアップデートにより、ボルト関連の挙動が改善されました。</span>
+        </li>
+        <li>
+          <span class="ver-tag">1.21</span>
+          <span id="news2">試験的機能として、新たな構造物「トライアルチャンバー」が追加されています。</span>
+        </li>
+        <li>
+          <span class="ver-tag fix">修正</span>
+          <span id="news3">Script API における UI 表示に関する不具合が修正されました。</span>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="adminTitle">👤 運営者情報</div>
+      <div style="font-size: 13px;" id="adminInfo">
+        <strong>Sorann（ソラン）</strong><br>
+        マイクラ開発の最前線を走る中学一年生クリエイターが、6年にわたる研鑽の成果を「SORANNCRAFT」に凝縮。
+        独学で習得した高度なScript APIや3Dモデリングの技術を、開発者ならではの視点で解りやすく言語化したコンテンツが最大の特徴です。<br><br>
+        小学生の頃から自作アドオンやHTML5ゲームの制作に取り組み、実際に手を動かして得た知見だけを記事にしています。ご意見・ご質問はページ下部のお問い合わせフォームからお気軽にどうぞ。
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="title-image" style="text-align:center; margin-bottom: 40px;">
+      <img src="SORANNCRAFT_title.png" style="max-width:100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));" alt="カスタムアイテムの作り方タイトル">
+    </div>
+
+    <div class="toc" id="toc">
+      <span class="toc-title" id="tocTitle">この記事の目次</span>
+      <ul>
+        <li><a href="#intro" id="toc1">はじめに：アドオン開発の魅力</a></li>
+        <li><a href="#section1" id="toc2">1. 開発環境を整える</a></li>
+        <li><a href="#step1" id="toc3">2. Blockbenchの初期設定と日本語化</a></li>
+        <li><a href="#step2" id="toc4">3. Item Wizardで基礎を作る</a></li>
+        <li><a href="#tech-deep" id="toc5">【独自解説】JSON構造とエラー対策</a></li>
+        <li><a href="#step5" id="toc6">4. テクスチャとデザインのコツ</a></li>
+        <li><a href="#improvement" id="toc7">5. 今後の改良点とステップアップ</a></li>
+        <li><a href="#faq" id="toc7b">よくある質問（FAQ）</a></li>
+        <li><a href="#references" id="toc7c">参考資料・公式ドキュメント</a></li>
+        <li><a href="#admin-policy" id="toc8">サイト運営指針</a></li>
+        <li><a href="#privacy" id="toc9">プライバシーポリシー</a></li>
+        <li><a href="#cheer" id="toc10">みんなへの応援メッセージ</a></li>
+      </ul>
+    </div>
+
+    <div class="ad-slot-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6126950806811993"
+             data-ad-slot="2282073310"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <h2 id="intro"><span id="h2Intro">はじめに：アドオン開発の魅力</span></h2>
+    <p id="pIntro1">マインクラフトにおけるアドオン開発は、単なるゲームの改造を超えた「デジタルなものづくり」の究極の形です。自分だけの武器や魔法のアイテムを世界に誕生させる瞬間は、代えがたい達成感があります。本記事では、マインクラフト開発歴6年の経験を活かし、中学一年生ならではの視点で「最も効率的でエラーの少ないカスタムアイテムの作り方」を徹底的に解説していきます。</p>
+    <p>「プログラミングもモデリングも未経験だから難しそう…」と感じる方も多いと思いますが、心配はいりません。僕自身、最初はテクスチャの1ピクセルすらまともに塗れず、JSONファイルのカンマひとつでエラーを量産していました。それでも試行錯誤を繰り返すうちに、Blockbenchというツールを軸にすれば、誰でも「動くアイテム」を実際にワールドへ持ち込めるようになることがわかりました。この記事はその過程で得た知識を、当時の自分に向けて説明するつもりで、できるだけ噛み砕いてまとめています。</p>
+    <p>この記事で扱う範囲は、①開発環境の準備、②Blockbenchの日本語化と初期設定、③Item Wizardを使ったアイテムの雛形作成、④JSON構造の理解とエラー対処、⑤テクスチャデザインのコツ、⑥Script APIへのステップアップ、の6段階です。上から順に読み進めるだけで、「アイデアを思いつく→形にする→ゲーム内で確認する」という一連の開発フローを体験できるように構成しています。途中でつまずいた場合は、目次から該当セクションに戻って読み返してみてください。</p>
+
+    <h2 id="section1"><span id="h2Env">1. 開発環境を整える</span></h2>
+    <p id="pEnv1">アドオン制作をスムーズに進めるためには、適切なツール選びが不可欠です。中学生でもプロと同じ土俵で戦うための「三種の神器」を準備しましょう。どれも無料で入手できるツールなので、初期投資はゼロ円から始められるのもこの趣味の良いところです。</p>
+    <ul class="check-list">
+      <li><strong>Blockbench:</strong> マイクラ公式も推奨する、最強のモデリング・テクスチャ作成ソフトです。直感的な操作で3Dモデルを作れるだけでなく、アドオンの雛形を自動生成する機能も備えています。Windows・Mac・Linuxに加えてブラウザ版も用意されているため、学校の共用パソコンでも試すことができます。</li>
+      <li><strong>Visual Studio Code (VSCode):</strong> テキストエディタの決定版。マインクラフト専用の拡張機能を導入することで、JSONの入力補完やエラーチェックが自動で行われるようになり、ミスを大幅に減らせます。特に「かっこの閉じ忘れ」や「カンマの過不足」は赤い波線ですぐに見つけられるようになるため、初心者ほど導入する価値があります。</li>
+      <li><strong>マインクラフト本体:</strong> 常に最新版にアップデートしておきましょう。また、開発中のアドオンをテストするために「試験的機能」をオンにした検証用ワールドを用意しておくと便利です。本番のワールドとは別に検証専用ワールドを分けておくことで、万が一アドオンが原因でワールドが不安定になっても、大切なセーブデータを守ることができます。</li>
+    </ul>
+    <p>これら3つの準備が整ったら、次はいよいよ実際の制作作業に入っていきます。ここから先は、実際に手を動かしながら読み進めることをおすすめします。文章を読むだけでなく、自分のパソコンでも同じ手順をなぞることで、理解の定着度が大きく変わってきます。</p>
+
+    <h2 id="step1">2. Blockbenchの初期設定と日本語化</h2>
+    <p>Blockbenchをインストールしたら、まずは自分が使いやすいようにカスタマイズしましょう。特に英語のままだと機能の理解に時間がかかってしまいますが、日本語化することで「どのボタンが何をするか」が一目でわかるようになります。</p>
+    <p>設定メニューの「Language」から「Japanese」を選択するだけで完了です。これで、複雑なボーンの設定やテクスチャのUV展開も、迷うことなく操作できるようになります。</p>
+    <p>日本語化と合わせて確認しておきたいのが「Format」の設定です。Blockbenchでは作りたいものに応じて、汎用モデル用の「Generic Model」やエンティティ用の「Bedrock Entity」など、複数のフォーマットが用意されています。今回のようにアイテムを作る場合は、後述するItem Wizardを使えばフォーマットの選択も自動化されるため、最初のうちは細かく意識しなくても問題ありません。まずは画面のレイアウトに慣れ、視点操作（マウス右ドラッグで回転、ホイールで拡大縮小）に慣れることを優先しましょう。</p>
+    <p>また、環境設定の「Interface」タブでは、テーマカラーやグリッド線の表示・非表示も変更できます。長時間作業していると目が疲れやすいので、好みに応じてダークテーマなどに切り替えておくと、制作作業がより快適になります。</p>
+    <div class="image-box">
+      <img src="blockbench言語設定.png" alt="Blockbench設定画面">
+      <p>言語設定を日本語に変更するだけで、作業効率は劇的に向上します。</p>
+    </div>
+
+    <h2 id="step2">3. Item Wizardで基礎を作る</h2>
+    <p>Blockbenchには「Minecraft Item Wizard」という非常に強力なプラグインがあります。これを使うと、アイテムの基本設定（名前、識別子、レア度、食べられるかどうか等）を対話形式で入力するだけで、必要なファイル構成（JSON）を自動で作成してくれます。</p>
+    <p>既存の「ダイヤモンドの剣」や「リンゴ」をベースに選ぶことで、そのアイテムが持つアニメーションや持ち方をそのまま引き継ぐことができるため、初心者の方はまずこのウィザードから始めるのが正解です。</p>
+
+    <div class="image-box">
+      <img src="アイテム作成1.png" alt="Item Wizard プリセット選択">
+      <p>まずは「Preset」画面で、作成したいアイテムのベースを選びます。剣や防具、食べ物など、目的に近いものを選ぶのがコツです。</p>
+    </div>
+
+    <p>次に、アイテムの「名前」と「識別子（ID）」を設定します。識別子は他のアドオンと重複しないように、自分の名前やプロジェクト名を含めたユニークなものにしましょう。</p>
+
+    <div class="image-box">
+      <img src="アイテム作成2.png" alt="Item Wizard 名前と識別子の設定">
+      <p>「Naming」画面では、ゲーム内での表示名（Display Name）と、システム上の名前（Identifier）を決めます。スタック数などもここで調整可能です。</p>
+    </div>
+
+    <p>最後に、作成したファイルをどこに保存するかを決定します。開発中のパックに直接統合したり、配布用の「.mcaddon」形式で書き出したりすることが可能です。</p>
+
+    <div class="image-box">
+      <img src="アイテム作成3.png" alt="Item Wizard エクスポート設定">
+      <p>「Export」画面では、作成したアイテムをフォルダーへ保存するか、パックに統合するかを選びます。これだけで面倒なJSONの雛形が完成します。</p>
+    </div>
+
+    <p>ウィザードが終われば、あとはBlockbenchの描画機能を使ってテクスチャを描き込むだけです。自分の思い描く「理想のアイテム」をドット絵で表現してみましょう。</p>
+
+    <div class="image-box">
+      <img src="お手本作成.png" alt="テクスチャ作成の様子">
+      <p>ウィザードで生成された枠組みに、オリジナルのテクスチャを上書きしていきます。このように色の濃淡をつけると、マイクラの世界観にマッチします。</p>
+    </div>
+
+    <p>ここで、Item Wizardが実際にどのようなファイルを生成しているのかを見てみましょう。中身を理解しておくと、あとで自分の手でカスタマイズしたくなったときに迷わなくなります。生成されるアイテムの定義ファイル（例：<code>diamond_sword.json</code>）は、おおよそ次のような構造になっています。</p>
+
+    <div class="info-box">
+      <strong>アイテム定義ファイルの基本構造（イメージ）：</strong>
+      <pre style="background:#2d3436; color:#dfe6e9; padding:15px; border-radius:8px; overflow-x:auto; font-size:13px; line-height:1.6;"><code>{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "sorann:mysterious_sword",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": {
+        "texture": "mysterious_sword"
+      },
+      "minecraft:display_name": {
+        "value": "謎の剣"
+      },
+      "minecraft:hand_equipped": true,
+      "minecraft:durability": {
+        "max_durability": 250
+      }
+    }
+  }
+}</code></pre>
+    </div>
+
+    <p>ポイントは、アイテムの機能ひとつひとつが <code>minecraft:durability</code> や <code>minecraft:hand_equipped</code> のような「コンポーネント」という単位に分かれていることです。この仕組みのおかげで、必要な機能だけを部品のように組み合わせるだけで、剣・防具・食べ物など様々なアイテムを表現できます。<code>identifier</code>（識別子）は他のアドオンと絶対に被らないよう、自分の名前や自作の「名前空間（namespace）」――上記の例では<code>sorann</code>――をつけておくのが業界の慣例です。</p>
+
+    <h2 id="tech-deep">【独自解説】JSON構造とエラー対策</h2>
+    <p>アドオン開発で最も多くの人が挫折するのが、JSONファイルのエラーです。たった一つの「,（カンマ）」が足りないだけで、マイクラはアイテムを読み込んでくれません。ここでは、Item Wizardが生成してくれる<code>manifest.json</code>の役割と、実際に僕がつまずいてきたエラーパターンを、原因と対処法のセットで紹介します。</p>
+
+    <p>すべてのビヘイビアパック・リソースパックには、パックの「身分証明書」にあたる<code>manifest.json</code>が必ず必要です。この中で特に重要なのが<code>dependencies</code>（依存関係）の項目で、ビヘイビアパックとリソースパックを紐づける役割を持っています。以下は、ビヘイビアパック側の<code>manifest.json</code>の基本構成例です。</p>
+
+    <div class="info-box">
+      <strong>manifest.json（ビヘイビアパック）の構成例：</strong>
+      <pre style="background:#2d3436; color:#dfe6e9; padding:15px; border-radius:8px; overflow-x:auto; font-size:13px; line-height:1.6;"><code>{
+  "format_version": 2,
+  "header": {
+    "name": "オリジナルアイテムパック",
+    "description": "自作アイテムを追加するビヘイビアパック",
+    "uuid": "（ここに自分だけのUUIDを生成して貼り付ける）",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 80]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "（モジュール用の別のUUID）",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "（リソースパック側のheader.uuidと同じ値）",
+      "version": [1, 0, 0]
+    }
+  ]
+}</code></pre>
+    </div>
+
+    <p><code>uuid</code>は世界に一つだけの識別番号で、「UUID Generator」などで検索して出てくる無料のツールで簡単に発行できます。<strong>headerのuuidとmodulesのuuidは必ず別の値にする</strong>のが鉄則で、ここを同じ値にしてしまうと、パックがワールドに正しく反映されないという典型的なミスにつながります。また、<code>dependencies</code>に指定するuuidは、リソースパック側の<code>manifest.json</code>にある<code>header.uuid</code>と完全に一致させる必要があります。片方だけバージョンアップして数値がズレてしまうのも、よくある失敗の一つです。</p>
+
+    <div class="info-box">
+      <strong>エンジニア視点のデバッグ術：</strong><br>
+      アドオンが反映されない時は、まず「最新のログ」を確認しましょう。VSCodeを使えば、構文エラーがある箇所を赤波線で教えてくれます。また、フォルダ名やファイル名に「日本語（全角文字）」が混じっていないか、大文字と小文字が正確に一致しているかも重要なチェックポイントです。
+    </div>
+
+    <p>これまで数え切れないほどのエラーと向き合ってきた経験から、特に発生頻度の高いミスを一覧にまとめました。「アドオンが読み込まれない」「アイテムが真っ黒（missing texture）になる」といったトラブルに遭遇したら、まずはこのチェックリストを上から順に確認してみてください。</p>
+
+    <ul class="check-list">
+      <li><strong>末尾のカンマ問題：</strong> JSONでは配列やオブジェクトの最後の要素にカンマを付けてはいけません。一つ要素を消したときに、直前の行のカンマの消し忘れがないか確認しましょう。</li>
+      <li><strong>拡張子・パスの誤り：</strong> テクスチャファイルを指定する際、<code>.png</code>の拡張子を書いてしまう、あるいはファイル名の大文字・小文字が実際のファイルと違う、というミスが非常に多いです。マイクラのファイルパスは大文字小文字を区別することがあるため、一字一句正確に記述しましょう。</li>
+      <li><strong>identifierの重複：</strong> 同じ<code>identifier</code>を持つアイテムが既に存在すると、後から読み込んだ方が反映されないことがあります。必ず自分専用の名前空間を先頭に付けましょう。</li>
+      <li><strong>キャッシュの影響：</strong> ファイルを修正したのにゲーム内の見た目が変わらない場合、一度ワールドを完全に閉じてマインクラフト自体を再起動すると解決することがあります。</li>
+      <li><strong>format_versionの不一致：</strong> 使用しているコンポーネントが古い<code>format_version</code>に対応していない、あるいは逆に新しすぎて自分のマイクラのバージョンが対応していない、というケースもあります。エラーが出たら、まずは自分のマイクラのバージョンと見比べてみましょう。</li>
+    </ul>
+
+    <h2 id="step5">4. テクスチャとデザインのコツ</h2>
+    <p>アイテムの見た目を決めるテクスチャ作成。16×16の小さなキャンバスで「それらしく」見せるには、色のコントラストをはっきりさせることが重要です。縁取り（アウトライン）を少し暗い色で描くと、ゲーム内のどんな背景でもアイテムがくっきり見えて、プロっぽい仕上がりになります。</p>
+    <p>限られたピクセル数の中で説得力のある見た目を作るには、いくつかのコツがあります。ここでは僕が実際のテクスチャ制作で意識しているポイントを3つ紹介します。</p>
+    <ul class="check-list">
+      <li><strong>光源を一つに決める：</strong> 光が左上から当たっていると仮定したら、その設定を最後まで崩さないようにします。光が当たる面は明るい色、影になる面は暗い色というルールを統一するだけで、立体感が一気に増します。</li>
+      <li><strong>色数を絞る：</strong> 一つのパーツに対して使う色は3～4段階（ベースカラー、ハイライト、シャドウ、アウトライン）程度に絞ると、ドット絵特有のまとまりが生まれます。色を使いすぎると、かえってごちゃついた印象になりがちです。</li>
+      <li><strong>金属と布の質感を描き分ける：</strong> 剣の刃のような金属パーツは、明暗の差を大きく・境界をくっきりさせると「硬さ」が表現できます。一方、持ち手の布や革の部分は、明暗の差をなだらかにすることで「柔らかさ」を演出できます。</li>
+    </ul>
+    <p>また、Blockbenchにはピクセル単位で色を置いていく「ペイントモード」の他に、対称に描画してくれる「ミラー機能」も搭載されています。左右対称なデザインの武器を作るときは、この機能を有効にしておくと作業時間を半分に短縮できるので、ぜひ活用してみてください。</p>
+
+    <h2 id="improvement">5. 今後の改良点とステップアップ</h2>
+    <p>基本のアイテムが作れるようになったら、次は「Script API」に挑戦してみましょう。例えば「敵を攻撃した時に雷を落とす」や「特定の防具を着ている時だけ能力が上がる」といった、JSONだけでは不可能な複雑なアクションも、JavaScriptの知識があれば実現できるようになります。開発の可能性は無限大です！</p>
+    <p>Script APIの世界では、<code>@minecraft/server</code>モジュールが提供する<code>custom_components</code>という仕組みを使うことで、JSONのアイテム定義とJavaScriptの処理を紐づけることができます。例えば、剣で敵を攻撃した瞬間に処理を差し込みたい場合、アイテムJSON側では次のように「このアイテムはカスタムコンポーネントを使う」と宣言するだけでOKです。</p>
+    <div class="info-box">
+      <strong>アイテムJSON側での宣言例：</strong>
+      <pre style="background:#2d3436; color:#dfe6e9; padding:15px; border-radius:8px; overflow-x:auto; font-size:13px; line-height:1.6;"><code>"minecraft:custom_components": [
+  "sorann:on_hit_effect"
+]</code></pre>
+    </div>
+    <p>そして、対応するJavaScript側では、<code>world.beforeEvents</code>や<code>world.afterEvents</code>といった最新のイベントAPIを使い、実際に敵へダメージを与えた瞬間の処理を記述していきます。JSONだけの世界から一歩踏み出すことで、自分だけのオリジナルな戦闘システムやギミックを組み込めるようになるのが、Script APIの大きな魅力です。この続きとなる本格的な入門解説は、サイドバーの「Script API入門」記事で詳しく扱う予定なので、楽しみにお待ちください。</p>
+
+    <h2 id="faq">よくある質問（FAQ）</h2>
+    <div class="info-box">
+      <strong>Q. アドオンを作るのにプログラミング経験は必須ですか？</strong><br>
+      A. いいえ、必須ではありません。本記事で紹介したItem Wizardを使えば、JSONの知識がなくても基本的なアイテムは作成できます。Script APIのような高度な機能を使いたくなった段階で、少しずつJavaScriptを学んでいけば十分です。
+    </div>
+    <div class="info-box">
+      <strong>Q. 作成したアドオンは他の人に配布してもいいですか？</strong><br>
+      A. 自分でゼロから作成したオリジナルのテクスチャ・モデル・コードであれば、配布は可能です。ただし、公式アセットやほかの制作者の作品を無断で流用した場合はトラブルの原因になるため、必ず素材の権利関係を確認したうえで公開しましょう。
+    </div>
+    <div class="info-box">
+      <strong>Q. アイテムを追加してもゲーム内に反映されません。原因は何が考えられますか？</strong><br>
+      A. 「JSON構造とエラー対策」セクションで紹介したチェックリスト（カンマの過不足、拡張子やパスの誤字、identifierの重複、manifest.jsonのuuid不一致など）を上から順に見直すことをおすすめします。それでも解決しない場合は、一度マインクラフト本体を再起動してキャッシュをクリアしてみてください。
+    </div>
+
+    <h2 id="references">参考資料・公式ドキュメント</h2>
+    <p>本記事の内容は、実際の制作経験をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースも合わせてご参照ください。</p>
+    <ul class="check-list">
+      <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — アイテムコンポーネントやScript APIの仕様が随時更新されている一次情報源です。</li>
+      <li><a href="https://www.blockbench.net/" target="_blank" rel="noopener noreferrer">Blockbench公式サイト</a> — 最新版のダウンロードや、公式チュートリアルを確認できます。</li>
+    </ul>
+
+    <h2 id="admin-policy"><span id="h2Policy">サイト運営指針</span></h2>
+    <p id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に現場でコードを書き続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+
+    <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
+
+    <section id="privacy" class="section-full">
+      <h2>プライバシーポリシー</h2>
+      <div class="pp-box">
+        <p><strong>広告の配信について</strong><br>
+        当サイトは、第三者配信の広告サービス「Googleアドセンス」を利用しています。広告配信事業者は、お客様の過去のアクセス情報に基づき、最適な広告を表示するためにCookie（クッキー）を使用することがあります。これにより、お客様の興味・関心に合わせた適切な広告提供が可能となります。なお、Cookieを通じて収集される情報には、お客様個人を特定する情報は含まれておりません。Cookieの使用を希望されない場合は、Googleの広告設定ページにてパーソナライズ広告を無効に設定することができます。</p>
+        <p><strong>アクセス解析ツールについて</strong><br>
+        当サイトでは、サイト利用状況の把握およびサービス向上を目的として、Googleによるアクセス解析ツール「Googleアナリティクス」を導入しています。Googleアナリティクスはデータの収集のためにCookieを使用しますが、このデータは匿名で収集されており、個人を特定するものではありません。この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。</p>
+        <p><strong>免責事項</strong><br>
+        当サイトで提供する記事内容およびプログラムコード、アドオンファイル等については、可能な限り正確を期し、動作確認を行っておりますが、その正確性や安全性を保証するものではありません。当サイトの情報を用いて生じたトラブル、損害、データの破損等について、運営者は一切の責任を負いかねます。アドオンの導入や設定変更は、必ず各自の責任において、ワールドのバックアップを取った上で行ってください。</p>
+        <p><strong>著作権・肖像権について</strong><br>
+        当サイト内に掲載されているすべての文章、画像、動画、およびプログラムコードの著作権は、特段の記載がない限り運営者に帰属します。これらの内容を無断で転載、複製、販売、二次配布することは固く禁じます。引用を行う場合は、著作権法に基づき適切な範囲で行ってください。また、当サイトは著作権や肖像権の侵害を目的としたものではありません。万が一、掲載内容に不都合がございましたら、お手数ですがお問い合わせフォームよりご連絡ください。迅速に対応させていただきます。</p>
+      </div>
+      <div style="text-align: center; padding: 40px; background: #fff; border: 2px dashed #2c7be5; border-radius: 15px; margin-top: 20px;">
+        <p style="font-weight: bold; margin-bottom: 20px;">公式お問い合わせフォーム（Googleフォーム）</p>
+        <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-block; background: #2c7be5; color: white; text-decoration: none; padding: 18px 40px; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(44,123,229,0.3); transition: transform 0.2s;">
+           📩 お問い合わせフォームを開く
+        </a>
+      </div>
+    </section>
+
+    <div class="ad-slot-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6126950806811993"
+             data-ad-slot="2282073310"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <section id="cheer" class="message-hero">
+      <h2>君の「創りたい」が、世界の誰かの「遊び」を変える。</h2>
+      <p>
+        画面の前でコードの海に溺れそうになっている君へ。何度もエラーを吐き出され、投げ出したくなっているかもしれない。でも忘れないでほしい。今、君が向き合っているその一行の修正は、いつか誰かの心を震わせる「魔法」に変わるんだ。<br><br>
+        僕たちはただのプレイヤーじゃない。この世界のルールを書き換え、新しい驚きを生み出す「創造主」だ。君が描いたドット、君が組んだロジックは、君にしか作れない唯一無二の宇宙なんだ。失敗はデータに過ぎない。諦めなければ、それは必ず成功への伏線になる。<br><br>
+        僕も一緒に走り続ける。君の情熱が形になり、世界中のデバイスに君のアドオンがインストールされるその日まで、何度でも挑戦しよう。君の才能を信じている。最高のアドオンを、一緒に創り上げよう。
+      </p>
+    </section>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="rankingTitle">🔥 人気の記事ランキング</div>
+      <ul class="update-list">
+        <li><span style="color:#ff4757; font-weight:900;">1位</span> <a href="#intro" id="rank1">カスタムアイテムの作り方</a></li>
+        <li><span style="color:#ff9800; font-weight:900;">2位</span> <a href="rpg-project.html" id="rank2">RPGボス「不死帝ソウラー」設定</a></li>
+        <li><span style="color:#2c7be5; font-weight:900;">3位</span> <a href="js.html" id="rank3">Script API入門（近日公開）</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<a href="#top" class="back-to-top">▲</a>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html" id="footHome">ホーム</a>
+    <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
+    <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+  </div>
+  <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
+</footer>
+
+<script>
+  let currentLang = 'jp';
+  const translations = {
+    jp: {
+      langLabel: "English",
+      navJs: "JSONアドバイザー",
+      navMtas: "マイクラ統合版アドオン専用用語集",
+      gradeBadge: "中学一年生",
+      headerSub: "統合版マイクラ攻略・アドオン開発の最前線",
+      gnavHome: "ホーム", gnavItem: "アイテム攻略", gnavRpg: "RPGプロジェクト", gnavPrivacy: "プライバシーポリシー",
+      rpgStatusTitle: "🔥 RPGプロジェクト進行中",
+      rpgStatusMsg1: "あともう少しで最高傑作が完成します...",
+      rpgStatusMsg2: "かつてないシステムと壮大なストーリー。公開まで秒読み開始。",
+      rpgStatusLink: "開発状況を詳しく見る →",
+      newsTitle: "⚡ 統合版 最新ニュース",
+      adminTitle: "👤 運営者情報",
+      rankingTitle: "🔥 人気の記事ランキング",
+      tocTitle: "この記事の目次",
+      h2Intro: "はじめに：アドオン開発の魅力",
+      h2Env: "1. 開発環境を整える",
+      h2Policy: "サイト運営指針",
+      footHome: "ホーム", footPolicy: "サイト運営指針", footPrivacy: "プライバシーポリシー",
+      copyright: "© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)"
+    },
+    en: {
+      langLabel: "日本語",
+      navJs: "JSON Advisor",
+      navMtas: "Addon Glossary",
+      gradeBadge: "7th Grade",
+      headerSub: "The Frontline of MCBE Guides & Addon Development",
+      gnavHome: "Home", gnavItem: "Item Guides", gnavRpg: "RPG Project", gnavPrivacy: "Privacy Policy",
+      rpgStatusTitle: "🔥 RPG Project in Progress",
+      rpgStatusMsg1: "The masterpiece is nearly complete...",
+      rpgStatusMsg2: "Unprecedented systems and epic stories. Launching soon.",
+      rpgStatusLink: "View Development Status →",
+      newsTitle: "⚡ Latest MCBE News",
+      adminTitle: "👤 Admin Info",
+      rankingTitle: "🔥 Popular Articles",
+      tocTitle: "Table of Contents",
+      h2Intro: "Introduction: The Appeal of Addon Dev",
+      h2Env: "1. Setting up the Environment",
+      h2Policy: "Site Policy",
+      footHome: "Home", footPolicy: "Policy", footPrivacy: "Privacy",
+      copyright: "© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide"
+    }
+  };
+
+  function toggleLanguage() {
+    currentLang = currentLang === 'jp' ? 'en' : 'jp';
+    const t = translations[currentLang];
+    for (let id in t) {
+      const el = document.getElementById(id);
+      if (el) el.innerText = t[id];
+    }
+    document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
+  }
+</script>
+
+</body>
+</html>

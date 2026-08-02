@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>【完全攻略】Alchemy Armament：最強の錬金術師への道｜SORANNCRAFT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Minecraft統合版アドオン「Alchemy Armament: Energy Core」の公式攻略Wiki。ジェネシスガントレットのレシピから隠し武器「錬金術の剣」の入手方法、開発秘話まで公開。">
+    <style>
+        :root {
+            --primary-blue: #2c7be5;
+            --secondary-blue: #1a5ab3;
+            --accent-cyan: #00f2fe;
+            --text-dark: #2c3e50;
+            --bg-light: #fdfdfd;
+            --white: #ffffff;
+            --gray-border: #eef2f7;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav.global-nav {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav.global-nav ul {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav.global-nav a {
+            display: block;
+            color: var(--primary-blue);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav.global-nav a:hover {
+            background: #f0f9ff;
+            color: var(--secondary-blue);
+        }
+
+        .main-wrapper {
+            max-width: 1100px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 900px) {
+            .main-wrapper { grid-template-columns: 1fr; }
+        }
+
+        .container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-border);
+        }
+
+        h1 { color: var(--secondary-blue); font-size: 2em; border-bottom: 2px solid var(--gray-border); padding-bottom: 15px; margin-bottom: 30px; }
+        h2 { color: var(--white); background: var(--primary-blue); padding: 12px 20px; border-radius: 8px; margin-top: 50px; font-size: 1.4em; }
+        h3 { color: var(--text-dark); border-left: 5px solid var(--accent-cyan); padding-left: 15px; margin-top: 35px; }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            gap: 10px;
+            background: #eef2f7;
+            padding: 15px;
+            border-radius: 12px;
+            width: fit-content;
+            margin: 25px auto;
+        }
+        .slot {
+            width: 80px; height: 80px; background: var(--white); border: 2px solid #bdc3c7;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 8px; font-size: 12px; font-weight: bold; text-align: center;
+        }
+        .gold { background: #f1c40f; color: white; border-color: #f39c12; }
+        .lapis { background: #3498db; color: white; border-color: #2980b9; }
+        .iron { background: #ecf0f1; color: #7f8c8d; }
+
+        .story-box {
+            background: #f0f7ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid #c2e0ff;
+        }
+        .story-box blockquote {
+            font-style: italic;
+            color: #555;
+            font-weight: bold;
+            margin: 15px 0;
+            display: block;
+        }
+
+        .tech-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border: 2px dashed var(--primary-blue);
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(44,123,229,0.3);
+            transition: 0.2s;
+        }
+        .contact-btn:hover { transform: scale(1.05); background: var(--secondary-blue); }
+
+        .sidebar-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-border);
+            margin-bottom: 25px;
+        }
+
+        .policy-box {
+            font-size: 13px;
+            color: #64748b;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: #f8fafc;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 style="margin:0; font-size:32px; color:white; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">SORANNCRAFT 攻略Wiki</h1>
+    <p style="margin-top:10px; opacity:0.9;">Alchemy Armament : Energy Core 公式攻略ガイド</p>
+</header>
+
+<nav class="global-nav">
+    <ul>
+        <li><a href="#">ホーム</a></li>
+        <li><a href="#recipe">レシピ</a></li>
+        <li><a href="#tips">攻略テクニック</a></li>
+        <li><a href="#story">開発体験談</a></li>
+        <li><a href="#privacy">ポリシー</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+</nav>
+
+<div class="main-wrapper">
+    <main class="container">
+        <article>
+            <h1>ジェネシスガントレット：究極の運用マニュアル</h1>
+            <p>Alchemy Armamentの世界では、エネルギー（EP）を自在に操る「錬金術師」としてのプレイスキルが試されます。本ページでは、冒険を有利に進めるための全知識を公開します。</p>
+
+            <section id="recipe">
+                <h2>🛠️ 必須クラフトレシピ</h2>
+                <p>全ての錬金術の起点となる「ジェネシスガントレット」の作成方法です。</p>
+                <div class="recipe-grid">
+                    <div class="slot gold">金</div><div class="slot gold">金</div><div class="slot gold">金</div>
+                    <div class="slot"></div><div class="slot lapis">ラピス</div><div class="slot"></div>
+                    <div class="slot iron">鉄</div><div class="slot iron">鉄</div><div class="slot iron">鉄</div>
+                </div>
+                <p style="text-align: center; font-size: 0.9em; font-weight: bold; color: var(--primary-blue);">[ 上段：金 / 中段中央：ラピスラズリ / 下段：鉄 ]</p>
+            </section>
+
+            <section id="tips">
+                <h2>⚡ 実装済み！Alchemy Armament 最新の小技集</h2>
+                <div class="tech-card">
+                    <h3>1. 錬金術による「天候干渉」</h3>
+                    <p>ガントレットを手に持った状態で「スニーク（しゃがみ）」し、視点を真上に向けて右クリックを長押ししてください。強力な魔素の放出により、悪天候を瞬時に消し去り、晴天に固定することが可能です。</p>
+                </div>
+                <div class="tech-card">
+                    <h3>2. 秘密の「錬金術師専用取引所」</h3>
+                    <p>ガントレット装備中にスニーク状態で村人とインタラクトしてください。EP（エネルギー）を消費して、特別な錬金素材を購入できる専用の取引画面が開かれます。</p>
+                </div>
+                <div class="tech-card">
+                    <h3>3. エネルギー効率の極意</h3>
+                    <p>エネルギー（EP）はモブへの攻撃で蓄積されます。単発の攻撃よりも、コンボを意識した連打を加えることで、より短時間でEPをMAXまでチャージすることが可能です。</p>
+                </div>
+            </section>
+
+            <section>
+                <h3>⚔️ 禁断の「錬金術の剣」ヒント</h3>
+                <p>伝説の武装を手に入れる鍵は、ある「村人の名前」に隠されています。そのメッセージを読み解き、「アイテムを誰かに投げ捨てる」というアクションが真実への道を開きます。</p>
+            </section>
+
+            <section id="story" class="story-box">
+                <h2>✍️ 開発体験談：Alchemy Armament 誕生の裏側</h2>
+                <p>このアドオンの開発で最も苦労したのは、Scripting APIを用いた「エネルギー吸収システム」の最適化でした。中学一年生として勉強と両立しながら、何百回ものデバッグを繰り返しました。</p>
+                <blockquote>
+                    「ただの武器追加アドオンにはしたくなかった。プレイヤーが自分の意志で天候を変えたり、エネルギーを管理する楽しさを伝えたかったんです。バグで何度もワールドが壊れかけましたが、それを乗り越えて完成した今のシステムには自信を持っています。」
+                </blockquote>
+                <p>皆さんがこのアドオンで自分だけの錬金術師ライフを楽しんでくれることが、僕にとって最大の報酬です。</p>
+            </section>
+
+            <section id="privacy">
+                <h2>⚖️ プライバシーポリシー・免責事項</h2>
+                <div class="policy-box">
+                    <p><strong>1. 広告配信について</strong><br>当サイトではGoogleアドセンスを利用しています。第三者配信事業者はCookieを使用して、ユーザーの過去のアクセス情報に基づいて適切な広告を表示します。ユーザーはGoogleの広告設定からこれを無効にできます。</p>
+                    <p><strong>2. 個人情報の取り扱い</strong><br>お問い合わせフォームからお預かりした個人情報は、回答以外の目的で使用することはありません。</p>
+                    <p><strong>3. 免責事項</strong><br>当サイトおよびアドオンの使用により生じた不具合や損失について、管理者は一切の責任を負いません。仕様はアップデートにより変更される場合があります。</p>
+                    <p><strong>4. 著作権</strong><br>コンテンツの無断転載・再配布を禁じます。© 2026 SORANNCRAFT</p>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <h2>📩 お問い合わせ</h2>
+                <p>アドオン制作に関する質問やフィードバックなどは、以下の「公式お問い合わせフォーム」よりご連絡ください。中学一年生のため返信にお時間をいただく場合がありますが、すべて大切に読ませていただきます。</p>
+                <div style="margin-top: 30px;">
+                    <p style="font-weight: bold; margin-bottom: 20px;">公式お問い合わせフォーム（Googleフォーム）</p>
+                    <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                        📩 お問い合わせフォームを開く
+                    </a>
+                    <p style="font-size: 12px; color: #777; margin-top: 15px;">※外部サイト（Google）へ移動します</p>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <aside class="sidebar">
+        <div class="sidebar-card">
+            <h3>運営者情報</h3>
+            <p style="font-size:14px;"><strong>Sorann (ソラン)</strong><br>
+            中学一年生のアドオン開発者。Minecraft歴6年。SORANNCRAFT代表として、統合版の可能性を広げる開発を行っています。</p>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>最新の更新</h3>
+            <ul style="font-size:13px; padding-left:15px;">
+                <li>Script API 最適化完了</li>
+                <li>EP取引システムのバグ修正</li>
+                <li>プライバシーポリシーの明文化</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>クイックアクセス</h3>
+            <ul style="font-size:14px; padding-left:15px;">
+                <li><a href="#recipe">ガントレットの作り方</a></li>
+                <li><a href="#tips">攻略テクニック集</a></li>
+                <li><a href="#contact">開発者に連絡する</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>© 2026 SORANNCRAFT - Created by Sorann<br>
+    Minecraft Bedrock Edition Scripting API Project.</p>
+</footer>
+
+</body>
+</html>

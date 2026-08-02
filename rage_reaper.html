@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モブから怒りを奪う世界 - Rage Reaper スキル詳細解説＆完全攻略ガイド</title>
+    <style>
+        :root {
+            --primary-color: #ff1744;
+            --primary-hover: #d50000;
+            --accent-color: #ffea00;
+            --danger-color: #b71c1c;
+            --bg-color: #050505;
+            --card-bg: #121212;
+            --sidebar-bg: #0a0a0a;
+            --text-main: #eeeeee;
+            --text-secondary: #aaaaaa;
+            --sidebar-width: 280px;
+            --border-color: #333333;
+            --glow-primary: rgba(255, 23, 68, 0.5);
+            --glow-accent: rgba(255, 234, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 10% 10%, #1a0000 0%, #050505 50%);
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--sidebar-bg);
+            border-right: 2px solid #222;
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+        }
+
+        .sidebar h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px var(--glow-primary);
+            text-transform: uppercase;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 16px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            display: block;
+            padding: 12px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 23, 68, 0.1);
+            color: white;
+            border-left: 3px solid var(--primary-color);
+            box-shadow: 0 0 10px rgba(255, 23, 68, 0.2);
+        }
+
+        .container {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 60px;
+            max-width: 1200px;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #440000 0%, #a10000 40%, #dd0000 70%, #ff1744 100%);
+            color: white;
+            padding: 70px 50px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255,255,255,0.2);
+            margin-bottom: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px);
+            opacity: 0.5;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+            text-shadow: 3px 3px 0 #000, 0 0 20px var(--accent-color);
+            position: relative;
+        }
+
+        .header-section p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            line-height: 1.6;
+            position: relative;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: 4px;
+            padding: 50px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
+            border: 1px solid #1a1a1a;
+            position: relative;
+        }
+
+        .content-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--danger-color), var(--primary-color), var(--danger-color));
+        }
+
+        .content-card h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: white;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .content-card p {
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        .item-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .item-image img {
+            max-width: 160px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 30px var(--glow-primary);
+            border: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .item-image img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .download-area {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #a10000 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 5px 15px rgba(255, 23, 68, 0.3);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #ff5252 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-zip {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-zip:hover {
+            background: linear-gradient(135deg, #555 0%, #777 100%);
+            box-shadow: 0 8px 25px rgba(100,100,100,0.4);
+        }
+
+        .metadata-box {
+            background-color: #080808;
+            border: 1px solid #222;
+            padding: 25px;
+            border-radius: 4px;
+            margin-top: 40px;
+            font-size: 1rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .metadata-box ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .metadata-box li {
+            color: var(--text-secondary);
+        }
+
+        .metadata-box strong {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-accent);
+        }
+
+        .boss-name {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            text-shadow: 0 0 15px var(--glow-primary);
+            border-bottom: 1px solid rgba(255, 23, 68, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .guide-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .guide-card {
+            background-color: #0a0a0a;
+            border-radius: 4px;
+            padding: 30px;
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(255, 23, 68, 0.1);
+        }
+
+        .guide-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            text-shadow: 0 0 5px var(--glow-primary);
+        }
+
+        .guide-card p {
+            color: var(--text-main);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .guide-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .guide-card li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .guide-card li::before {
+            content: '▲';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 30px 0;
+            border: 1px solid #222;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 1rem;
+            background-color: #0a0a0a;
+        }
+
+        th, td {
+            padding: 18px 25px;
+            border-bottom: 1px solid #222;
+        }
+
+        th {
+            background-color: rgba(255, 23, 68, 0.05);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: bold;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        td strong {
+            color: var(--primary-color);
+        }
+
+        .developer-box {
+            background-color: #0a0a0a;
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 0 4px 4px 0;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .developer-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px var(--glow-primary);
+        }
+
+        .developer-box p {
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .sidebar-links {
+            margin-top: 40px;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        .sidebar-links .sidebar-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .sidebar-links a {
+            color: #00bfff !important;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            word-break: break-all;
+        }
+
+        .sidebar-links a:hover {
+            text-decoration: underline;
+        }
+
+        .policy-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .policy-text h3 {
+            color: var(--text-main);
+            margin: 20px 0 10px 0;
+        }
+
+        .contact-form-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                padding: 40px;
+                margin-left: 0;
+            }
+            .sidebar {
+                display: none;
+            }
+            .header-section h1 {
+                font-size: 2.5rem;
+            }
+            .guide-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>REAPER NAV</h2>
+        <ul>
+            <li><a href="#download">DL拠点</a></li>
+            <li><a href="#overview">作戦概要</a></li>
+            <li><a href="#boss">標的情報</a></li>
+            <li><a href="#new-mob">新モブ紹介</a></li>
+            <li><a href="#skills">特殊能力</a></li>
+            <li><a href="#items">支給装備</a></li>
+            <li><a href="#strategy">戦術指南</a></li>
+            <li><a href="#challenge">やり込み要素</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+            <li><a href="#privacy">規約・ポリシー</a></li>
+        </ul>
+        <div class="sidebar-links">
+            <div class="sidebar-title">カスタムアイテムの作り方</div>
+            <a href="https://sorann123.github.io">カスタムアイテムの作り方の記事</a>
+            
+            <div class="sidebar-title">RPGの最新情報</div>
+            <a href="https://sorann123.github.io/rpg-project.html">RPGの最新情報</a>
+        </div>
+    </aside>
+
+    <div class="container" id="download">
+        <header class="header-section">
+            <h1>RAGE REAPER</h1>
+            <p>敵性モブから「怒り」を強制剥奪。怒りがあれば無限の進化ができる世界で、真の力を呼び起こせ。</p>
+        </header>
+
+        <section class="content-card">
+            <h2>アドオン転送</h2>
+            <p>現時刻をもって最新のアドオン・データを配布する。各自の端末に合わせて最適なプロトコル（ファイル形式）を選択し、導入を開始せよ。</p>
+            <p><strong>展開手順:</strong> 受信したデータファイルを直接実行、またはMinecraft本体へインポートすることでシステムは自動的にパッチを適用する。</p>
+
+            <div class="item-image">
+                <img src="rage_reaper.png" alt="Rage Reaper 紋章">
+            </div>
+
+            <div class="download-area">
+                <a href="rage_reaper.mcaddon" class="btn" download>
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                    </svg>
+                    MCADDON 受信
+                </a>
+
+                <a href="rage_reaper.zip" class="btn btn-zip" download>
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                    </svg>
+                    ZIP アーカイブ受信
+                </a>
+            </div>
+
+            <div class="metadata-box">
+                <ul>
+                    <li>データ形式: <strong>.mcaddon / .zip</strong></li>
+                    <li>推奨環境: <strong>Minecraft 1.20+</strong></li>
+                    <li>運用モード: <strong>サバイバル / マルチプレイ対応</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-card" id="overview">
+            <h2>作戦概要</h2>
+            <p>Rage Reaperは、戦闘におけるプレイヤー自身の「怒り」を制御・リソース化し、戦況を支配する「Rageシステム」を核心とする。</p>
+            <p>敵性対象の排除により怒り値を蓄積。臨界点に達した怒りは、専用デバイス「怒りの核」を介して通常兵器を超越する破壊的スキルへと変換、連続投射が可能となる。また、特定環境の改変プロトコルも実装されている。</p>
+            <p>これは、戦闘能力の拡張に留まらず、原生村人との特殊交易プロトコル、ひいてはワールド全体の環境制御すら視野に入れた統合戦略パッケージである。</p>
+        </section>
+
+        <section class="content-card" id="boss">
+            <h2>標的情報（重要）</h2>
+            <p>怒りのエネルギーが具現化、あるいは侵食した最重要排除対象、および実体群。</p>
+
+            <div class="boss-name">怨念の村人 (onnen_main)</div>
+            <p>本アドオンにおける主要標的。異常な耐久性と即時自己修復能力を保有。プレイヤーを優先検知し、執拗な追跡を行う。生命力が低下（50%未満）すると、周囲一帯を壊滅させる爆発・衝撃波を伴う暴走フェーズへ移行するため、最大級の警戒が必要である。</p>
+
+            <div class="boss-name">怨念の分身 (onnen_clone)</div>
+            <p>怨念の村人が召喚する模倣体。精神を汚染する叫び声、視界を遮断するスカルク・パーティクルを放ち、プレイヤーの戦術行動を阻害する撹乱特化型。</p>
+
+            <div class="boss-name">怨念の王 (Enraged King)</div>
+            <p>ボス戦闘の背後に潜む、圧倒的な憤怒の実体。プレイヤー自身の「怒り値」と共鳴し、その数値を直接利用した予測不能かつ強力な攻撃を繰り出す。</p>
+        </section>
+
+        <section class="content-card" id="new-mob">
+            <h2>新次元のモブ紹介：覚醒するレイジ・ビースト</h2>
+            <p>戦いの中で生まれる「怒り」をエネルギーへと変換し、無限の進化を遂げる未知の存在が発見されました。</p>
+            <p>限界を超えたパワーを秘めたこのモブは、あなたのサバイバルやRPGの世界にどのような変革をもたらすのでしょうか？その進化のメカニズムには、まだ解明されていない数多くの可能性が眠っています。</p>
+
+            <ul>
+                <li><strong>第一段階：覚醒の兆候</strong><br>一定のダメージを受けるか、プレイヤーのアクションに反応してオーラを纏います。</li>
+                <li><strong>第二段階：形態変化</strong><br>周囲の環境を巻き込みながら、攻撃力と移動速度が劇的に上昇します。</li>
+                <li><strong>最終形態：無限の力</strong><br>怒りが頂点に達した時、周囲に特殊な効果を付与する真の姿を現します。</li>
+            </ul>
+        </section>
+
+        <section class="content-card" id="skills">
+            <h2>特殊能力（スキル）プロトコル</h2>
+            <p>怒りを触媒に発動する、対集団・対超大型モブ用戦術アビリティ。</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>アビリティ名</th>
+                            <th>戦術効果・コスト</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>インパクト</strong></td>
+                            <td>Rageコスト10。火属性ダメージを与え、視線方向に強烈なノックバックを発生。33%の確率で、地形を破壊する大爆発を引き起こす。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>チェーン</strong></td>
+                            <td>Rageコスト25。対象をプレイヤー前方2マスへ強制転送、超強力な移動速度低下を付与。拘束状態を維持し、対象が動いた場合は自動ダメージとノックバックで制裁する。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>カウンター</strong></td>
+                            <td>Rageコスト15。一時的に耐性IV・吸収効果を展開し、ほぼ全ての攻撃を無効化。5秒以内に受けたダメージを、そのまま攻撃者へ反射投射する。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>村人の呪い</strong></td>
+                            <td>Rageコスト40。効果範囲内の敵対生物を村人へ強制変異させ、周辺の敵にダメージと弱体化を蔓延させる環境改変スキル。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>咆哮</strong></td>
+                            <td>Rageゲージ全消費（リセット）。周囲の対象にダメージを与え、至近距離（4マス）の敵には完全停止レベルのスロウ（Slowness 255）を付与。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>終焉の閃光</strong></td>
+                            <td>Rageコスト100。視界内の全敵に高火力雷撃を投射。村人が存在する場合、怒りの増幅により雷撃の性質が変化、特殊セリフイベントがトリガーされる。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>深淵の捕食者</strong></td>
+                            <td>Rageコスト250。ザコ敵から生命力を強奪し、自身の攻撃力・体力を爆発的に強化。一定時間巨大化し、戦場を蹂躙する。ボスには無効。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>終焉の審判</strong></td>
+                            <td>Rageコスト500。怒りの臨界点。上空より約30発のメテオを召喚。プレイヤー周辺一帯の地形、および全実体を完全破壊・消滅させる戦略級兵器。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-card" id="items">
+            <h2>支給装備（アイテム）</h2>
+            <p>作戦遂行に不可欠な専用デバイス。</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>装備名</th>
+                            <th>機能 / 用途</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>怒りの核</strong></td>
+                            <td>怒りのエネルギーを制御する中枢デバイス。手に持つことでスキルを選択・切り替え、使用可能にする。Rage不足や前提条件未達成時は、自動で次のスキルへスキップするインテリジェント・ループ機能を搭載。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-card" id="strategy">
+            <h2>戦術指南 (GUIDE)</h2>
+            <p>高脅威対象「怨念の村人」を制圧し、作戦を完遂するための推奨戦術。</p>
+            
+            <div class="guide-section">
+                <div class="guide-card">
+                    <h3>推奨・支給装備</h3>
+                    <p>決戦に備え、以下の装備・物資を最大まで拡充せよ。</p>
+                    <ul>
+                        <li>完全エンチャント済みネザライト装甲一式</li>
+                        <li>エンダーパール（緊急転送・回避用）</li>
+                        <li>上位金のリンゴ、超健康ポーション（継続戦闘用）</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card">
+                    <h3>戦闘プロトコル</h3>
+                    <p>怨念の村人との近接戦闘は、即時修復能力により無意味である。弓、クロスボウによる遠距離火力投射を主軸とせよ。奴が転送（テレポート）を行った直後、一時的な機能停止（隙）が生じる。全火力をその瞬間に集中せよ。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-card" id="challenge">
+            <h2>やり込み要素 (CHALLENGE)</h2>
+            <p>ワールドの極限状態を体験し、真の能力を引き出すためのやり込み要素です。</p>
+
+            <div class="guide-section">
+                <div class="guide-card">
+                    <h3>1. 終焉スキルと巨大化バフの極限活用</h3>
+                    <p><strong>要素:</strong> <code>useExecutionFlash</code> や <code>useAbyssalEater</code> などの消費量の多いスキルを使いこなすこと。</p>
+                    <p>怒りゲージを500まで溜めて「終焉の審判（Final Judgment）」を発動させたり、深淵の力で自身のスケールを最大（5段階目）まで引き上げるなど、条件の厳しい大技を成功させる達成感があります。</p>
+                </div>
+
+                <div class="guide-card">
+                    <h3>2. 強敵・ボスの討伐と怒りゲージの管理</h3>
+                    <p><strong>要素:</strong> 怨念の村人や各種ボスモブとの連戦。</p>
+                    <p>ボスの体力が半分以下になった際の特殊フェーズや、即死ギミック（しゃがみ＋視線操作）を回避しつつ討伐することで、ボーナスとして怒りゲージを効率よく吸収できます。</p>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <div class="guide-card">
+                    <h3>3. スキルコンボの構築とビルド作成</h3>
+                    <p><strong>要素:</strong> 状況に応じたスキルの使い分け。</p>
+                    <p>「インパクト」で距離を詰めつつ、拘束が必要な場面で「チェーン」を組み合わせるなど、消費ゲージの異なるスキルを戦略的に運用するプレイヤースキルを磨く要素です。</p>
+                </div>
+
+                <div class="guide-card">
+                    <h3>4. 高難易度イベントの発生確率への挑戦</h3>
+                    <p><strong>要素:</strong> 特殊な確率イベントの引き当て。</p>
+                    <p>インパクト発動時の「モブの怒り爆散」や、周囲のモブを巻き込む効果を低確率から狙うことで、ワールドの地形破壊や大量の経験値獲得を楽しむことができます。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-card" id="contact">
+            <h2>お問い合わせ</h2>
+            <p>本プロジェクト、およびアドオンに関するご質問、バグ報告、改善要望等は下記より受け付けております。</p>
+            <div class="developer-box">
+                <p>制作者：<strong>Sorann (SORANNCRAFT)</strong></p>
+                <p>連絡先：下記のコンタクトフォーム、または公式SNSを通じてご連絡ください。順次対応いたしますが、学業および開発状況によりお時間をいただく場合がございます。</p>
+                <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" class="contact-form-link">お問い合わせフォームはこちら</a>
+            </div>
+        </section>
+
+        <section class="content-card" id="privacy">
+            <h2>プライバシーポリシー・免責事項</h2>
+            <div class="policy-text">
+                <h3>1. 広告の配信について</h3>
+                <p>当サイト（SORANNCRAFT）は、第三者配信の広告サービス「Google アドセンス」「Ninja AdMax」を利用しています。広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報 「Cookie」(氏名、住所、メール アドレス、電話番号は含まれません) を使用することがあります。</p>
+                
+                <h3>2. 免責事項</h3>
+                <p>当サイトで提供するアドオン（Rage Reaper等）は、細心の注意を払って開発されていますが、導入によるワールドデータの破損、意図しない地形破壊、動作の不具合について、制作者は一切の責任を負いません。必ずデータのバックアップを取った上でご利用ください。</p>
+
+                <h3>3. 著作権について</h3>
+                <p>当サイトに掲載されている文章・画像・プログラムコードおよびアドオンデータの著作権は、SORANNCRAFT管理者のSorannに帰属します。無断転載、二次配布、自作発言、および解析によるコードの盗用は固く禁じます。動画投稿や配信での利用は自由ですが、可能な限りクレジット表記をお願いいたします。</p>
+
+                <h3>4. 個人情報の取り扱い</h3>
+                <p>お問い合わせフォームから送信された個人情報は、回答や必要な情報を電子メールでご連絡する場合にのみ利用するものであり、これらの目的以外では利用いたしません。また、法令に基づき開示が必要な場合を除き、第三者に提供することはありません。</p>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <h2>開発者からのメッセージ</h2>
+            <div class="developer-box">
+                <h3>Sorannからの名言</h3>
+                <p>「失敗から学ぶことは多い。だが、僕のプロジェクトには完璧なシステムだけが求められるんだ」</p>
+                <p>「ワールドの真理に触れる覚悟がある者だけが、このシステムを使いこなせる」</p>
+                <p>「ただ壊すだけのゲームなんてつまらないだろう？ 怒りを力に変えてこそ、俺たちの道は開かれるのさ」</p>
+            </div>
+            
+            <div class="developer-box">
+                <h3>利用規約および免責事項</h3>
+                <p><strong>禁止事項:</strong> 本コンテンツの無断転載・二次配布・コードの無断利用は一切禁止されています。また、意図しないワールド破壊やデータの破損については一切の責任を負いませんので、必ずバックアップを取ってから運用してください。</p>
+                <p><strong>制作者:</strong> SORANNCRAFT 管理者 Sorann</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

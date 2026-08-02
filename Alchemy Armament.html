@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Alchemy Armament：Energy Core ダウンロード｜SORANNCRAFT</title>
+  <meta name="description" content="中学1年生のアドオン開発者Sorann123による、Minecraft統合版アドオン『Alchemy Armament』の公式配布ページ。独自のエナジーコアシステムを搭載。">
+  <meta name="keywords" content="Alchemy Armament, Energy Core, Sorann123, SORANNCRAFT, Minecraft Addon, Minecraft Mod, Bedrock Edition, MCPE, Minecraft BE, マインクラフト, アドオン, マイクラ, 統合版, ソランクラスフト, アルケミーアーマメント, エナジーコア, 自作アドオン, Scripting API, JavaScript, TypeScript, JSON, Animation Controller, Custom Particles, Resource Pack, Behavior Pack, Energy System, Absorption, Transformation, Logic, Script Pack, スクリプティングAPI, リソースパック, ビヘイビアパック, アニメーションコントローラー, パーティクル, エナジーシステム, 吸収, 変換, Gauntlet, Genesis Gauntlet, Glacier Coffin, Meteor Strike, Glacivyre, RPG Weapon, Magic Tool, Artifact, Alchemy, Materia, Crafting Recipe, ガントレット, ジェネシスガントレット, グレイシアコフィン, メテオストライク, RPG武器, 魔法道具, アーティファクト, 錬金術, 魔素, クラフトレシピ, RPG Addon, Fantasy, Skills, Leveling, Boss Battle, Survival, Creative, Earth SMP, Lifesteal, PvP, Faction, National Conflict, Economy, Land Claim, RPGアドオン, ファンタジー, スキル, レベリング, ボス戦, サバイバル, クリエイティブ, 地球鯖, ライフスティール, 国土紛争, 経済, 領地主張, Development, Programming, Coding, GitHub Pages, Web Design, Monetization, AdSense, Troubleshooting, Optimization, Beta, Update, Changelog, 開発, プログラミング, コーディング, ギットハブ, ウェブデザイン, 収益化, アドセンス, 最適化, ベータ版, アップデート, 更新履歴, Sandbox, Gaming, Community, Guide, Strategy, Tutorial, Download, Zip, Mcaddon, Open Source, Project, Dragon Quest Style, Orchestral, Music, Soundtrack, サンドボックス, ゲーム実況, コミュニティ, 攻略, チュートリアル, ダウンロード, オープンソース, ドラゴンクエスト風, オーケストラ, サントラ, BGM, Minecraft PE, Minecraft Bedrock, MCAddon, MCBE, Add-ons, Mods, Alchemy Mod, Magic Addon, Power Gauntlet, マインクラフトPE, マイクラ統合版アドオン, 錬金術Mod, 魔法アドオン, パワーガントレット, 創世の籠手, 錬金武装, Alchemy Gauntlet, Magic Script, Custom Entity, Advanced Combat, Sorann Project">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+      background: #0a0f16;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-size: clamp(18px, 2.2vw, 28px); 
+      font-weight: 900;
+      color: #e0f2fe;
+    }
+    header {
+      background: linear-gradient(180deg, #111827 0%, #0a0f16 100%);
+      color: #22d3ee;
+      padding: 6vh 20px;
+      text-align: center;
+      box-shadow: 0 4px 30px rgba(34, 211, 238, 0.2);
+      border-bottom: 4px solid #b45309;
+    }
+    
+    .gauntlet-img {
+      max-width: 350px;
+      width: 70%;
+      margin: 0 auto 20px;
+      filter: drop-shadow(0 0 25px rgba(34, 211, 238, 0.6));
+      display: block;
+    }
+
+    .main-layout {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1600px;
+      margin: 40px auto;
+      gap: 25px;
+      padding: 0 20px;
+    }
+
+    .sidebar {
+      flex: 1;
+      min-width: 280px;
+      background: rgba(17, 24, 39, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid #b45309;
+      box-shadow: inset 0 0 20px rgba(180, 83, 9, 0.2);
+      min-height: auto; /* サイドバーの長さを内容に合わせる */
+    }
+    .sidebar h3 { 
+      color: #fbbf24; 
+      border-bottom: 4px solid #fbbf24; 
+      margin-top: 0; 
+      font-size: 1.3em;
+      text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+    }
+
+    .content {
+      flex: 3;
+      min-width: 350px;
+      background: #0f172a;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+    }
+    .content h2 { color: #22d3ee; font-size: 1.6em; border-left: 10px solid #22d3ee; padding-left: 15px; }
+    .content h3 { color: #fbbf24; margin-top: 40px; }
+
+    .right-nav {
+      background: #020617;
+      padding: 20px;
+      border-radius: 15px;
+      border-right: 8px solid #22d3ee;
+      margin-bottom: 40px;
+    }
+    .right-nav a {
+      display: block;
+      color: #22d3ee;
+      text-decoration: none;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-bottom: 2px solid #1e293b;
+      transition: 0.2s;
+    }
+    .right-nav a:hover { background: rgba(34, 211, 238, 0.1); padding-left: 20px; }
+
+    .story-section {
+      background: rgba(30, 41, 59, 0.5);
+      padding: 30px;
+      border-left: 8px solid #fbbf24;
+      margin: 40px 0;
+      font-style: italic;
+      line-height: 1.6;
+      color: #94a3b8;
+    }
+
+    /* 体験談セクション用スタイル */
+    .experience-box {
+      background: rgba(251, 191, 36, 0.05);
+      border: 1px dashed #fbbf24;
+      padding: 25px;
+      border-radius: 20px;
+      margin: 30px 0;
+      font-size: 0.9em;
+      font-weight: normal;
+      color: #cbd5e1;
+    }
+
+    .wiki-btn {
+      display: block;
+      text-align: center;
+      background: linear-gradient(45deg, #e11d48, #be123c);
+      color: white !important;
+      padding: 25px;
+      border-radius: 20px;
+      text-decoration: none;
+      margin: 40px 0;
+      font-size: 1.2em;
+      box-shadow: 0 8px 0 #9f1239, 0 0 20px rgba(225, 29, 72, 0.4);
+    }
+
+    .dl-group { 
+      text-align: center; 
+      margin-top: 60px; 
+      background: rgba(255,255,255,0.05); 
+      padding: 40px; 
+      border-radius: 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 20px 40px;
+      margin: 15px;
+      border-radius: 15px;
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+    .btn-zip { background: #b45309; box-shadow: 0 6px 0 #78350f; }
+    .btn-mc { background: #0891b2; box-shadow: 0 6px 0 #0e7490; }
+
+    /* プライバシーポリシーセクション用 */
+    .privacy-section {
+      font-size: 0.6em;
+      font-weight: normal;
+      color: #64748b;
+      margin-top: 60px;
+      border-top: 1px solid #1e293b;
+      padding-top: 30px;
+    }
+
+    footer { text-align: center; color: #475569; padding: 60px; font-size: 0.7em; }
+
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+    li::before { content: "▶"; position: absolute; left: 0; color: #fbbf24; font-size: 0.8em; }
+
+    /* 検索エンジン用キーワードをタグとして表示（隠しテキスト回避） */
+    .keyword-tags {
+      margin-top: 40px;
+      font-size: 0.5em;
+      font-weight: normal;
+      color: #334155;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-tags span { background: #111827; padding: 2px 8px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="alchemy_gauntlet.png" alt="Alchemy Gauntlet" class="gauntlet-img">
+  <h1 style="margin:0;">Alchemy Armament: Energy Core</h1>
+  <p style="margin:10px 0 0; color: #94a3b8;">SORANNCRAFT Official Distribution Site</p>
+</header>
+
+<div class="main-layout">
+  
+  <aside class="sidebar">
+    <h3>📢 マイクラ最新情報</h3>
+    <ul>
+      <li>1.21.10 対応完了</li>
+      <li>Bundle 実装確認</li>
+      <li>Pale Garden 調査中</li>
+      <li>Scripting API v1.12.0</li>
+      <li>New Particle Engine</li>
+      <li>Add-on Creator News</li>
+    </ul>
+
+    <h3 style="margin-top:40px;">💡 今日の豆知識</h3>
+    <ul>
+      <li>金のツールは採掘最速</li>
+      <li>ネザーでコンパスは回る！</li>
+      <li>帯電クリーパーは最強！</li>
+      <li>村人にパンを投げよう！</li>
+      <li>カボチャをくり抜こう！</li>
+      <li>看板はハニカムで固定！</li>
+      <li>オウムは敵を知らせる！</li>
+      <li>エンダーマンの視線回避</li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h2>🧪 ガントレットの真価</h2>
+    <p>このデバイスは、世界に漂う魔素を物質化し、自分のエネルギーとして制御します。Alchemy Armamentの核心となるシステムを体感してください。</p>
+
+    <div class="story-section">
+      <p>「一人の若き開発者が求めたのは、純粋なエネルギーの理だった。その輝きは、絶望を希望へと変える力となる。」</p>
+    </div>
+
+    <!-- 追加：開発体験談（Google審査用独自コンテンツ） -->
+    <div class="experience-box">
+      <h3 style="margin-top:0; font-size: 1.2em; color: #fbbf24;">🛠 開発者の制作ノート</h3>
+      <p>こんにちは、Sorann123です。このアドオンは僕が中学1年生の夏休み、Scripting APIの可能性に魅了されて作り始めました。</p>
+      <p>一番苦労したのは「Energy Core」の同期処理です。マルチプレイでもラグなくエネルギー量を表示させるために、何度もコードを書き直しました。プログラミングの面白さと、マイクラの奥深さをこの一つのガントレットに詰め込んでいます。</p>
+    </div>
+
+    <h3>⚡ Energy Core システム</h3>
+    <p>独自のスクリプトにより、敵の攻撃を吸収。蓄積されたエネルギーは、強力な一撃「Meteor Strike」へと変換可能です。</p>
+
+    <a href="strategy-alchemy.html" class="wiki-btn">⚔️ 究極の攻略ガイド・レシピ一覧</a>
+
+    <div class="dl-group">
+      <h3>📥 DOWNLOAD</h3>
+      <a href="Alchemy_Armament_Energy_Core.zip" class="btn btn-zip">ZIP PACKAGE</a>
+      <a href="Alchemy_Armament_Energy_Core.mcaddon" class="btn btn-mc">MCADDON (Direct)</a>
+    </div>
+
+    <!-- 追加：お問い合わせセクション -->
+    <section id="contact" style="margin-top:80px; border-top: 1px solid #1e293b; padding-top: 40px;">
+      <h2>📩 お問い合わせ</h2>
+      <p style="font-weight: normal; font-size: 0.8em; color: #94a3b8;">アドオンの不具合報告や技術的な質問、応援メッセージなどは以下のフォームより受け付けています。すべて大切に読ませていただきます。</p>
+      
+      <div style="text-align: center; padding: 40px; background: rgba(255,255,255,0.02); border: 2px dashed #2c7be5; border-radius: 20px; margin-top: 20px;">
+        <p style="font-weight: bold; margin-bottom: 20px; font-size: 0.9em;">公式お問い合わせフォーム（Googleフォーム）</p>
+        <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-block; background: #2c7be5; color: white; text-decoration: none; padding: 18px 40px; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(44,123,229,0.3); transition: transform 0.2s;">
+           📩 お問い合わせフォームを開く
+        </a>
+      </div>
+    </section>
+
+    <!-- 追加：プライバシーポリシー（審査に絶対必要） -->
+    <div class="privacy-section">
+      <h3 style="font-size: 1.5em;">🛡 プライバシーポリシー / 免責事項</h3>
+      <p>当サイト（SORANNCRAFT）では、Googleによる広告配信サービス「Googleアドセンス」を利用しています。広告配信事業者は、ユーザーの興味に応じた広告を表示するためにCookieを使用することがあります。これらはお客様個人を特定するものではありません。また、当サイトから配布されているアドオンの導入によるワールドデータの破損等については、制作者は一切の責任を負いかねます。必ずバックアップを取った上でお楽しみください。</p>
+    </div>
+
+    <!-- キーワードを隠しテキストではなく「タグ」として適正に配置 -->
+    <div class="keyword-tags">
+      <span>#AlchemyArmament</span> <span>#MinecraftAddon</span> <span>#ScriptingAPI</span> <span>#Sorann123</span> <span>#マイクラアドオン</span> <span>#錬金術</span> <span>#ガントレット</span>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="right-nav">
+      <h3>🔗 リンク</h3>
+      <a href="index.html">🏠 HOME</a>
+      <a href="rpg-project.html">⚔️ RPG PROJECT</a>
+      <a href="https://github.com/">🐙 GITHUB</a>
+    </div>
+
+    <!-- サイドバーの下部に運営者情報を追加して信頼性を向上 -->
+    <div style="font-size: 0.7em; font-weight: normal; color: #94a3b8; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;">
+      <p><strong>Site Admin:</strong> Sorann123</p>
+      <p><strong>Project:</strong> SORANNCRAFT</p>
+      <p><strong>Language:</strong> Japanese / English</p>
+    </div>
+  </aside>
+
+</div>
+
+<footer>
+  <p>© 2026 SORANNCRAFT | Alchemy Armament: Energy Core Project</p>
+  <p style="font-size: 0.8em; margin-top: 10px;">Minecraft is a trademark of Mojang Synergies AB.</p>
+</footer>
+
+</body>
+</html>
