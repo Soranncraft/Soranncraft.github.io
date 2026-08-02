@@ -3,91 +3,95 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://sorann123.github.io/</loc>
+    <loc>https://soranncraft.github.io/</loc>
     <priority>1.0</priority>
-    <image:image><image:loc>https://sorann123.github.io/SORANNCRAFT_title.png</image:loc></image:image>
-    <image:image><image:loc>https://sorann123.github.io/rage_reaper.png</image:loc></image:image>
+    <image:image><image:loc>https://soranncraft.github.io/SORANNCRAFT_title.png</image:loc></image:image>
+    <image:image><image:loc>https://soranncraft.github.io/rage_reaper.png</image:loc></image:image>
   </url>
 
   <url>
-    <loc>https://sorann123.github.io/rage_reaper.html</loc>
+    <loc>https://soranncraft.github.io/rage_reaper.html</loc>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://sorann123.github.io/Alchemy-Armament.html</loc>
+    <loc>https://soranncraft.github.io/Alchemy-Armament.html</loc>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://sorann123.github.io/rpg-project.html</loc>
+    <loc>https://soranncraft.github.io/rpg-project.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sorann123.github.io/js.html</loc>
+    <loc>https://soranncraft.github.io/js.html</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://sorann123.github.io/beginner-settings.html</loc>
+    <loc>https://soranncraft.github.io/beginner-settings.html</loc>
     <priority>0.8</priority>
-    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+    <image:image><image:loc>https://soranncraft.github.io/minecraft_hero.png</image:loc></image:image>
   </url>
   <url>
-    <loc>https://sorann123.github.io/survival-start.html</loc>
+    <loc>https://soranncraft.github.io/survival-start.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sorann123.github.io/command-beginner.html</loc>
+    <loc>https://soranncraft.github.io/command-beginner.html</loc>
     <priority>0.8</priority>
-    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+    <image:image><image:loc>https://soranncraft.github.io/minecraft_hero.png</image:loc></image:image>
   </url>
   <url>
-    <loc>https://sorann123.github.io/redstone-beginner.html</loc>
+    <loc>https://soranncraft.github.io/redstone-beginner.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sorann123.github.io/enchant-guide.html</loc>
+    <loc>https://soranncraft.github.io/enchant-guide.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sorann123.github.io/multiplayer-guide.html</loc>
+    <loc>https://soranncraft.github.io/multiplayer-guide.html</loc>
     <priority>0.8</priority>
-    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+    <image:image><image:loc>https://soranncraft.github.io/minecraft_hero.png</image:loc></image:image>
   </url>
   <url>
-    <loc>https://sorann123.github.io/nether-guide.html</loc>
+    <loc>https://soranncraft.github.io/nether-guide.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sorann123.github.io/storage-guide.html</loc>
+    <loc>https://soranncraft.github.io/storage-guide.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sorann123.github.io/villager-trade.html</loc>
+    <loc>https://soranncraft.github.io/villager-trade.html</loc>
     <priority>0.8</priority>
-    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+    <image:image><image:loc>https://soranncraft.github.io/minecraft_hero.png</image:loc></image:image>
   </url>
   <url>
-    <loc>https://sorann123.github.io/elytra-roadmap.html</loc>
+    <loc>https://soranncraft.github.io/elytra-roadmap.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sorann123.github.io/texturepack-guide.html</loc>
+    <loc>https://soranncraft.github.io/texturepack-guide.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sorann123.github.io/worldsettings-guide.html</loc>
+    <loc>https://soranncraft.github.io/worldsettings-guide.html</loc>
     <priority>0.8</priority>
-    <image:image><image:loc>https://sorann123.github.io/minecraft_hero.png</image:loc></image:image>
+    <image:image><image:loc>https://soranncraft.github.io/minecraft_hero.png</image:loc></image:image>
   </url>
   <url>
-    <loc>https://sorann123.github.io/marketplace-guide.html</loc>
+    <loc>https://soranncraft.github.io/marketplace-guide.html</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://sorann123.github.io/rage_reaper.mcaddon</loc>
+    <loc>https://soranncraft.github.io/rage_reaper.mcaddon</loc>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://soranncraft.github.io/google5872f58b0fc9c388.html</loc>
+    <priority>0.1</priority>
   </url>
 </urlset>
