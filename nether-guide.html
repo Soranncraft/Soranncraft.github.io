@@ -231,21 +231,7 @@
     .emp-boldcolor strong, .emp-boldcolor b { color: var(--accent-dark); font-weight: 900; font-size: 1.06em; }
     .emp-underline strong, .emp-underline b { text-decoration: underline wavy var(--accent); text-decoration-thickness: 2px; font-weight: 900; }
     .emp-badge strong, .emp-badge b { background: var(--accent); color:#fff; padding: 1px 8px; border-radius: 6px; font-weight: 900; font-size: 0.92em; }
-
-    /* ---- スクロールアニメーション（記事ごとに種類が違う） ---- */
-    .reveal { opacity: 0; }
-    .reveal.in-view { opacity: 1; }
-    .anim-fadeup .reveal { transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .anim-fadeup .reveal.in-view { transform: translateY(0); }
-    .anim-fadein .reveal { transition: opacity .9s ease; }
-    .anim-zoom .reveal { transform: scale(.92); transition: opacity .6s ease, transform .6s ease; }
-    .anim-zoom .reveal.in-view { transform: scale(1); }
-    .anim-slideleft .reveal { transform: translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
-    .anim-slideleft .reveal.in-view { transform: translateX(0); }
-    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
-    @keyframes pulseGlow { 0%,100%{box-shadow:0 10px 20px rgba(0,0,0,0.1);} 50%{box-shadow:0 10px 30px var(--accent);} }
-    .anim-float .image-box.hero-image img { animation: floatY 3.5s ease-in-out infinite; }
-    .anim-pulseglow .image-box.hero-image img { animation: pulseGlow 3s ease-in-out infinite; }
+    .insta-banner strong, .insta-banner b { background: none; text-decoration: none; padding: 0; border-radius: 0; color: #fff; font-weight: 900; font-size: 1em; }
 
     @media (max-width: 1200px) {
       .sidebar-right { display: none; }
@@ -270,14 +256,14 @@
 
   </style>
 </head>
-<body id="top" class="anim-fadeup emp-underline">
+<body id="top" class="emp-underline">
 
 <div class="lang-switch">
   <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
 </div>
 
 <header>
-  <div class="header-logo">SC</div>
+  <div class="header-logo"><img src="sorann_logo.png" alt="SORANNCRAFT" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"></div>
   <div class="header-text">
     <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
     <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
@@ -348,14 +334,14 @@
   </aside>
 
   <main>
-    <div class="hero-title-box reveal">
+    <div class="hero-title-box">
       <h2 class="hero-h1">ネザー探索で初心者が絶対やらかす失敗5選</h2>
       <p class="hero-sub">一歩間違えると即死。安全な歩き方を身につけよう</p>
     </div>
 
 
 
-    <div class="insta-banner reveal">
+    <div class="insta-banner">
       <span class="insta-banner-emoji">📸</span>
       <div class="insta-banner-text">
         <strong>Instagramでも活動中！</strong><br>
@@ -388,14 +374,14 @@
     </div>
 
 
-    <h2 id="intro" class="reveal">はじめに：ネザーは「知識」が命を守る</h2>
-    <p class="reveal">ネザーは、序盤の洞窟探索とは比べ物にならないほど危険な場所です。溶岩の海、飛行するガスト、そして落ちたら即死級のダメージを受ける地形が至るところにあります。初めてゲートをくぐった瞬間の「うわ、なんだこの世界」という衝撃、覚えている人も多いのではないでしょうか。<strong>知らずに突っ込むと一瞬で装備を失う</strong>ことも珍しくありません。この記事では、初めてネザーに挑戦する人向けに、命を守るための知識をまとめました。</p>
+    <h2 id="intro">はじめに：ネザーは「知識」が命を守る</h2>
+    <p>ネザーは、序盤の洞窟探索とは比べ物にならないほど危険な場所です。溶岩の海、飛行するガスト、そして落ちたら即死級のダメージを受ける地形が至るところにあります。初めてゲートをくぐった瞬間の「うわ、なんだこの世界」という衝撃、覚えている人も多いのではないでしょうか。<strong>知らずに突っ込むと一瞬で装備を失う</strong>ことも珍しくありません。この記事では、初めてネザーに挑戦する人向けに、命を守るための知識をまとめました。</p>
 
-    <h2 id="sec1" class="reveal">1. ネザーゲートを作る前の準備</h2>
-    <p class="reveal">ネザーゲートは黒曜石10個で長方形の枠を作り、内側に着火することで起動します。黒曜石はダイヤモンドのツルハシがないと採掘できないため、まずはダイヤモンド装備を整えるのが先決です。ゲートを作る前に、鉄の防具一式・食料・剣を必ず用意しておきましょう。準備が整っていない状態で飛び込むのは、丸腰で戦場に立つようなものです。</p>
+    <h2 id="sec1">1. ネザーゲートを作る前の準備</h2>
+    <p>ネザーゲートは黒曜石10個で長方形の枠を作り、内側に着火することで起動します。黒曜石はダイヤモンドのツルハシがないと採掘できないため、まずはダイヤモンド装備を整えるのが先決です。ゲートを作る前に、鉄の防具一式・食料・剣を必ず用意しておきましょう。準備が整っていない状態で飛び込むのは、丸腰で戦場に立つようなものです。</p>
 
-    <h2 id="sec2" class="reveal">2. 初心者がやりがちな失敗5選</h2>
-    <ul class="check-list reveal">
+    <h2 id="sec2">2. 初心者がやりがちな失敗5選</h2>
+    <ul class="check-list">
       <li><strong>第5位：溶岩の海を歩いて渡ろうとする。</strong> 一瞬で炎上し装備ごと消滅する危険な行動。</li>
       <li><strong>第4位：ガストを無視して進む。</strong> 遠距離からの火の玉攻撃は油断すると大ダメージ。</li>
       <li><strong>第3位：ホグリンの群れに突っ込む。</strong> 複数体に囲まれるとあっという間に体力を失う。</li>
@@ -403,41 +389,41 @@
       <li><strong>第1位：帰りのゲートの場所を覚えていない。</strong> 探索に夢中になり、戻れなくなるケースが最多。</li>
     </ul>
 
-    <h2 id="sec3" class="reveal">3. 安全にネザー要塞を目指す歩き方</h2>
-    <p class="reveal">ネザー要塞を目指す際は、<strong>足場を必ずブロックで確保しながら進む</strong>のが鉄則です。溶岩の上を飛び越えるような無理な移動はせず、少し遠回りでも安全なルートを選びましょう。エンダーパールを持っている場合は、危険な地形を飛び越える手段としても活用できます。急ぐ気持ちはわかりますが、「急がば回れ」がネザーでは本当に大事な考え方です。</p>
+    <h2 id="sec3">3. 安全にネザー要塞を目指す歩き方</h2>
+    <p>ネザー要塞を目指す際は、<strong>足場を必ずブロックで確保しながら進む</strong>のが鉄則です。溶岩の上を飛び越えるような無理な移動はせず、少し遠回りでも安全なルートを選びましょう。エンダーパールを持っている場合は、危険な地形を飛び越える手段としても活用できます。急ぐ気持ちはわかりますが、「急がば回れ」がネザーでは本当に大事な考え方です。</p>
 
-    <h2 id="sec4" class="reveal">4. 帰り道を見失わないための工夫</h2>
-    <p class="reveal">ネザーでは、通ってきた道にブロックで目印をつけたり、松明を一定間隔で設置したりするだけで迷子のリスクが大幅に減ります。またネザーの1ブロックはオーバーワールドの8ブロック分に相当するため、<strong>ネザー経由の移動は距離を大きく短縮できる</strong>という利点も覚えておくと役立ちます。</p>
+    <h2 id="sec4">4. 帰り道を見失わないための工夫</h2>
+    <p>ネザーでは、通ってきた道にブロックで目印をつけたり、松明を一定間隔で設置したりするだけで迷子のリスクが大幅に減ります。またネザーの1ブロックはオーバーワールドの8ブロック分に相当するため、<strong>ネザー経由の移動は距離を大きく短縮できる</strong>という利点も覚えておくと役立ちます。</p>
 
-    <h2 id="sec5" class="reveal">5. 「怖くて一歩も進めない」人へ</h2>
-    <p class="reveal">ネザーの独特な雰囲気や、いつどこから攻撃されるかわからない緊張感に、怖さを感じるのは自然なことです。無理に一気に奥まで進む必要はありません。まずはゲートのすぐ近くを少しずつ探索し、慣れてきたら少しずつ範囲を広げていく、という進め方でまったく問題ありません。焦らず自分のペースで大丈夫です。</p>
+    <h2 id="sec5">5. 「怖くて一歩も進めない」人へ</h2>
+    <p>ネザーの独特な雰囲気や、いつどこから攻撃されるかわからない緊張感に、怖さを感じるのは自然なことです。無理に一気に奥まで進む必要はありません。まずはゲートのすぐ近くを少しずつ探索し、慣れてきたら少しずつ範囲を広げていく、という進め方でまったく問題ありません。焦らず自分のペースで大丈夫です。</p>
 
-    <div class="twist-box reveal" id="twist">
+    <div class="twist-box" id="twist">
       <span class="twist-label">ゲートを見失って本当に焦った瞬間</span>
       <p style="margin-bottom:0;">筆者が初めてネザーに潜った時、夢中になって探索を続けた結果、帰りのゲートの場所がまったく分からなくなり、装備がほぼ尽きかけた状態で1時間近く彷徨ったことがあります。あの時知っていれば防げた「絶対に迷わないマーキング方法」は、サイト本編で詳しく紹介しています。</p>
     </div>
 
 
-    <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
-    <div class="info-box reveal"><strong>Q. ネザーゲートはどこに作るのが安全ですか？</strong><br>A. できるだけ平らな足場の上に作るのがおすすめです。周囲を軽くブロックで囲っておくと、ガストやその他のモブから襲われるリスクを減らせます。</div>
-    <div class="info-box reveal"><strong>Q. ガストにはどう対処すればいいですか？</strong><br>A. ガストの火の玉は剣で打ち返すことができ、うまく当てると大ダメージを与えられます。慣れないうちは無理せず距離を取り、物陰に隠れながら弓で対処するのも有効です。</div>
-    <div class="info-box reveal"><strong>Q. ネザー要塞が見つかりません。何かコツはありますか？</strong><br>A. ネザー要塞は溶岩湖の近くに生成されやすい傾向があります。広い範囲を効率よく探すには、少し高い位置から見渡すのもおすすめです。</div>
-    <div class="info-box reveal"><strong>Q. ネザーが怖くてなかなか挑戦できません。無理に行くべきですか？</strong><br>A. 無理に行く必要はまったくありません。装備や心の準備が整ってから挑戦しても遅くはないので、自分のペースで少しずつ慣れていってください。</div>
+    <h2 id="faq">よくある質問（FAQ）</h2>
+    <div class="info-box"><strong>Q. ネザーゲートはどこに作るのが安全ですか？</strong><br>A. できるだけ平らな足場の上に作るのがおすすめです。周囲を軽くブロックで囲っておくと、ガストやその他のモブから襲われるリスクを減らせます。</div>
+    <div class="info-box"><strong>Q. ガストにはどう対処すればいいですか？</strong><br>A. ガストの火の玉は剣で打ち返すことができ、うまく当てると大ダメージを与えられます。慣れないうちは無理せず距離を取り、物陰に隠れながら弓で対処するのも有効です。</div>
+    <div class="info-box"><strong>Q. ネザー要塞が見つかりません。何かコツはありますか？</strong><br>A. ネザー要塞は溶岩湖の近くに生成されやすい傾向があります。広い範囲を効率よく探すには、少し高い位置から見渡すのもおすすめです。</div>
+    <div class="info-box"><strong>Q. ネザーが怖くてなかなか挑戦できません。無理に行くべきですか？</strong><br>A. 無理に行く必要はまったくありません。装備や心の準備が整ってから挑戦しても遅くはないので、自分のペースで少しずつ慣れていってください。</div>
 
-    <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
-    <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
-    <ul class="check-list reveal">
+    <h2 id="references">参考資料・公式ドキュメント</h2>
+    <p>本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
+    <ul class="check-list">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
       <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
-    <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
-    <p class="reveal" id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+    <h2 id="admin-policy"><span id="h2Policy">サイト運営指針</span></h2>
+    <p id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
 
     <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
 
-    <section id="privacy" class="section-full reveal">
+    <section id="privacy" class="section-full">
       <h2>プライバシーポリシー</h2>
       <div class="pp-box">
         <p><strong>広告の配信について</strong><br>
@@ -463,7 +449,7 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <section id="cheer" class="message-hero reveal">
+    <section id="cheer" class="message-hero">
       <h2>危険を知っている者だけが、安全に前へ進める。</h2>
       <p>ネザーは怖い場所ですが、正しい知識さえあれば決して手が届かない場所ではありません。焦らず一歩ずつ、装備と準備を整えてから挑戦してください。今日紹介した失敗パターンを避けるだけで、君の冒険はきっと安全なものになります。怖いと感じるのは、それだけ真剣に向き合っている証拠です。</p>
     </section>
@@ -523,10 +509,6 @@
     for (let id in t) { const el = document.getElementById(id); if (el) el.innerText = t[id]; }
     document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>

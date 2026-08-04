@@ -231,21 +231,7 @@
     .emp-boldcolor strong, .emp-boldcolor b { color: var(--accent-dark); font-weight: 900; font-size: 1.06em; }
     .emp-underline strong, .emp-underline b { text-decoration: underline wavy var(--accent); text-decoration-thickness: 2px; font-weight: 900; }
     .emp-badge strong, .emp-badge b { background: var(--accent); color:#fff; padding: 1px 8px; border-radius: 6px; font-weight: 900; font-size: 0.92em; }
-
-    /* ---- スクロールアニメーション（記事ごとに種類が違う） ---- */
-    .reveal { opacity: 0; }
-    .reveal.in-view { opacity: 1; }
-    .anim-fadeup .reveal { transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .anim-fadeup .reveal.in-view { transform: translateY(0); }
-    .anim-fadein .reveal { transition: opacity .9s ease; }
-    .anim-zoom .reveal { transform: scale(.92); transition: opacity .6s ease, transform .6s ease; }
-    .anim-zoom .reveal.in-view { transform: scale(1); }
-    .anim-slideleft .reveal { transform: translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
-    .anim-slideleft .reveal.in-view { transform: translateX(0); }
-    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
-    @keyframes pulseGlow { 0%,100%{box-shadow:0 10px 20px rgba(0,0,0,0.1);} 50%{box-shadow:0 10px 30px var(--accent);} }
-    .anim-float .image-box.hero-image img { animation: floatY 3.5s ease-in-out infinite; }
-    .anim-pulseglow .image-box.hero-image img { animation: pulseGlow 3s ease-in-out infinite; }
+    .insta-banner strong, .insta-banner b { background: none; text-decoration: none; padding: 0; border-radius: 0; color: #fff; font-weight: 900; font-size: 1em; }
 
     @media (max-width: 1200px) {
       .sidebar-right { display: none; }
@@ -270,14 +256,14 @@
 
   </style>
 </head>
-<body id="top" class="anim-fadein emp-boldcolor">
+<body id="top" class="emp-boldcolor">
 
 <div class="lang-switch">
   <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
 </div>
 
 <header>
-  <div class="header-logo">SC</div>
+  <div class="header-logo"><img src="sorann_logo.png" alt="SORANNCRAFT" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"></div>
   <div class="header-text">
     <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
     <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
@@ -348,14 +334,14 @@
   </aside>
 
   <main>
-    <div class="hero-title-box reveal">
+    <div class="hero-title-box">
       <h2 class="hero-h1">サバイバル序盤で絶対に死なない生存術</h2>
       <p class="hero-sub">初日の行動で、その後100時間の快適さが決まる</p>
     </div>
 
 
 
-    <div class="insta-banner reveal">
+    <div class="insta-banner">
       <span class="insta-banner-emoji">📸</span>
       <div class="insta-banner-text">
         <strong>Instagramでも活動中！</strong><br>
@@ -388,59 +374,66 @@
     </div>
 
 
-    <h2 id="intro" class="reveal">はじめに：初日の行動がすべてを決める</h2>
-    <p class="reveal">サバイバルモードで新しいワールドに降り立った瞬間、何もない草原にポツンと立たされて、「え、何からすればいいの…？」と不安になった経験はありませんか。僕もそうでした。周りには何もヒントがなくて、ただただ広い世界に放り出される。あの心細さは、統合版を始めた人なら誰もが一度は感じるものだと思います。</p>
-    <p class="reveal">多くの初心者は「とりあえず木を集めよう」くらいの感覚で動き始めます。それ自体は間違いではありませんが、<strong>最初の1日でどれだけ効率よく動けるかで、その後のプレイの快適さが大きく変わります</strong>。逆に言えば、最初の1日さえ乗り切ってしまえば、あとはぐっと気持ちが楽になります。本記事では、序盤に絶対にやるべき行動を時系列で整理しました。難しいことは一切書いていないので、安心して読み進めてください。</p>
+    <h2 id="intro">はじめに：初日の行動がすべてを決める</h2>
+    <p>サバイバルモードで新しいワールドに降り立った瞬間、何もない草原にポツンと立たされて、「え、何からすればいいの…？」と不安になった経験はありませんか。僕もそうでした。周りには何もヒントがなくて、ただただ広い世界に放り出される。あの心細さは、統合版を始めた人なら誰もが一度は感じるものだと思います。</p>
+    <p>多くの初心者は「とりあえず木を集めよう」くらいの感覚で動き始めます。それ自体は間違いではありませんが、<strong>最初の1日でどれだけ効率よく動けるかで、その後のプレイの快適さが大きく変わります</strong>。逆に言えば、最初の1日さえ乗り切ってしまえば、あとはぐっと気持ちが楽になります。本記事では、序盤に絶対にやるべき行動を時系列で整理しました。難しいことは一切書いていないので、安心して読み進めてください。</p>
 
-    <h2 id="sec1" class="reveal">1. スポーンしたらまず何をするか</h2>
-    <p class="reveal">スポーンした直後にやるべきことは、周囲の地形の把握です。木材が豊富な森、動物がいる草原、水源に近い場所などを見渡し、<strong>拠点を作る場所の当たりをつける</strong>ところから始めましょう。焦って遠くまで移動してしまうと、いざという時にスポーン地点へ戻れず迷子になりがちです。実際、僕も最初の頃は「もっといい場所があるはずだ」と欲張って遠くまで歩き回り、気づいたら日が暮れかけていて焦った経験があります。</p>
-    <p class="reveal">地形の確認と同時並行で、目に入った木を5〜10本ほど伐採します。木材があれば作業台と最低限の道具（木のツルハシ・斧・剣）が揃い、石器時代への移行がスムーズになります。「木を切る」というシンプルな作業ですが、これがその後のすべての土台になると考えると、意外と大事な一歩なんです。</p>
+    <h2 id="sec1">1. スポーンしたらまず何をするか</h2>
+    <p>スポーンした直後にやるべきことは、周囲の地形の把握です。木材が豊富な森、動物がいる草原、水源に近い場所などを見渡し、<strong>拠点を作る場所の当たりをつける</strong>ところから始めましょう。焦って遠くまで移動してしまうと、いざという時にスポーン地点へ戻れず迷子になりがちです。実際、僕も最初の頃は「もっといい場所があるはずだ」と欲張って遠くまで歩き回り、気づいたら日が暮れかけていて焦った経験があります。</p>
+    <p>地形の確認と同時並行で、目に入った木を5〜10本ほど伐採します。木材があれば作業台と最低限の道具（木のツルハシ・斧・剣）が揃い、石器時代への移行がスムーズになります。「木を切る」というシンプルな作業ですが、これがその後のすべての土台になると考えると、意外と大事な一歩なんです。</p>
 
-    <h2 id="sec2" class="reveal">2. 初日の食料確保の優先順位</h2>
-    <p class="reveal">満腹度が減ると移動速度や体力回復に影響が出るため、序盤の食料確保は最優先事項の一つです。優先順位としては、まず近くにいる動物（牛・羊・鶏）を狩ること、次にリンゴが落ちている樫の木や、道中に生えている小麦・にんじんなどの作物を探すことです。お腹が空いた状態で戦闘になると、思うように動けずどんどん不利になっていくので、「まだ大丈夫」と油断せず早めに確保しておくのが安心です。</p>
-    <ul class="check-list reveal">
+    <h2 id="sec2">2. 初日の食料確保の優先順位</h2>
+    <p>満腹度が減ると移動速度や体力回復に影響が出るため、序盤の食料確保は最優先事項の一つです。優先順位としては、まず近くにいる動物（牛・羊・鶏）を狩ること、次にリンゴが落ちている樫の木や、道中に生えている小麦・にんじんなどの作物を探すことです。お腹が空いた状態で戦闘になると、思うように動けずどんどん不利になっていくので、「まだ大丈夫」と油断せず早めに確保しておくのが安心です。</p>
+    <ul class="check-list">
       <li><strong>動物を狩る：</strong> 牛や豚は満腹度回復量が多く、初日の食料源として優秀。</li>
       <li><strong>種を集める：</strong> 草を刈って手に入る種は、拠点近くの畑づくりに使える。</li>
       <li><strong>食べ過ぎない：</strong> 満腹度が満タンなら食料は温存し、あとで使うのが賢い判断。</li>
     </ul>
 
-    <h2 id="sec3" class="reveal">3. 夜が来る前に済ませておくこと</h2>
-    <p class="reveal">統合版の1日は現実の約20分。スポーンしてから10分ほど経つと空が暗くなり始め、モンスターが湧きやすくなります。<strong>夜が来る前に「四方を囲んだだけの簡易シェルター」を必ず作っておく</strong>のが鉄則です。土ブロックを積み上げただけの箱でも十分に命を守ってくれます。見た目なんて気にしなくて大丈夫。まずは「生き延びること」が最優先です。</p>
-    <p class="reveal">シェルターの中では、たいまつを設置して明るさを確保しておくとモンスターが湧きにくくなります。余裕があればベッドも用意しておくと、夜をスキップできて翌朝から効率よく動けます。初日からベッドまで用意できなくても、まったく焦る必要はありません。少しずつで大丈夫です。</p>
+    <h2 id="sec3">3. 夜が来る前に済ませておくこと</h2>
+    <p>統合版の1日は現実の約20分。スポーンしてから10分ほど経つと空が暗くなり始め、モンスターが湧きやすくなります。<strong>夜が来る前に「四方を囲んだだけの簡易シェルター」を必ず作っておく</strong>のが鉄則です。土ブロックを積み上げただけの箱でも十分に命を守ってくれます。見た目なんて気にしなくて大丈夫。まずは「生き延びること」が最優先です。</p>
+    <p>シェルターの中では、たいまつを設置して明るさを確保しておくとモンスターが湧きにくくなります。余裕があればベッドも用意しておくと、夜をスキップできて翌朝から効率よく動けます。初日からベッドまで用意できなくても、まったく焦る必要はありません。少しずつで大丈夫です。</p>
 
-    <h2 id="sec4" class="reveal">4. 初心者がやりがちな死因ランキング</h2>
-    <p class="reveal">筆者がこれまで見てきた・経験してきた序盤の死因の中で、特に多いものを3つ紹介します。「あるある」と共感してもらえたら嬉しいです。</p>
-    <ul class="check-list reveal">
+    <h2 id="sec4">4. 初心者がやりがちな死因ランキング</h2>
+    <p>筆者がこれまで見てきた・経験してきた序盤の死因の中で、特に多いものを3つ紹介します。「あるある」と共感してもらえたら嬉しいです。</p>
+    <ul class="check-list">
       <li><strong>第3位：溶岩への落下。</strong> 洞窟探索中、足元の確認を怠って一瞬で即死するケース。</li>
       <li><strong>第2位：飢餓状態からのモンスター遭遇。</strong> 食料切れで体力が回復せず、そのまま倒される。</li>
       <li><strong>第1位：夜のシェルター未完成。</strong> 「あと少しだけ」と作業を続け、暗くなってから囲まれる。</li>
     </ul>
 
-    <h2 id="sec5" class="reveal">5. 何度も死んでしまう人へ伝えたいこと</h2>
-    <p class="reveal">「何度もやってるのに、毎回初日で死んでしまう…」そんな悩みを抱えている人は、決して珍しくありません。むしろ、それだけ真剣にサバイバルを楽しもうとしている証拠だと思います。大切なのは、死んだ原因を一つずつ振り返ることです。「溶岩で死んだ」「夜にシェルターがなくて死んだ」など、原因さえわかれば次からは確実に避けられるようになります。</p>
-    <p class="reveal">僕自身も、最初のワールドでは3日と持たずに何度もやり直していました。それでも諦めずに続けていくうちに、いつの間にか自然とパターンが体に染み込んでいったんです。今うまくいっていなくても、それは君の腕が悪いからではありません。ただ、まだコツを知らないだけです。</p>
+    <h2 id="sec5">5. 何度も死んでしまう人へ伝えたいこと</h2>
+    <p>「何度もやってるのに、毎回初日で死んでしまう…」そんな悩みを抱えている人は、決して珍しくありません。むしろ、それだけ真剣にサバイバルを楽しもうとしている証拠だと思います。大切なのは、死んだ原因を一つずつ振り返ることです。「溶岩で死んだ」「夜にシェルターがなくて死んだ」など、原因さえわかれば次からは確実に避けられるようになります。</p>
+    <p>僕自身も、最初のワールドでは3日と持たずに何度もやり直していました。それでも諦めずに続けていくうちに、いつの間にか自然とパターンが体に染み込んでいったんです。今うまくいっていなくても、それは君の腕が悪いからではありません。ただ、まだコツを知らないだけです。</p>
+
+    <h2 id="twist">序盤最大の分かれ道になった一夜の話</h2>
+    <div class="twist-box">
+      <span class="twist-label">実体験</span>
+      <p style="margin-bottom:0;">これは僕が今でもはっきり覚えている、初日の夜の話です。急いで作った掘っ立て小屋に一晩だけ隠れようとしたのですが、入口を土ブロック1個でしか塞いでいませんでした。真夜中、外からゾンビが土ブロックを壊す音が聞こえてきて、心臓が止まるかと思いました。あの時、あと数秒気づくのが遅れていたら、初日で全ロストしていたと思います。</p>
+      <p style="margin-bottom:0; margin-top:14px;">この一件以来、僕は「シェルターは頑丈な石ブロックで、入口は必ず2重に塞ぐ」というルールを絶対に崩さないようにしています。最初の一夜をどう乗り切るかで、その後何十時間ものプレイ体験がまるごと変わる——それを痛感させられた出来事でした。</p>
+    </div>
 
 
-    <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
-    <div class="info-box reveal"><strong>Q. 拠点はどこに作るのが一番いいですか？</strong><br>A. 水源が近く、木材の入手がしやすい平地または小さな丘の上がおすすめです。海や川に隣接していると移動や食料確保の面でも有利になります。</div>
-    <div class="info-box reveal"><strong>Q. シェルターは簡単なものでも大丈夫ですか？</strong><br>A. はい。土ブロックで四方と天井を塞いだだけの簡易シェルターでも、初日を生き延びるには十分な効果があります。翌日以降にゆっくり拡張していきましょう。</div>
-    <div class="info-box reveal"><strong>Q. 夜を安全に過ごすコツはありますか？</strong><br>A. 明るさを保つためにたいまつを複数設置し、隙間なくブロックで囲うことが基本です。ベッドを用意できれば夜をスキップできるため、序盤の安定感が大きく変わります。</div>
-    <div class="info-box reveal"><strong>Q. 何度も同じところで失敗してしまいます。おかしいのでしょうか？</strong><br>A. まったくおかしくありません。誰もが最初は同じ場所でつまずくものです。失敗した原因を一つずつメモしておくと、次第にパターンが見えてきて、驚くほど死ににくくなっていきます。</div>
+    <h2 id="faq">よくある質問（FAQ）</h2>
+    <div class="info-box"><strong>Q. 拠点はどこに作るのが一番いいですか？</strong><br>A. 水源が近く、木材の入手がしやすい平地または小さな丘の上がおすすめです。海や川に隣接していると移動や食料確保の面でも有利になります。</div>
+    <div class="info-box"><strong>Q. シェルターは簡単なものでも大丈夫ですか？</strong><br>A. はい。土ブロックで四方と天井を塞いだだけの簡易シェルターでも、初日を生き延びるには十分な効果があります。翌日以降にゆっくり拡張していきましょう。</div>
+    <div class="info-box"><strong>Q. 夜を安全に過ごすコツはありますか？</strong><br>A. 明るさを保つためにたいまつを複数設置し、隙間なくブロックで囲うことが基本です。ベッドを用意できれば夜をスキップできるため、序盤の安定感が大きく変わります。</div>
+    <div class="info-box"><strong>Q. 何度も同じところで失敗してしまいます。おかしいのでしょうか？</strong><br>A. まったくおかしくありません。誰もが最初は同じ場所でつまずくものです。失敗した原因を一つずつメモしておくと、次第にパターンが見えてきて、驚くほど死ににくくなっていきます。</div>
 
-    <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
-    <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
-    <ul class="check-list reveal">
+    <h2 id="references">参考資料・公式ドキュメント</h2>
+    <p>本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
+    <ul class="check-list">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
       <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
-    <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
-    <p class="reveal" id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+    <h2 id="admin-policy"><span id="h2Policy">サイト運営指針</span></h2>
+    <p id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
 
     <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
 
-    <section id="privacy" class="section-full reveal">
+    <section id="privacy" class="section-full">
       <h2>プライバシーポリシー</h2>
       <div class="pp-box">
         <p><strong>広告の配信について</strong><br>
@@ -466,7 +459,7 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <section id="cheer" class="message-hero reveal">
+    <section id="cheer" class="message-hero">
       <h2>最初の一夜を越えた君は、もう立派な冒険者だ。</h2>
       <p>誰だって最初は右も左も分からず、何度も同じ失敗を繰り返します。それは恥ずかしいことでも、才能がないことでもありません。今日紹介した行動を一つずつ試していけば、きっと安定して生き延びられるようになります。失敗した夜の記憶さえも、いつかは笑い話になる。焦らず、自分のペースで冒険を進めていこう。君ならきっと大丈夫。</p>
     </section>
@@ -526,10 +519,6 @@
     for (let id in t) { const el = document.getElementById(id); if (el) el.innerText = t[id]; }
     document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>

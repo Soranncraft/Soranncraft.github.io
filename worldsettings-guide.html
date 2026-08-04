@@ -231,21 +231,7 @@
     .emp-boldcolor strong, .emp-boldcolor b { color: var(--accent-dark); font-weight: 900; font-size: 1.06em; }
     .emp-underline strong, .emp-underline b { text-decoration: underline wavy var(--accent); text-decoration-thickness: 2px; font-weight: 900; }
     .emp-badge strong, .emp-badge b { background: var(--accent); color:#fff; padding: 1px 8px; border-radius: 6px; font-weight: 900; font-size: 0.92em; }
-
-    /* ---- スクロールアニメーション（記事ごとに種類が違う） ---- */
-    .reveal { opacity: 0; }
-    .reveal.in-view { opacity: 1; }
-    .anim-fadeup .reveal { transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .anim-fadeup .reveal.in-view { transform: translateY(0); }
-    .anim-fadein .reveal { transition: opacity .9s ease; }
-    .anim-zoom .reveal { transform: scale(.92); transition: opacity .6s ease, transform .6s ease; }
-    .anim-zoom .reveal.in-view { transform: scale(1); }
-    .anim-slideleft .reveal { transform: translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
-    .anim-slideleft .reveal.in-view { transform: translateX(0); }
-    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
-    @keyframes pulseGlow { 0%,100%{box-shadow:0 10px 20px rgba(0,0,0,0.1);} 50%{box-shadow:0 10px 30px var(--accent);} }
-    .anim-float .image-box.hero-image img { animation: floatY 3.5s ease-in-out infinite; }
-    .anim-pulseglow .image-box.hero-image img { animation: pulseGlow 3s ease-in-out infinite; }
+    .insta-banner strong, .insta-banner b { background: none; text-decoration: none; padding: 0; border-radius: 0; color: #fff; font-weight: 900; font-size: 1em; }
 
     @media (max-width: 1200px) {
       .sidebar-right { display: none; }
@@ -270,14 +256,14 @@
 
   </style>
 </head>
-<body id="top" class="anim-pulseglow emp-badge">
+<body id="top" class="emp-badge">
 
 <div class="lang-switch">
   <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
 </div>
 
 <header>
-  <div class="header-logo">SC</div>
+  <div class="header-logo"><img src="sorann_logo.png" alt="SORANNCRAFT" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"></div>
   <div class="header-text">
     <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
     <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
@@ -339,26 +325,27 @@
     </div>
 
     <div class="sidebar-box">
-      <div class="sidebar-title">🔗 関連記事</div>
+      <div class="sidebar-title">🔗 関連記事（おすすめ3選）</div>
       <ul class="update-list">
-        <li><a href="beginner-settings.html">買ったら最初にやるべき神設定7選</a></li>
-        <li><a href="multiplayer-guide.html">フレンドと遊ぶマルチプレイ入門</a></li>
+        <li><a href="index.html">カスタムアイテムの作り方（Blockbench編）</a></li>
+        <li><a href="script-api1.html">Script API入門（イベント処理編）</a></li>
+        <li><a href="redstone-beginner.html">レッドストーン回路 超入門ガイド</a></li>
       </ul>
     </div>
   </aside>
 
   <main>
-    <div class="hero-title-box reveal">
+    <div class="hero-title-box">
       <h2 class="hero-h1">ワールド設定・難易度を完全解説</h2>
       <p class="hero-sub">作成前に必ず確認しておきたい項目まとめ</p>
     </div>
 
-    <div class="image-box hero-image reveal">
+    <div class="image-box hero-image">
       <img src="minecraft_hero.png" alt="Minecraft 統合版 プレイイメージ">
       <p>ワールド作成画面の一つ一つの意味を知っておくだけで、後悔しない選択ができる。</p>
     </div>
 
-    <div class="insta-banner reveal">
+    <div class="insta-banner">
       <span class="insta-banner-emoji">📸</span>
       <div class="insta-banner-text">
         <strong>Instagramでも活動中！</strong><br>
@@ -377,6 +364,7 @@
         <li><a href="#sec4">4. 詳細設定で見落としがちな項目</a></li>
         <li><a href="#sec5">5. 「もう一度作り直したい」と思っている人へ</a></li>
         <li><a href="#twist">難易度をピースフルのまま数十時間気づかなかった話</a></li>
+        <li><a href="#tips">【裏技・豆知識】設定画面のもっと踏み込んだ活用術</a></li>
         <li><a href="#faq">よくある質問（FAQ）</a></li>
         <li><a href="#references">参考資料・公式ドキュメント</a></li>
         <li><a href="#admin-policy">サイト運営指針</a></li>
@@ -391,54 +379,73 @@
     </div>
 
 
-    <h2 id="intro" class="reveal">はじめに：作成画面は「見た目以上に重要」</h2>
-    <p class="reveal">ワールド作成画面には数多くの項目が並んでいますが、<strong>意味をよく理解しないまま「とりあえずデフォルトで」進めてしまう人がとても多い</strong>です。「早く遊びたい」という気持ちが先走って、細かい設定を飛ばしてしまう気持ち、すごくよくわかります。実はこの画面の選択一つで、その後の遊び方が大きく変わります。本記事では、各項目の意味を一つずつ丁寧に解説します。</p>
+    <h2 id="intro">はじめに：作成画面は「見た目以上に重要」</h2>
+    <p>ワールド作成画面には数多くの項目が並んでいますが、<strong>意味をよく理解しないまま「とりあえずデフォルトで」進めてしまう人がとても多い</strong>です。「早く遊びたい」という気持ちが先走って、細かい設定を飛ばしてしまう気持ち、すごくよくわかります。実はこの画面の選択一つで、その後の遊び方が大きく変わります。本記事では、各項目の意味を一つずつ丁寧に解説します。</p>
+    <p>特に統合版は、Java版と項目名や配置が微妙に異なる部分もあるため、「Java版では見たことがあるのに統合版では見当たらない」と戸惑う人も少なくありません。この記事では統合版の作成画面を上から順にたどりながら、実際にどんな影響が出るのかを、体験談も交えて紹介していきます。</p>
 
-    <h2 id="sec1" class="reveal">1. ゲームモードの違いを理解する</h2>
-    <ul class="check-list reveal">
+    <h2 id="sec1">1. ゲームモードの違いを理解する</h2>
+    <ul class="check-list">
       <li><strong>サバイバル：</strong> 資源を集め、体力・満腹度を管理しながら生き抜く標準的な遊び方。</li>
       <li><strong>クリエイティブ：</strong> 全アイテムが使い放題で、体力の概念がなく、建築や検証に集中できる。</li>
       <li><strong>アドベンチャー：</strong> ブロックの設置・破壊に制限がかかる、配布ワールド向けのモード。</li>
     </ul>
+    <p>ゲームモードは「その世界での過ごし方の方向性そのもの」を決める設定です。サバイバルは資源集めや生存の緊張感を楽しみたい人向け、クリエイティブは制限なく建築や実験を楽しみたい人向け、アドベンチャーは配布ワールドや脱出ゲームのように「決められたルールの中で遊ぶ」体験を作りたい人向け、とそれぞれ目的がはっきり分かれています。あとから変更もできますが、最初にどのモードで始めるかで、その後の数十時間の過ごし方が大きく変わってくるので、しっかり意識して選びましょう。</p>
 
-    <h2 id="sec2" class="reveal">2. 難易度4種類の違い</h2>
-    <p class="reveal">難易度は「ピースフル」「イージー」「ノーマル」「ハード」の4段階です。ピースフルではモンスターがそもそも出現せず、ハードになるほど飢餓状態でのダメージが増えるなど、シビアな管理が求められます。<strong>初心者にはバランスの良いノーマルがおすすめ</strong>ですが、建築を楽しみたいだけならピースフルも良い選択です。自分がどんな遊び方をしたいのかを考えてから選ぶと、後悔が少なくなります。</p>
+    <h2 id="sec2">2. 難易度4種類の違い</h2>
+    <p>難易度は「ピースフル」「イージー」「ノーマル」「ハード」の4段階です。ピースフルではモンスターがそもそも出現せず、ハードになるほど飢餓状態でのダメージが増えるなど、シビアな管理が求められます。<strong>初心者にはバランスの良いノーマルがおすすめ</strong>ですが、建築を楽しみたいだけならピースフルも良い選択です。自分がどんな遊び方をしたいのかを考えてから選ぶと、後悔が少なくなります。</p>
+    <p>意外と知られていないのが、難易度によって一部の敵の挙動そのものが変化する点です。例えばハード以上では、ゾンビが鉄の扉を破壊できるようになったり、一部のモブがより強力な装備を持って出現しやすくなったりします。単に「受けるダメージが増える」だけでなく「敵の行動パターン自体が変わる」ことも意識しておくと、拠点づくりの参考になります。</p>
 
-    <h2 id="sec3" class="reveal">3. ワールドタイプの選び方</h2>
-    <p class="reveal">通常の起伏ある地形で遊びたい場合は「無限ワールド」、建築の練習や検証をしたい場合は真っ平らな「スーパーフラット」を選ぶのが基本です。目的に応じてワールドタイプを選ぶことで、無駄なく遊びたいスタイルに集中できます。</p>
+    <h2 id="sec3">3. ワールドタイプの選び方</h2>
+    <p>通常の起伏ある地形で遊びたい場合は「無限ワールド」、建築の練習や検証をしたい場合は真っ平らな「スーパーフラット」を選ぶのが基本です。目的に応じてワールドタイプを選ぶことで、無駄なく遊びたいスタイルに集中できます。</p>
+    <p>スーパーフラットは、詳細設定から地層のプリセットをカスタマイズできることも覚えておくと便利です。「一番下から順に岩盤・土・草ブロックだけ」というシンプルな地形はもちろん、あらかじめ石や鉱石の層を厚めに設定しておけば、資源集めの効率を重視した検証用ワールドとしても活用できます。</p>
 
-    <h2 id="sec4" class="reveal">4. 詳細設定で見落としがちな項目</h2>
-    <p class="reveal">詳細設定を開くと、「モブスポーンの有無」「昼夜サイクルの有無」「不朽アイテムのドロップ」など、より細かい項目が並んでいます。特に「チートの有効化」は<strong>一度設定すると印象が変わる重要な項目</strong>なので、コマンドを使う予定があるかどうかを事前に決めてから進めるのがおすすめです。</p>
+    <h2 id="sec4">4. 詳細設定で見落としがちな項目</h2>
+    <p>詳細設定を開くと、「モブスポーンの有無」「昼夜サイクルの有無」「不朽アイテムのドロップ」など、より細かい項目が並んでいます。特に「チートの有効化」は<strong>一度設定すると印象が変わる重要な項目</strong>なので、コマンドを使う予定があるかどうかを事前に決めてから進めるのがおすすめです。</p>
+    <p>また「実績（アチーブメント）」は、チートを有効化したワールドでは取得できなくなる仕様になっている点にも注意が必要です。実績集めを目標にしている場合は、あとからコマンドを使いたくなっても我慢するか、実績用と検証用でワールドを分けておくと、あとで「せっかく育てたのに実績が取れない」というがっかりを避けられます。</p>
 
-    <h2 id="sec5" class="reveal">5. 「もう一度作り直したい」と思っている人へ</h2>
-    <p class="reveal">「今のワールド、設定を間違えたかも」と気づいて、作り直したいと思っている人もいるかもしれません。時間をかけて育てたワールドを手放すのは寂しい気持ちになりますよね。でも、次のワールドではきっと今日学んだ知識を活かせます。今のワールドをそのまま楽しみ続けるのも、新しく始めるのも、どちらも間違いではありません。あなたのペースで決めて大丈夫です。</p>
+    <h2 id="sec5">5. 「もう一度作り直したい」と思っている人へ</h2>
+    <p>「今のワールド、設定を間違えたかも」と気づいて、作り直したいと思っている人もいるかもしれません。時間をかけて育てたワールドを手放すのは寂しい気持ちになりますよね。でも、次のワールドではきっと今日学んだ知識を活かせます。今のワールドをそのまま楽しみ続けるのも、新しく始めるのも、どちらも間違いではありません。あなたのペースで決めて大丈夫です。</p>
 
-    <div class="twist-box reveal" id="twist">
+    <div class="twist-box" id="twist">
       <span class="twist-label">難易度をピースフルのまま数十時間気づかなかった話</span>
       <p style="margin-bottom:0;">筆者が友達に勧められてワールドを作った際、難易度が「ピースフル」のままだと気づかず、数十時間モンスターが一切出ない世界で遊び続けていたことがあります。「なんだか物足りない」と思っていた理由が判明した瞬間の衝撃は忘れられません。設定項目ごとの詳しい違いは、サイト本編の一覧表で確認できます。</p>
     </div>
 
+    <h2 id="tips">【裏技・豆知識】設定画面のもっと踏み込んだ活用術</h2>
+    <p>ここでは、ワールド作成画面をさらに使いこなすための、少し踏み込んだテクニックを紹介します。</p>
+    <div class="info-box">
+      <strong>⚙️ 設定活用の裏技集：</strong>
+      <ul class="check-list" style="background:none; padding-left:25px;">
+        <li><strong>「ワールドをコピー」してから設定を試す：</strong> 大事に育てたワールドの設定をいじるのが不安な場合は、事前にワールドをコピーしておき、コピー側で設定変更を試すと安心です。難易度やチートの有効化など、あとから取り消しにくい変更ほど、この一手間が安心材料になります。</li>
+        <li><strong>「試験的機能」は基本オフ、必要な時だけオン：</strong> 試験的機能はアドオンやScript APIを使う場合に必須ですが、一度オンにしたワールドはあとからオフに戻せない仕様になっています。とりあえず全部オンにするのではなく、実際に使う機能だけを見極めてから有効化する癖をつけましょう。</li>
+        <li><strong>「プレイヤーの権限」をあらかじめ設定しておく：</strong> マルチプレイで遊ぶ予定がある場合、詳細設定の「プレイヤー権限」からビジター・メンバー・オペレーターの初期権限を調整できます。友達を招待する前に決めておくと、後から「ブロックを壊せない」といったトラブルを防げます。</li>
+        <li><strong>バックアップ機能をオンにしておく：</strong> 設定画面には直接関係しませんが、ワールドの自動バックアップやクラウド同期をオンにしておくと、設定変更で万が一トラブルが起きても、以前の状態に復元できる可能性が高まります。大切なワールドほど、こうした保険をかけておくことをおすすめします。</li>
+      </ul>
+    </div>
 
-    <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
-    <div class="info-box reveal"><strong>Q. 難易度はあとから変更できますか？</strong><br>A. はい、ワールド作成後でも設定メニューからいつでも変更可能です。プレイしていて物足りなさや難しさを感じたら、気軽に調整してみてください。</div>
-    <div class="info-box reveal"><strong>Q. ゲームモードは途中で切り替えられますか？</strong><br>A. チートが有効なワールドであれば、コマンドや設定画面からいつでも切り替えられます。チートが無効なワールドの場合は変更できないことがあるため注意が必要です。</div>
-    <div class="info-box reveal"><strong>Q. スーパーフラットはサバイバルでも遊べますか？</strong><br>A. はい、遊べます。ただし資源が少なく地形も単調なため、建築練習や特定の縛りプレイに向いています。通常のサバイバルを楽しみたい場合は無限ワールドがおすすめです。</div>
-    <div class="info-box reveal"><strong>Q. 設定を間違えたことに後から気づきました。作り直すべきですか？</strong><br>A. 必ずしも作り直す必要はありません。難易度などあとから変更できる項目も多いので、まずは設定画面を確認してみてください。それでも納得できない場合は、新しいワールドで再挑戦するのも良い選択です。</div>
 
-    <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
-    <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
-    <ul class="check-list reveal">
+    <h2 id="faq">よくある質問（FAQ）</h2>
+    <div class="info-box"><strong>Q. 難易度はあとから変更できますか？</strong><br>A. はい、ワールド作成後でも設定メニューからいつでも変更可能です。プレイしていて物足りなさや難しさを感じたら、気軽に調整してみてください。</div>
+    <div class="info-box"><strong>Q. ゲームモードは途中で切り替えられますか？</strong><br>A. チートが有効なワールドであれば、コマンドや設定画面からいつでも切り替えられます。チートが無効なワールドの場合は変更できないことがあるため注意が必要です。</div>
+    <div class="info-box"><strong>Q. スーパーフラットはサバイバルでも遊べますか？</strong><br>A. はい、遊べます。ただし資源が少なく地形も単調なため、建築練習や特定の縛りプレイに向いています。通常のサバイバルを楽しみたい場合は無限ワールドがおすすめです。</div>
+    <div class="info-box"><strong>Q. 設定を間違えたことに後から気づきました。作り直すべきですか？</strong><br>A. 必ずしも作り直す必要はありません。難易度などあとから変更できる項目も多いので、まずは設定画面を確認してみてください。それでも納得できない場合は、新しいワールドで再挑戦するのも良い選択です。</div>
+    <div class="info-box"><strong>Q. 試験的機能はあとからオフにできますか？</strong><br>A. できません。一度でも試験的機能をオンにして作成・保存したワールドは、その設定のまま固定されます。使うかどうか迷った場合は、まず別の検証用ワールドで試してから本番のワールドに反映するのが安全です。</div>
+    <div class="info-box"><strong>Q. チートを有効化すると実績はもう一切取れなくなりますか？</strong><br>A. そのワールドでは実績の対象外になりますが、チートを使わない新しいワールドを別に作れば、そちらでは通常通り実績を取得できます。</div>
+
+    <h2 id="references">参考資料・公式ドキュメント</h2>
+    <p>本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
+    <ul class="check-list">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
       <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
-    <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
-    <p class="reveal" id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+    <h2 id="admin-policy"><span id="h2Policy">サイト運営指針</span></h2>
+    <p id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
 
     <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
 
-    <section id="privacy" class="section-full reveal">
+    <section id="privacy" class="section-full">
       <h2>プライバシーポリシー</h2>
       <div class="pp-box">
         <p><strong>広告の配信について</strong><br>
@@ -464,7 +471,7 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <section id="cheer" class="message-hero reveal">
+    <section id="cheer" class="message-hero">
       <h2>選択の意味を知ることが、後悔しない冒険への第一歩。</h2>
       <p>ワールド作成画面は最初の一歩に過ぎませんが、その一歩の選び方次第で、その後の何十時間もの体験が大きく変わります。今日紹介した内容を参考に、自分にぴったりの世界を選んで、思う存分冒険を楽しんでください。もし選択を間違えたと感じても、それはやり直せる失敗です。</p>
     </section>
@@ -476,7 +483,15 @@
       <ul class="update-list">
         <li><span style="color:#ff4757; font-weight:900;">1位</span> <a href="index.html">カスタムアイテムの作り方</a></li>
         <li><span style="color:#ff9800; font-weight:900;">2位</span> <a href="rpg-project.html">RPGボス「不死帝ソウラー」設定</a></li>
-        <li><span style="color:var(--accent); font-weight:900;">3位</span> <a href="beginner-settings.html">買ったら最初にやるべき神設定7選</a></li>
+        <li><span style="color:var(--accent); font-weight:900;">3位</span> <a href="script-api1.html">Script API入門</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">📌 おすすめ記事</div>
+      <ul class="update-list">
+        <li><a href="texturepack-guide.html">テクスチャパック・スキン活用術</a></li>
+        <li><a href="strategy-alchemy.html">Alchemy Armament 完全攻略</a></li>
+        <li><a href="rage_reaper.html">RAGE REAPER 開発ノート</a></li>
       </ul>
     </div>
   </aside>
@@ -524,10 +539,6 @@
     for (let id in t) { const el = document.getElementById(id); if (el) el.innerText = t[id]; }
     document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>

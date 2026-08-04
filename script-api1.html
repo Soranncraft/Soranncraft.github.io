@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>【完全版】マイクラ統合版 Script API 入門｜イベント処理から実践コードまで徹底解説｜SORANNCRAFT</title>
+  <meta name="description" content="マインクラフト統合版（Bedrock Edition）のScript API（@minecraft/server）を基礎から徹底解説。world.afterEventsなどのイベントの仕組み、rawtextを使った文字表示、注意点、今すぐ動く実践コードまで、現役中学生開発者Sorannが詳しく紹介します。">
+  <meta name="keywords" content="マイクラ統合版Script API, Minecraft Bedrock Script API, @minecraft/server, world.afterEvents, world.beforeEvents, system.runInterval, rawtext, Minecraft Bedrock Scripting, マイクラJavaScript, マイクラTypeScript, itemUse, entityHitEntity, playerJoin, worldInitialize, dynamic properties, スコアボード連携, マイクラアドオン開発, SORANNCRAFT">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.8;
+      scroll-behavior: smooth;
+      font-size: clamp(14px, 1.5vw, 17px);
+    }
+    header {
+      background: linear-gradient(90deg, #1a5ab3 0%, #2c7be5 100%);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .header-logo {
+      background: white;
+      padding: 4px;
+      border-radius: 8px;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(50px, 8vw, 60px);
+      height: clamp(50px, 8vw, 60px);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    .header-logo img { max-width: 100%; max-height: 100%; }
+    .header-text h1 {
+      margin: 0;
+      font-size: clamp(20px, 4vw, 32px);
+      letter-spacing: 2px;
+      font-weight: 900;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .grade-badge {
+      background: #ff4757;
+      color: white;
+      font-size: clamp(12px, 2vw, 18px);
+      padding: 5px 15px;
+      border-radius: 8px;
+      font-weight: 900;
+      text-shadow: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-text p { margin: 0; font-size: clamp(14px, 2vw, 18px); font-weight: bold; color: #e0eaff; }
+    .header-nav-buttons { display: flex; gap: 10px; margin-left: auto; margin-right: 80px; }
+    .nav-btn-link {
+      padding: 8px 15px; background: rgba(255,255,255,0.2); color: white; text-decoration: none;
+      border-radius: 5px; font-weight: bold; font-size: 13px; transition: background 0.3s;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .nav-btn-link:hover { background: rgba(255,255,255,0.4); }
+    .lang-switch { position: absolute; top: 15px; right: 20px; z-index: 1100; }
+    .lang-btn { background: #333; color: white; border: 1px solid #555; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; }
+    nav.global-nav { background: #154284; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    nav.global-nav ul { max-width: 1600px; margin: 0 auto; padding: 0; list-style: none; display: flex; flex-wrap: wrap; }
+    nav.global-nav li { flex: 1; min-width: 100px; }
+    nav.global-nav a {
+      display: block; color: white; text-decoration: none; text-align: center; padding: 12px 5px;
+      font-weight: bold; font-size: clamp(12px, 1.5vw, 15px); border-right: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+    nav.global-nav a:hover { background: #2c7be5; }
+    .breadcrumb { max-width: 1600px; margin: 10px auto; padding: 0 30px; font-size: clamp(11px, 1.2vw, 13px); color: #666; }
+    .breadcrumb a { color: #2c7be5; text-decoration: none; }
+    .container { max-width: 1600px; margin: 0 auto; display: flex; flex-direction: row; flex-wrap: wrap; }
+    .sidebar-left { width: 320px; background: #f8f9fa; padding: 30px 20px; border-right: 1px solid #e1e4e8; min-height: 100vh; flex-shrink: 0; }
+    .sidebar-right { width: 300px; background: #f8f9fa; padding: 30px 15px; border-left: 1px solid #e1e4e8; flex-shrink: 0; }
+    .sidebar-box { background: white; border-radius: 12px; padding: 15px; margin-bottom: 25px; border: 1px solid #e1e4e8; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .sidebar-title { background: #2c7be5; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; margin-bottom: 12px; font-size: 14px; display: flex; align-items: center; }
+    .rpg-status { border: 2px solid #ff4757; background: #fff5f5; }
+    .rpg-status-title { color: #ff4757; font-weight: 900; font-size: 18px; display: block; margin-bottom: 10px; text-align: center; }
+    .update-list { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+    .update-list li { padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; line-height: 1.4; }
+    .update-list li a { text-decoration: none; color: #2c7be5; }
+    .ver-tag { display: inline-block; background: #4caf50; color: white; padding: 1px 6px; border-radius: 4px; font-size: 10px; margin-right: 5px; margin-bottom: 3px; }
+    .ver-tag.new { background: #ff9800; } .ver-tag.fix { background: #2196f3; } .ver-tag.tips { background: #9c27b0; }
+    main { flex: 1; background: white; padding: clamp(20px, 5%, 40px) clamp(15px, 5%, 50px); min-width: 300px; }
+    .toc { background: #f9f9f9; border: 1px solid #ddd; padding: 20px; margin-bottom: 30px; border-radius: 8px; }
+    .toc-title { font-weight: 900; font-size: clamp(16px, 2vw, 18px); margin-bottom: 10px; display: block; color: #1a5ab3; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    .toc ul { list-style: none; padding-left: 15px; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { color: #2c7be5; text-decoration: none; font-weight: bold; font-size: clamp(13px, 1.5vw, 15px); }
+    .toc a:hover { text-decoration: underline; }
+    p { font-weight: 600; margin-bottom: 1.5em; font-size: clamp(15px, 1.8vw, 17px); color: #333; }
+    h2 { background: linear-gradient(to right, #f8f9fa, #ffffff); border-left: 8px solid #2c7be5; border-bottom: 1px solid #eee; padding: 15px 20px; margin: 50px 0 25px 0; font-size: clamp(20px, 3vw, 24px); font-weight: 900; }
+    .image-box { background: #f3f3f3; border: 2px solid #ddd; padding: clamp(10px, 3vw, 30px); text-align: center; margin: 30px 0; border-radius: 12px; }
+    .image-box img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .info-box { background: #fff8e1; border: 2px solid #ffeeba; padding: 25px; border-radius: 12px; margin: 30px 0; }
+    .tips-box { background: #f3eaff; border: 2px solid #d8c2ff; padding: 25px; border-radius: 12px; margin: 30px 0; }
+    ul.check-list { background: #f1f8ff; padding: 25px 25px 25px 40px; border-radius: 12px; border-left: 5px solid #2c7be5; list-style-type: "✔ "; }
+    ul.check-list li { margin-bottom: 10px; font-weight: 700; }
+    code { background: #2d3436; color: #fab1a0; padding: 2px 6px; border-radius: 4px; font-family: Consolas, Monaco, monospace; }
+    pre code { color: #dfe6e9; }
+    .section-full { background: #fff; padding: 40px; margin-top: 40px; border-radius: 12px; border: 1px solid #e1e4e8; }
+    .message-hero { background: linear-gradient(135deg, #1a5ab3 0%, #2c7be5 100%); color: white; padding: 60px 40px; border-radius: 20px; text-align: center; margin: 60px 0; box-shadow: 0 20px 40px rgba(26,90,179,0.3); }
+    .message-hero h2 { background: none; border: none; color: white; margin: 0 0 20px 0; padding: 0; font-size: clamp(24px, 5vw, 36px); text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .message-hero p { color: #e0eaff; font-size: clamp(16px, 2.2vw, 20px); max-width: 800px; margin: 0 auto 30px auto; line-height: 2; }
+    .back-to-top { position: fixed; bottom: 30px; right: 30px; background: #2c7be5; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 999; font-size: 20px; }
+    footer { text-align: center; padding: 60px 20px; background: #333; color: white; }
+    .footer-links { margin-bottom: 20px; }
+    .footer-links a { color: #aaa; text-decoration: none; margin: 0 15px; font-size: 14px; }
+    .footer-links a:hover { color: white; }
+    .pp-box { background: #fdfdfd; border: 1px solid #eee; padding: 20px; font-size: 13px; color: #555; line-height: 1.6; }
+    .recommend-box a { display: block; padding: 10px; margin-bottom: 8px; background: #f1f8ff; border-radius: 8px; text-decoration: none; color: #1a5ab3; font-weight: bold; font-size: 13px; border-left: 4px solid #2c7be5; transition: 0.2s; }
+    .recommend-box a:hover { background: #dceeff; transform: translateX(3px); }
+    @media (max-width: 1200px) {
+      .sidebar-right { display: none; }
+      nav.global-nav li { flex: none; width: 33.33%; }
+      .header-nav-buttons { margin-right: 60px; }
+    }
+    @media (max-width: 768px) {
+      .container { flex-direction: column; }
+      .sidebar-left { width: 100%; border-right: none; border-bottom: 1px solid #e1e4e8; min-height: auto; box-sizing: border-box; }
+      nav.global-nav li { width: 50%; }
+      header { justify-content: center; text-align: center; }
+      .header-logo { margin: 0 0 10px 0; }
+      .header-text h1 { justify-content: center; }
+      .header-nav-buttons { width: 100%; justify-content: center; margin: 15px 0 0 0; }
+    }
+  </style>
+</head>
+<body id="top">
+
+<div class="lang-switch">
+  <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
+</div>
+
+<header>
+  <div class="header-logo"><img src="Sorann右上表示.png" alt="SorannLogo"></div>
+  <div class="header-text">
+    <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
+    <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
+  </div>
+  <div class="header-nav-buttons">
+    <a href="js.html" class="nav-btn-link" id="navJs">JSONアドバイザー</a>
+    <a href="mtas.html" class="nav-btn-link" id="navMtas">マイクラ統合版アドオン専用用語集</a>
+  </div>
+</header>
+
+<nav class="global-nav">
+  <ul>
+    <li><a href="index.html" id="gnavHome">ホーム</a></li>
+    <li><a href="#toc" id="gnavItem">Script API攻略</a></li>
+    <li><a href="rpg-project.html" id="gnavRpg">RPGプロジェクト</a></li>
+    <li><a href="#privacy" id="gnavPrivacy">プライバシーポリシー</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb" id="breadcrumb">
+  <a href="index.html">ホーム</a> ＞ <a href="#intro">統合版アドオン攻略</a> ＞ <strong>Script API入門（基礎編）</strong>
+</div>
+
+<div class="container">
+  <aside class="sidebar-left">
+    <div class="sidebar-box rpg-status">
+      <span class="rpg-status-title" id="rpgStatusTitle">🔥 RPGプロジェクト進行中</span>
+      <p style="font-size: 16px; font-weight: 900; text-align: center; margin-bottom: 10px;" id="rpgStatusMsg1">あともう少しで最高傑作が完成します...</p>
+      <p style="font-size: 12px; color: #666; text-align: center; margin-bottom: 10px;" id="rpgStatusMsg2">かつてないシステムと壮大なストーリー。公開まで秒読み開始。</p>
+      <a href="rpg-project.html" style="display: block; text-align: center; background: #ff4757; color: white; padding: 10px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; box-shadow: 0 4px 0 #b3323d;" id="rpgStatusLink">開発状況を詳しく見る →</a>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="newsTitle">統合版 最新情報</div>
+      <ul class="update-list">
+        <li><span class="ver-tag new">1.20.7x</span> <span id="news1">Script APIの安定版モジュールが拡充され、より多くのイベントが正式リリースされました。</span></li>
+        <li><span class="ver-tag">1.21</span> <span id="news2">試験的機能として、新たな構造物「トライアルチャンバー」が追加されています。</span></li>
+        <li><span class="ver-tag fix">修正</span> <span id="news3">Script API における UI 表示に関する不具合が修正されました。</span></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="adminTitle">👤 運営者情報</div>
+      <div style="font-size: 13px;" id="adminInfo">
+        <strong>Sorann（ソラン）</strong><br>
+        マイクラ開発の最前線を走る中学一年生クリエイターが、6年にわたる研鑽の成果を「SORANNCRAFT」に凝縮。独学で習得した高度なScript APIや3Dモデリングの技術を、開発者ならではの視点で解りやすく言語化したコンテンツが最大の特徴です。<br><br>
+        小学生の頃から自作アドオンやHTML5ゲームの制作に取り組み、実際に手を動かして得た知見だけを記事にしています。ご意見・ご質問はページ下部のお問い合わせフォームからお気軽にどうぞ。
+      </div>
+    </div>
+
+    <div class="sidebar-box recommend-box">
+      <div class="sidebar-title">📌 あわせて読みたい</div>
+      <a href="index.html">カスタムアイテムの作り方（Blockbench編）</a>
+      <a href="redstone-beginner.html">レッドストーン回路 超入門ガイド</a>
+      <a href="worldsettings-guide.html">ワールド設定・裏コマンド完全攻略</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="title-image" style="text-align:center; margin-bottom: 40px;">
+      <img src="script_api_title1.png" style="max-width:100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));" alt="Script API入門タイトル">
+    </div>
+
+    <div class="toc" id="toc">
+      <span class="toc-title" id="tocTitle">この記事の目次</span>
+      <ul>
+        <li><a href="#intro" id="toc1">はじめに：Script APIとは何か</a></li>
+        <li><a href="#section1" id="toc2">1. 開発環境の準備とmanifestの設定</a></li>
+        <li><a href="#step1" id="toc3">2. Script APIの心臓部「イベント」を理解する</a></li>
+        <li><a href="#step2" id="toc4">3. 実践！今すぐ動くサンプルコード</a></li>
+        <li><a href="#text" id="toc5">4. 文字・テキスト表示の正しい書き方（rawtext）</a></li>
+        <li><a href="#caution" id="toc6">5. Script APIを書くときの重要な注意点</a></li>
+        <li><a href="#tips" id="toc7">【裏技・豆知識】現役開発者だけが知るテクニック集</a></li>
+        <li><a href="#faq" id="toc7b">よくある質問（FAQ）</a></li>
+        <li><a href="#references" id="toc7c">参考資料・公式ドキュメント</a></li>
+        <li><a href="#admin-policy" id="toc8">サイト運営指針</a></li>
+        <li><a href="#privacy" id="toc9">プライバシーポリシー</a></li>
+        <li><a href="#cheer" id="toc10">みんなへの応援メッセージ</a></li>
+      </ul>
+    </div>
+
+    <h2 id="intro"><span id="h2Intro">はじめに：Script APIとは何か</span></h2>
+    <p id="pIntro1">Script APIとは、マインクラフト統合版（Bedrock Edition）の世界を、JavaScript（正確にはTypeScriptベース）のプログラムから直接操作できる公式の仕組みです。ビヘイビアパックのJSONだけでは「アイテムを組み合わせる」ことしかできませんが、Script APIを使えば「敵を倒した瞬間に花火を打ち上げる」「特定の座標に入ったら音楽を流す」といった、条件分岐やタイミング制御を含む本格的なゲームロジックを、自分の手で書けるようになります。</p>
+    <p>これまでJSONのコンポーネントを組み合わせるだけだった人にとって、Script APIは「静的なパーツ組み立て」から「動的なプログラミング」への大きなジャンプになります。最初は難しく感じるかもしれませんが、仕組みそのものはとてもシンプルです。基本は「①何かが起きるのを待つ（イベント）」「②起きた瞬間に処理を書く（コールバック関数）」の2つだけ。この記事では、その2つの考え方を土台にしながら、実際にコピペしてすぐ動かせるコードと合わせて、初心者がつまずきやすいポイントまでまとめて解説していきます。</p>
+    <p>この記事で扱う範囲は、①開発環境とmanifestの設定、②イベントシステムの基礎、③実践的なサンプルコード、④文字表示（rawtext）の正しい書き方、⑤注意すべき落とし穴、⑥現役開発者ならではの裏技・豆知識、の6段階です。上から順番に読み進めれば、「イベントを待つ→処理を書く→ゲーム内で確認する」という一連の開発フローが自然に身につくように構成しています。</p>
+
+    <h2 id="section1"><span id="h2Env">1. 開発環境の準備とmanifestの設定</span></h2>
+    <p id="pEnv1">Script APIを使うには、通常のアイテム制作とは違う準備が必要です。まず、Script APIのコードは<code>.js</code>ファイル（またはビルドした<code>.js</code>）としてビヘイビアパック内の<code>scripts</code>フォルダに配置します。そして、そのファイルをマインクラフトに読み込ませるために、<code>manifest.json</code>に「モジュール」と「依存関係」の2つを追加で記述する必要があります。</p>
+    <div class="info-box">
+      <strong>manifest.jsonに追加するモジュール宣言の例：</strong>
+      <pre style="background:#2d3436; color:#dfe6e9; padding:15px; border-radius:8px; overflow-x:auto; font-size:13px; line-height:1.6;"><code>{
+  "modules": [
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "（このモジュール専用の別のUUID）",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.13.0"
+    }
+  ]
+}</code></pre>
+    </div>
+    <p><code>entry</code>に指定したパス（例では<code>scripts/main.js</code>）が、ゲーム起動時に最初に読み込まれるファイルになります。<code>dependencies</code>の<code>module_name</code>には<code>@minecraft/server</code>という公式モジュールを指定するのが基本で、これによって<code>world</code>や<code>system</code>といった、ゲームを操作するための重要なオブジェクトが使えるようになります。バージョン番号はマイクラのアップデートに合わせて変わることがあるので、エラーが出たときは真っ先にここを疑いましょう。</p>
+    <p>準備ができたら、マインクラフト側の設定も忘れずに行います。ワールド設定の「実験的機能（試験的機能）」から「ベータAPI（Beta APIs）」をオンにしないと、Script APIを使ったビヘイビアパックはそもそも有効化できません。この設定を見落として「アドオンが反映されない」と悩む人が非常に多いので、最初に必ずチェックしておきましょう。</p>
+
+    <h2 id="step1">2. Script APIの心臓部「イベント」を理解する</h2>
+    <p>Script APIを学ぶうえで、最も重要な考え方が「イベント（Event）」です。マインクラフトの世界では「プレイヤーがブロックを壊した」「エンティティがダメージを受けた」「ワールドが起動した」など、無数の出来事が絶えず発生しています。Script APIは、これらの出来事のひとつひとつに「イベントリスナー」という関数を貼り付けておくことで、「その出来事が起きた瞬間に処理を実行する」というプログラムを組み立てます。</p>
+    <p>イベントは大きく分けて<code>world.beforeEvents</code>と<code>world.afterEvents</code>の2種類のグループに整理されています。名前の通り、<code>beforeEvents</code>は「その出来事が実際に反映される直前」に呼び出され、処理をキャンセルすることが可能です。一方<code>afterEvents</code>は「その出来事が実際に反映された直後」に呼び出され、結果を受け取って追加の演出やロジックを加えるのに向いています。</p>
+    <ul class="check-list">
+      <li><strong>worldInitialize：</strong> ワールドが読み込まれた瞬間に一度だけ発生するイベントです。カスタムアイテムのコンポーネントを登録するなど、ワールド起動時の初期設定を行うのに使います。</li>
+      <li><strong>playerSpawn：</strong> プレイヤーがワールドに参加・リスポーンした瞬間に発生します。初回参加時だけ挨拶メッセージを送る、といった演出に便利です。</li>
+      <li><strong>entityHitEntity：</strong> あるエンティティが別のエンティティを攻撃した瞬間に発生します。剣で殴った時の特殊効果などは、たいていこのイベントを起点に作られています。</li>
+      <li><strong>itemUse：</strong> プレイヤーがアイテムを使用（右クリック／タップ）した瞬間に発生します。杖やスクロールのようなアイテムの起点になる代表的なイベントです。</li>
+      <li><strong>blockPlace / playerBreakBlock：</strong> ブロックが設置された時、あるいはプレイヤーがブロックを壊した時に発生します。トラップやギミックの作成でよく使われます。</li>
+    </ul>
+    <p>これらのイベントは、それぞれ「どのプレイヤー・エンティティ・ブロックで発生したか」という詳細情報（イベントデータ）を持っています。関数の引数として受け取れるこのデータを使うことで、「誰が」「どこで」「何をしたか」を判定し、狙った処理だけを実行できるようになります。</p>
+
+    <h2 id="step2">3. 実践！今すぐ動くサンプルコード</h2>
+    <p>ここからは、実際にコピー＆ペーストして動かせるサンプルコードを紹介します。今回は「剣で敵を攻撃すると、攻撃した相手の足元に稲妻が落ちる」という、Script APIの入門として定番のギミックを作ってみましょう。</p>
+    <div class="image-box">
+      <img src="lighting_script_api_sample.png" alt="剣で攻撃すると雷が落ちるイメージ">
+      <p>攻撃した瞬間にイベントが発火し、対象の座標へ雷エンティティをスポーンさせるシンプルな仕組みです。</p>
+    </div>
+    <div class="info-box">
+      <strong>scripts/main.js の実装例（動作確認済み）：</strong>
+      <pre style="background:#2d3436; color:#dfe6e9; padding:15px; border-radius:8px; overflow-x:auto; font-size:13px; line-height:1.6;"><code>import { world, system } from "@minecraft/server";
+
+// エンティティが別のエンティティを攻撃した「直後」に発生するイベントを購読する
+world.afterEvents.entityHitEntity.subscribe((eventData) => {
+  const attacker = eventData.damagingEntity;
+  const target = eventData.hitEntity;
+
+  // 攻撃者がプレイヤーであり、かつ手に持っているアイテムが
+  // 「diamond_sword」の場合だけ処理を実行する
+  if (attacker.typeId !== "minecraft:player") return;
+
+  const equippable = attacker.getComponent("equippable");
+  const heldItem = equippable?.getEquipment("Mainhand");
+  if (!heldItem || heldItem.typeId !== "minecraft:diamond_sword") return;
+
+  // 対象がいたワールド・座標を取得して、稲妻エンティティをスポーンさせる
+  const dimension = target.dimension;
+  const location = target.location;
+
+  system.run(() => {
+    dimension.spawnEntity("minecraft:lightning_bolt", location);
+    attacker.sendMessage("§b§l雷撃の剣§r §fが発動した！");
+  });
+});</code></pre>
+    </div>
+    <p>このコードのポイントは、<code>eventData</code>から<code>damagingEntity</code>（攻撃した側）と<code>hitEntity</code>（攻撃された側）を取り出し、<code>getComponent("equippable")</code>で「今、手に何を持っているか」を確認している部分です。条件を満たさない場合は<code>return</code>で処理を即座に打ち切ることで、無関係な攻撃にまで雷が落ちてしまうのを防いでいます。<code>system.run()</code>で処理を包んでいるのは、イベントの内部から直接ワールドを変更するとエラーになるケースがあるためで、次の「注意点」セクションで詳しく解説します。</p>
+
+    <h2 id="text">4. 文字・テキスト表示の正しい書き方（rawtext）</h2>
+    <p>Script APIでプレイヤーにメッセージを送る場合、上記のサンプルのように<code>sendMessage()</code>に文字列を直接渡す方法が最も手軽です。ただし、翻訳キーを使いたい場合や、プレイヤー名など「動的に変わる値」を文中に埋め込みたい場合は、<code>rawtext</code>という特別な形式を使うのが正攻法です。</p>
+    <div class="info-box">
+      <strong>rawtextを使ったメッセージ送信の例：</strong>
+      <pre style="background:#2d3436; color:#dfe6e9; padding:15px; border-radius:8px; overflow-x:auto; font-size:13px; line-height:1.6;"><code>player.sendMessage({
+  rawtext: [
+    { text: "§e" },
+    { translate: "item.diamond_sword.name" },
+    { text: "§r で攻撃した！ 残り体力: " },
+    { text: `${player.getComponent("health").currentValue}` }
+  ]
+});</code></pre>
+    </div>
+    <p><code>text</code>は普通の文字列を、<code>translate</code>はマイクラの言語ファイルに登録された翻訳キーを、それぞれそのまま表示するためのパーツです。配列の中に複数のパーツを並べて書くことで、「固定の文章」と「翻訳される単語」と「変数の値」を1つのメッセージに自然につなげることができます。特に、アイテム名や称号のように多言語対応させたい文字列は、直接日本語で書かずに<code>translate</code>を使う癖をつけておくと、後から英語対応する際に大幅に手間が省けます。</p>
+    <p>また、マイクラのチャット・サブタイトル表示ではカラーコード（<code>§</code>記号＋英数字1文字）が使えます。<code>§c</code>で赤、<code>§b</code>で水色、<code>§l</code>で太字、<code>§r</code>でリセットといった具合に、色や装飾を文章の途中で自由に切り替えられます。装飾を戻し忘れると、以降のメッセージまで太字や色付きのままになってしまうので、装飾を使った後は必ず<code>§r</code>でリセットする習慣をつけましょう。</p>
+
+    <h2 id="caution">5. Script APIを書くときの重要な注意点</h2>
+    <p>Script APIは非常に強力ですが、通常のJavaScriptとは違う「マインクラフト特有のルール」がいくつかあります。ここを知らずにコードを書くと、「エラーが出ないのに動かない」「たまにゲームが強制終了する」といったトラブルに直面しやすいので、必ず押さえておきましょう。</p>
+    <div class="tips-box">
+      <strong>特に重要な3つの注意点：</strong>
+      <ul class="check-list" style="background:none; padding-left:25px;">
+        <li><strong>読み取り専用（Read-Only）モードの存在：</strong> 多くの<code>beforeEvents</code>や、ティック処理の一部区間では、ワールドの状態を「読み取る」ことはできても「書き換える」ことができない期間があります。この期間にブロックを設置したりエンティティをスポーンさせたりしようとすると、エラーが発生します。対処法として、サンプルコードのように<code>system.run(() => { ... })</code>で処理を包み、次のティックにずらして実行するのが定番のテクニックです。</li>
+        <li><strong>無限ループ・重い処理への注意：</strong> イベントの中で毎ティック大量の計算をしてしまうと、サーバー全体のパフォーマンスが悪化し、ワールドがカクつく原因になります。特に<code>system.runInterval()</code>で短い間隔の処理を組む場合は、本当にその頻度が必要か、間隔を伸ばせないかを常に意識しましょう。</li>
+        <li><strong>非同期処理と実行タイミングのズレ：</strong> Script APIの一部の関数は「Promise」を返す非同期処理になっています。処理の完了を待たずに次の行を実行してしまうと、意図しない順序でコードが動くことがあるため、<code>await</code>を使って順番を保証する必要がある場面を意識しておきましょう。</li>
+      </ul>
+    </div>
+    <p>また、<code>@minecraft/server</code>モジュールはバージョンごとに仕様が細かく変わることがあります。特にベータAPI（Beta APIs）扱いの機能は、マイクラ本体のアップデートで関数名やイベント名が変更されることも珍しくありません。エラーが出た際は、まず自分が指定している<code>dependencies</code>のバージョン番号と、実際に導入しているマイクラのバージョンが噛み合っているかを確認する癖をつけておくと、原因究明がぐっと早くなります。</p>
+
+    <h2 id="tips"><span>【裏技・豆知識】現役開発者だけが知るテクニック集</span></h2>
+    <p>ここでは、実際に開発を続ける中で見つけた、教科書にはあまり載っていない実践的なテクニックをまとめて紹介します。どれも今日から使えるものばかりなので、ぜひ自分のアドオンに取り入れてみてください。</p>
+    <div class="tips-box">
+      <strong>🎯 裏技・豆知識まとめ：</strong>
+      <ul class="check-list" style="background:none; padding-left:25px;">
+        <li><strong>Dynamic Properties（動的プロパティ）で「セーブデータ」を持たせる：</strong> エンティティやワールドに<code>setDynamicProperty()</code>で値を保存しておくと、ワールドを閉じても値が保持されます。「プレイヤーごとの所持ポイント」や「ボスの撃破フラグ」のような、コマンドのスコアボードだけでは表現しづらい複雑なデータの保存に最適です。</li>
+        <li><strong>system.runIntervalの「戻り値」を保存してキャンセルする：</strong> <code>system.runInterval()</code>は実行IDを返します。これを変数に保存しておき、条件を満たしたタイミングで<code>system.clearRun(id)</code>を呼び出せば、無限に続くはずだった処理を任意のタイミングで止められます。「一定時間だけ効果を発動するアイテム」を作る時の定番テクニックです。</li>
+        <li><strong>スコアボードとScript APIを併用する：</strong> 既存のコマンド資産（スコアボードで作ったミニゲームなど）を活かしたい場合、<code>world.scoreboard</code>経由でスコアの値をJavaScript側から読み書きできます。コマンドブロックの複雑な条件分岐を、Script APIの<code>if文</code>に置き換えるだけで、可読性もメンテナンス性も大きく向上します。</li>
+        <li><strong>afterEventsの中でtry-catchを使ってエラーを握りつぶさない：</strong> イベント処理内で例外が発生すると、その1回分の処理だけが止まり、以降のイベントには影響しないことが多いです。しかし気づかないままエラーを放置すると、機能が「なぜか一部だけ動かない」原因になります。開発中は<code>console.warn()</code>や<code>world.sendMessage()</code>でエラー内容を可視化する癖をつけると、デバッグが劇的に楽になります。</li>
+        <li><strong>system.beforeEvents.startupで初期化処理をまとめる：</strong> カスタムコンポーネントの登録など、ワールド起動より前に済ませておく必要がある処理は、<code>worldInitialize</code>より早いタイミングで呼ばれるstartup系のイベントにまとめておくと、読み込み順序に起因する不具合を避けやすくなります。</li>
+      </ul>
+    </div>
+
+    <h2 id="faq">よくある質問（FAQ）</h2>
+    <div class="info-box">
+      <strong>Q. Script APIを使うのにJavaScriptの知識はどれくらい必要ですか？</strong><br>
+      A. 変数、if文、関数の基本が分かっていれば、この記事で紹介したレベルのコードは十分書けます。最初はサンプルコードを少しずつ書き換えながら、動きの違いを確認していくのがおすすめです。
+    </div>
+    <div class="info-box">
+      <strong>Q. コードを書いたのに、ゲーム内で全く反映されません。</strong><br>
+      A. まず「実験的機能（ベータAPI）」がオンになっているか、manifest.jsonの<code>entry</code>のパスが実際のファイル名と一致しているかを確認してください。それでも解決しない場合は、Minecraft内のコンテンツログ（エラーログ）にJavaScriptの構文エラーが出ていないか確認しましょう。</li>
+    </div>
+    <div class="info-box">
+      <strong>Q. beforeEventsとafterEvents、どちらを使えばいいですか？</strong><br>
+      A. 「その出来事自体を止めたい・キャンセルしたい」場合はbeforeEvents、「出来事が起きたあとに追加の演出や処理をしたい」場合はafterEventsを使うのが基本です。迷ったときは、まずafterEventsから試してみることをおすすめします。
+    </div>
+
+    <h2 id="references">参考資料・公式ドキュメント</h2>
+    <p>本記事の内容は、実際の制作経験をもとにまとめていますが、Script APIの仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースも合わせてご参照ください。</p>
+    <ul class="check-list">
+      <li><a href="https://learn.microsoft.com/minecraft/creator/scriptapi/" target="_blank" rel="noopener noreferrer">Minecraft Creator - Script APIドキュメント（Microsoft公式）</a> — イベントやクラスの最新仕様が随時更新されている一次情報源です。</li>
+      <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — アイテムコンポーネントを含む、アドオン開発全般の公式ドキュメントです。</li>
+    </ul>
+
+    <h2 id="admin-policy"><span id="h2Policy">サイト運営指針</span></h2>
+    <p id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に現場でコードを書き続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+
+    <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
+
+    <section id="privacy" class="section-full">
+      <h2>プライバシーポリシー</h2>
+      <div class="pp-box">
+        <p><strong>広告の配信について</strong><br>
+        当サイトは、第三者配信の広告サービス「Googleアドセンス」を利用しています。広告配信事業者は、お客様の過去のアクセス情報に基づき、最適な広告を表示するためにCookie（クッキー）を使用することがあります。これにより、お客様の興味・関心に合わせた適切な広告提供が可能となります。なお、Cookieを通じて収集される情報には、お客様個人を特定する情報は含まれておりません。Cookieの使用を希望されない場合は、Googleの広告設定ページにてパーソナライズ広告を無効に設定することができます。</p>
+        <p><strong>アクセス解析ツールについて</strong><br>
+        当サイトでは、サイト利用状況の把握およびサービス向上を目的として、Googleによるアクセス解析ツール「Googleアナリティクス」を導入しています。Googleアナリティクスはデータの収集のためにCookieを使用しますが、このデータは匿名で収集されており、個人を特定するものではありません。この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。</p>
+        <p><strong>免責事項</strong><br>
+        当サイトで提供する記事内容およびプログラムコード、アドオンファイル等については、可能な限り正確を期し、動作確認を行っておりますが、その正確性や安全性を保証するものではありません。当サイトの情報を用いて生じたトラブル、損害、データの破損等について、運営者は一切の責任を負いかねます。アドオンの導入や設定変更は、必ず各自の責任において、ワールドのバックアップを取った上で行ってください。</p>
+        <p><strong>著作権・肖像権について</strong><br>
+        当サイト内に掲載されているすべての文章、画像、動画、およびプログラムコードの著作権は、特段の記載がない限り運営者に帰属します。これらの内容を無断で転載、複製、販売、二次配布することは固く禁じます。引用を行う場合は、著作権法に基づき適切な範囲で行ってください。また、当サイトは著作権や肖像権の侵害を目的としたものではありません。万が一、掲載内容に不都合がございましたら、お手数ですがお問い合わせフォームよりご連絡ください。迅速に対応させていただきます。</p>
+      </div>
+      <div style="text-align: center; padding: 40px; background: #fff; border: 2px dashed #2c7be5; border-radius: 15px; margin-top: 20px;">
+        <p style="font-weight: bold; margin-bottom: 20px;">公式お問い合わせフォーム（Googleフォーム）</p>
+        <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" target="_blank" rel="noopener noreferrer"
+           style="display: inline-block; background: #2c7be5; color: white; text-decoration: none; padding: 18px 40px; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(44,123,229,0.3); transition: transform 0.2s;">
+           📩 お問い合わせフォームを開く
+        </a>
+      </div>
+    </section>
+
+    <section id="cheer" class="message-hero">
+      <h2>コードの一行が、遊びのルールを書き換える。</h2>
+      <p>
+        JSONの世界からJavaScriptの世界へ踏み出す最初の一歩は、正直かなり勇気がいります。エラーメッセージの意味が分からなくて、何時間も同じ場所で足踏みすることもあると思います。でも大丈夫。今、君が読んでいるこの記事も、僕自身が同じようにエラーと格闘しながら積み上げてきた記録です。<br><br>
+        Script APIを覚えると、これまで「決まった動き」しかできなかったマイクラの世界に、自分だけのルールを書き加えられるようになります。攻撃したら雷が落ちる剣も、特定の条件でしか開かない扉も、全部「if」と「イベント」の組み合わせから生まれる魔法です。<br><br>
+        最初のうちはサンプルコードをそのままコピーするだけで十分。慣れてきたら、数字を変えたり、条件を足したりして、自分だけのオリジナルなギミックに育てていってください。君の書く一行が、いつか誰かの「面白い！」を生み出す日を、僕も楽しみにしています。
+      </p>
+    </section>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="sidebar-box">
+      <div class="sidebar-title" id="rankingTitle">🔥 人気の記事ランキング</div>
+      <ul class="update-list">
+        <li><span style="color:#ff4757; font-weight:900;">1位</span> <a href="index.html" id="rank1">カスタムアイテムの作り方</a></li>
+        <li><span style="color:#ff9800; font-weight:900;">2位</span> <a href="rpg-project.html" id="rank2">RPGボス「不死帝ソウラー」設定</a></li>
+        <li><span style="color:#2c7be5; font-weight:900;">3位</span> <a href="script-api1.html" id="rank3">Script API入門（このページ）</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-box recommend-box">
+      <div class="sidebar-title">📌 おすすめ記事</div>
+      <a href="texturepack-guide.html">テクスチャパック・スキン活用術</a>
+      <a href="strategy-alchemy.html">Alchemy Armament 完全攻略</a>
+      <a href="rage_reaper.html">RAGE REAPER 開発ノート</a>
+    </div>
+  </aside>
+</div>
+
+<a href="#top" class="back-to-top">▲</a>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html" id="footHome">ホーム</a>
+    <a href="#admin-policy" id="footPolicy">サイト運営指針</a>
+    <a href="#privacy" id="footPrivacy">プライバシーポリシー</a>
+  </div>
+  <p id="copyright">© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)</p>
+</footer>
+
+<script>
+  let currentLang = 'jp';
+  const translations = {
+    jp: {
+      langLabel: "English", navJs: "JSONアドバイザー", navMtas: "マイクラ統合版アドオン専用用語集",
+      gradeBadge: "中学一年生", headerSub: "統合版マイクラ攻略・アドオン開発の最前線",
+      gnavHome: "ホーム", gnavItem: "Script API攻略", gnavRpg: "RPGプロジェクト", gnavPrivacy: "プライバシーポリシー",
+      rpgStatusTitle: "🔥 RPGプロジェクト進行中", rpgStatusMsg1: "あともう少しで最高傑作が完成します...",
+      rpgStatusMsg2: "かつてないシステムと壮大なストーリー。公開まで秒読み開始。", rpgStatusLink: "開発状況を詳しく見る →",
+      newsTitle: "⚡ 統合版 最新ニュース", adminTitle: "👤 運営者情報", rankingTitle: "🔥 人気の記事ランキング",
+      tocTitle: "この記事の目次", h2Intro: "はじめに：Script APIとは何か", h2Env: "1. 開発環境の準備とmanifestの設定",
+      h2Policy: "サイト運営指針", footHome: "ホーム", footPolicy: "サイト運営指針", footPrivacy: "プライバシーポリシー",
+      copyright: "© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 7)"
+    },
+    en: {
+      langLabel: "日本語", navJs: "JSON Advisor", navMtas: "Addon Glossary",
+      gradeBadge: "7th Grade", headerSub: "The Frontline of MCBE Guides & Addon Development",
+      gnavHome: "Home", gnavItem: "Script API Guide", gnavRpg: "RPG Project", gnavPrivacy: "Privacy Policy",
+      rpgStatusTitle: "🔥 RPG Project in Progress", rpgStatusMsg1: "The masterpiece is nearly complete...",
+      rpgStatusMsg2: "Unprecedented systems and epic stories. Launching soon.", rpgStatusLink: "View Development Status →",
+      newsTitle: "⚡ Latest MCBE News", adminTitle: "👤 Admin Info", rankingTitle: "🔥 Popular Articles",
+      tocTitle: "Table of Contents", h2Intro: "Introduction: What is the Script API", h2Env: "1. Environment Setup & manifest.json",
+      h2Policy: "Site Policy", footHome: "Home", footPolicy: "Policy", footPrivacy: "Privacy",
+      copyright: "© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide"
+    }
+  };
+  function toggleLanguage() {
+    currentLang = currentLang === 'jp' ? 'en' : 'jp';
+    const t = translations[currentLang];
+    for (let id in t) {
+      const el = document.getElementById(id);
+      if (el) el.innerText = t[id];
+    }
+    document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
+  }
+</script>
+
+</body>
+</html>

@@ -231,21 +231,7 @@
     .emp-boldcolor strong, .emp-boldcolor b { color: var(--accent-dark); font-weight: 900; font-size: 1.06em; }
     .emp-underline strong, .emp-underline b { text-decoration: underline wavy var(--accent); text-decoration-thickness: 2px; font-weight: 900; }
     .emp-badge strong, .emp-badge b { background: var(--accent); color:#fff; padding: 1px 8px; border-radius: 6px; font-weight: 900; font-size: 0.92em; }
-
-    /* ---- スクロールアニメーション（記事ごとに種類が違う） ---- */
-    .reveal { opacity: 0; }
-    .reveal.in-view { opacity: 1; }
-    .anim-fadeup .reveal { transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .anim-fadeup .reveal.in-view { transform: translateY(0); }
-    .anim-fadein .reveal { transition: opacity .9s ease; }
-    .anim-zoom .reveal { transform: scale(.92); transition: opacity .6s ease, transform .6s ease; }
-    .anim-zoom .reveal.in-view { transform: scale(1); }
-    .anim-slideleft .reveal { transform: translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
-    .anim-slideleft .reveal.in-view { transform: translateX(0); }
-    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
-    @keyframes pulseGlow { 0%,100%{box-shadow:0 10px 20px rgba(0,0,0,0.1);} 50%{box-shadow:0 10px 30px var(--accent);} }
-    .anim-float .image-box.hero-image img { animation: floatY 3.5s ease-in-out infinite; }
-    .anim-pulseglow .image-box.hero-image img { animation: pulseGlow 3s ease-in-out infinite; }
+    .insta-banner strong, .insta-banner b { background: none; text-decoration: none; padding: 0; border-radius: 0; color: #fff; font-weight: 900; font-size: 1em; }
 
     @media (max-width: 1200px) {
       .sidebar-right { display: none; }
@@ -270,14 +256,14 @@
 
   </style>
 </head>
-<body id="top" class="anim-slideleft emp-badge">
+<body id="top" class="emp-badge">
 
 <div class="lang-switch">
   <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
 </div>
 
 <header>
-  <div class="header-logo">SC</div>
+  <div class="header-logo"><img src="sorann_logo.png" alt="SORANNCRAFT" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"></div>
   <div class="header-text">
     <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
     <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
@@ -348,14 +334,14 @@
   </aside>
 
   <main>
-    <div class="hero-title-box reveal">
+    <div class="hero-title-box">
       <h2 class="hero-h1">レッドストーン入門・初めての自動ドア</h2>
       <p class="hero-sub">「難しそう」を卒業する、いちばんやさしい回路の話</p>
     </div>
 
 
 
-    <div class="insta-banner reveal">
+    <div class="insta-banner">
       <span class="insta-banner-emoji">📸</span>
       <div class="insta-banner-text">
         <strong>Instagramでも活動中！</strong><br>
@@ -388,62 +374,62 @@
     </div>
 
 
-    <h2 id="intro" class="reveal">はじめに：レッドストーンは電気の授業と同じ</h2>
-    <p class="reveal">レッドストーンと聞くと「上級者向けの難しい仕組み」というイメージを持つ人が多いですよね。YouTubeやマーケットプレイスで見る複雑な装置を見て、「自分には絶対作れない」と諦めてしまった経験がある人もいるかもしれません。でも実は、<strong>基本ルールはとてもシンプル</strong>です。電流が流れる場所と流れない場所を意識するだけで、驚くほどいろいろな装置が作れるようになります。この記事では、その第一歩として「自動ドア」と「簡単なトラップ」の作り方を紹介します。</p>
+    <h2 id="intro">はじめに：レッドストーンは電気の授業と同じ</h2>
+    <p>レッドストーンと聞くと「上級者向けの難しい仕組み」というイメージを持つ人が多いですよね。YouTubeやマーケットプレイスで見る複雑な装置を見て、「自分には絶対作れない」と諦めてしまった経験がある人もいるかもしれません。でも実は、<strong>基本ルールはとてもシンプル</strong>です。電流が流れる場所と流れない場所を意識するだけで、驚くほどいろいろな装置が作れるようになります。この記事では、その第一歩として「自動ドア」と「簡単なトラップ」の作り方を紹介します。</p>
 
-    <h2 id="sec1" class="reveal">1. レッドストーンの超基本ルール</h2>
-    <p class="reveal">レッドストーン回路の基本は「信号源」「伝達装置」「動作するブロック」の3つで成り立っています。信号源にはレバー・ボタン・感圧板などがあり、これらが「電気を流すスイッチ」の役割を果たします。レッドストーンダストは電気を運ぶ「電線」、そして最終的にドアやピストンなどが「動作するブロック」として反応します。</p>
-    <p class="reveal">この3つの役割さえ意識できれば、どんなに複雑に見える装置でも「どこがスイッチで、どこが電線で、どこが動作する部分なのか」を分解して考えられるようになります。実は上級者が作る複雑な装置も、このシンプルな仕組みの組み合わせでできているだけなんです。</p>
-    <ul class="check-list reveal">
+    <h2 id="sec1">1. レッドストーンの超基本ルール</h2>
+    <p>レッドストーン回路の基本は「信号源」「伝達装置」「動作するブロック」の3つで成り立っています。信号源にはレバー・ボタン・感圧板などがあり、これらが「電気を流すスイッチ」の役割を果たします。レッドストーンダストは電気を運ぶ「電線」、そして最終的にドアやピストンなどが「動作するブロック」として反応します。</p>
+    <p>この3つの役割さえ意識できれば、どんなに複雑に見える装置でも「どこがスイッチで、どこが電線で、どこが動作する部分なのか」を分解して考えられるようになります。実は上級者が作る複雑な装置も、このシンプルな仕組みの組み合わせでできているだけなんです。</p>
+    <ul class="check-list">
       <li><strong>信号源：</strong> レバー・ボタン・感圧板・トリップワイヤーなど。</li>
       <li><strong>伝達：</strong> レッドストーンダストは基本的に横方向に信号を伝える。</li>
       <li><strong>動作ブロック：</strong> ドア・ピストン・ディスペンサーなどが信号を受けて動く。</li>
     </ul>
 
-    <h2 id="sec2" class="reveal">2. 感圧板で作る自動ドア</h2>
-    <p class="reveal">最も簡単な自動化の第一歩が「感圧板を使った自動ドア」です。木の扉のすぐ外側と内側の地面に感圧板を設置するだけで、乗った瞬間にドアが開き、離れると自動で閉まる仕組みが完成します。配線は不要で、感圧板とドアが隣接してさえいれば動作するのが最大のメリットです。初めてでも5分もかからずに作れるので、まずはここから挑戦してみてください。</p>
-    <p class="reveal">より本格的な「自動でスライドして開く鉄の扉」を作りたい場合は、感圧板と鉄の扉の間にレッドストーンダストを伸ばして信号を伝える必要があります。まずは木の扉の簡易版から試して、仕組みに慣れてから鉄の扉に挑戦するのがおすすめです。一歩ずつ、段階を踏んで進めば大丈夫です。</p>
+    <h2 id="sec2">2. 感圧板で作る自動ドア</h2>
+    <p>最も簡単な自動化の第一歩が「感圧板を使った自動ドア」です。木の扉のすぐ外側と内側の地面に感圧板を設置するだけで、乗った瞬間にドアが開き、離れると自動で閉まる仕組みが完成します。配線は不要で、感圧板とドアが隣接してさえいれば動作するのが最大のメリットです。初めてでも5分もかからずに作れるので、まずはここから挑戦してみてください。</p>
+    <p>より本格的な「自動でスライドして開く鉄の扉」を作りたい場合は、感圧板と鉄の扉の間にレッドストーンダストを伸ばして信号を伝える必要があります。まずは木の扉の簡易版から試して、仕組みに慣れてから鉄の扉に挑戦するのがおすすめです。一歩ずつ、段階を踏んで進めば大丈夫です。</p>
 
-    <h2 id="sec3" class="reveal">3. レバー・ボタンで作る手動トラップ</h2>
-    <p class="reveal">友達と遊ぶときに盛り上がるのが、レバーやボタンで発動する簡単なトラップです。落とし穴の上に一時的な床（例えば粘着ピストンで動かせるブロック）を用意し、離れた場所のレバーを操作すると床が引っ込んで落下する、というシンプルな仕組みでも十分に驚いてもらえます。</p>
-    <div class="info-box reveal">
+    <h2 id="sec3">3. レバー・ボタンで作る手動トラップ</h2>
+    <p>友達と遊ぶときに盛り上がるのが、レバーやボタンで発動する簡単なトラップです。落とし穴の上に一時的な床（例えば粘着ピストンで動かせるブロック）を用意し、離れた場所のレバーを操作すると床が引っ込んで落下する、というシンプルな仕組みでも十分に驚いてもらえます。</p>
+    <div class="info-box">
       <strong>初めてのトラップにおすすめの組み合わせ：</strong><br>
       感圧板（起動）＋ レッドストーンダスト（伝達）＋ 粘着ピストン（床を動かす）。この3点セットだけで、シンプルながら効果抜群の落とし穴トラップが完成します。
     </div>
 
-    <h2 id="sec4" class="reveal">4. 一歩進んだ自動化のヒント</h2>
-    <p class="reveal">自動ドアとトラップに慣れたら、次は「リピーター」を使った信号の遅延や増幅に挑戦してみましょう。リピーターを挟むことで、信号が届く距離を伸ばしたり、動作するタイミングを少しずらしたりできるようになります。仕組みを理解すればするほど、自分だけのオリジナル装置が作れるようになっていくのがレッドストーンの面白さです。</p>
+    <h2 id="sec4">4. 一歩進んだ自動化のヒント</h2>
+    <p>自動ドアとトラップに慣れたら、次は「リピーター」を使った信号の遅延や増幅に挑戦してみましょう。リピーターを挟むことで、信号が届く距離を伸ばしたり、動作するタイミングを少しずらしたりできるようになります。仕組みを理解すればするほど、自分だけのオリジナル装置が作れるようになっていくのがレッドストーンの面白さです。</p>
 
-    <h2 id="sec5" class="reveal">5. 「センスがない」とあきらめる前に</h2>
-    <p class="reveal">レッドストーンで挫折してしまう人の多くは、最初から複雑な装置を作ろうとして失敗し、「自分にはセンスがない」と思い込んでしまいます。でも実際は、センスの有無ではなく、基本の積み重ね方の問題であることがほとんどです。今日紹介した自動ドアとトラップは、その基本の積み重ねの第一歩にすぎません。</p>
-    <p class="reveal">筆者自身も、最初は感圧板一つの動きすら理解できていませんでした。それでも一つずつ小さな成功体験を積み重ねていくうちに、少しずつ複雑な装置にも挑戦できるようになっていきました。焦らず、今日できることから始めてみてください。</p>
+    <h2 id="sec5">5. 「センスがない」とあきらめる前に</h2>
+    <p>レッドストーンで挫折してしまう人の多くは、最初から複雑な装置を作ろうとして失敗し、「自分にはセンスがない」と思い込んでしまいます。でも実際は、センスの有無ではなく、基本の積み重ね方の問題であることがほとんどです。今日紹介した自動ドアとトラップは、その基本の積み重ねの第一歩にすぎません。</p>
+    <p>筆者自身も、最初は感圧板一つの動きすら理解できていませんでした。それでも一つずつ小さな成功体験を積み重ねていくうちに、少しずつ複雑な装置にも挑戦できるようになっていきました。焦らず、今日できることから始めてみてください。</p>
 
-    <div class="twist-box reveal" id="twist">
+    <div class="twist-box" id="twist">
       <span class="twist-label">たった1マスの配置ミスで失敗した話</span>
       <p style="margin-bottom:0;">筆者が初めて自動ドアを作ったとき、感圧板をドアから1マス離して設置してしまい、「何度乗っても反応しない」と半日近く悩んだことがあります。原因はレッドストーンの伝達距離のごく基本的な仕組みにあったのですが、当時はそれに気づけませんでした。同じ失敗をしないための「配置チェックポイント」は、サイト本編で図解イメージつきにまとめています。</p>
     </div>
 
 
-    <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
-    <div class="info-box reveal"><strong>Q. レッドストーンダストはどこまで信号を伝えられますか？</strong><br>A. 何もない状態では最大15マス先まで信号が伝わりますが、進むごとに少しずつ弱くなります。距離が長い場合はリピーターを挟んで信号を増幅・延長するのが基本です。</div>
-    <div class="info-box reveal"><strong>Q. 感圧板の種類によって違いはありますか？</strong><br>A. 木の感圧板はプレイヤーやモブなど幅広い対象で反応し、石の感圧板はプレイヤーとモブのみ、金の感圧板・鉄の感圧板はアイテムの重さなど反応条件が異なります。用途に合わせて使い分けましょう。</div>
-    <div class="info-box reveal"><strong>Q. トラップを作るときの注意点はありますか？</strong><br>A. 友達と遊ぶ場合は、必ず「ここから先はトラップがあるかもしれない」というルールを事前に共有しておくとトラブルになりません。落とし穴の深さも、ダメージが大きくなりすぎないよう調整するのがおすすめです。</div>
-    <div class="info-box reveal"><strong>Q. 何度やってもうまく動きません。センスがないのでしょうか？</strong><br>A. センスの問題ではありません。ほとんどの失敗は配置のズレなどの単純なミスです。信号源・伝達・動作の3つを一つずつ確認していけば、必ず原因が見つかります。</div>
+    <h2 id="faq">よくある質問（FAQ）</h2>
+    <div class="info-box"><strong>Q. レッドストーンダストはどこまで信号を伝えられますか？</strong><br>A. 何もない状態では最大15マス先まで信号が伝わりますが、進むごとに少しずつ弱くなります。距離が長い場合はリピーターを挟んで信号を増幅・延長するのが基本です。</div>
+    <div class="info-box"><strong>Q. 感圧板の種類によって違いはありますか？</strong><br>A. 木の感圧板はプレイヤーやモブなど幅広い対象で反応し、石の感圧板はプレイヤーとモブのみ、金の感圧板・鉄の感圧板はアイテムの重さなど反応条件が異なります。用途に合わせて使い分けましょう。</div>
+    <div class="info-box"><strong>Q. トラップを作るときの注意点はありますか？</strong><br>A. 友達と遊ぶ場合は、必ず「ここから先はトラップがあるかもしれない」というルールを事前に共有しておくとトラブルになりません。落とし穴の深さも、ダメージが大きくなりすぎないよう調整するのがおすすめです。</div>
+    <div class="info-box"><strong>Q. 何度やってもうまく動きません。センスがないのでしょうか？</strong><br>A. センスの問題ではありません。ほとんどの失敗は配置のズレなどの単純なミスです。信号源・伝達・動作の3つを一つずつ確認していけば、必ず原因が見つかります。</div>
 
-    <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
-    <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
-    <ul class="check-list reveal">
+    <h2 id="references">参考資料・公式ドキュメント</h2>
+    <p>本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
+    <ul class="check-list">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
       <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
-    <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
-    <p class="reveal" id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+    <h2 id="admin-policy"><span id="h2Policy">サイト運営指針</span></h2>
+    <p id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
 
     <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
 
-    <section id="privacy" class="section-full reveal">
+    <section id="privacy" class="section-full">
       <h2>プライバシーポリシー</h2>
       <div class="pp-box">
         <p><strong>広告の配信について</strong><br>
@@ -469,7 +455,7 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <section id="cheer" class="message-hero reveal">
+    <section id="cheer" class="message-hero">
       <h2>電線1本の理解が、装置作りの世界を広げてくれる。</h2>
       <p>レッドストーンは最初こそ「意味がわからない」と感じるものですが、信号源・伝達・動作という3つの役割さえ意識すれば、驚くほどシンプルな仕組みだと気づくはずです。今日作った自動ドアやトラップは、これから作る大きな装置への第一歩。失敗を重ねながら、少しずつ自分だけの回路を組み上げていってください。センスがないなんて思わないで。君はちゃんと前に進んでいます。</p>
     </section>
@@ -529,10 +515,6 @@
     for (let id in t) { const el = document.getElementById(id); if (el) el.innerText = t[id]; }
     document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>

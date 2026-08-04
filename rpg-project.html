@@ -351,6 +351,15 @@
         ・焚き火は食料を4つ同時に焼ける！
       </p>
     </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title">📌 おすすめ記事</div>
+      <ul style="list-style:none; padding:0; font-weight:bold; font-size:13px;">
+        <li style="margin-bottom:10px;"><a href="script-api1.html" style="text-decoration:none; color:#2c7be5;">Script API入門（イベント処理編）</a></li>
+        <li style="margin-bottom:10px;"><a href="strategy-alchemy.html" style="text-decoration:none; color:#2c7be5;">Alchemy Armament 完全攻略</a></li>
+        <li style="margin-bottom:10px;"><a href="rage_reaper.html" style="text-decoration:none; color:#2c7be5;">RAGE REAPER 開発ノート</a></li>
+      </ul>
+    </div>
   </aside>
 
   <main>
@@ -372,11 +381,12 @@
         <li><a href="#error-exp">2. 開発体験談：プログラムエラーとの格闘</a></li>
         <li><a href="#build-exp">3. 開発体験談：孤独な建築と、友人の手</a></li>
         <li><a href="#script-intro">4. スクリプト豆知識：右クリック検知</a></li>
-        <li><a href="#mob">5. 独自モブ・ボス図鑑</a></li>
-        <li><a href="#db">6. 装備データベース</a></li>
-        <li><a href="#log">7. 最新開発ログ</a></li>
-        <li><a href="#privacy">8. プライバシーポリシー</a></li>
-        <li><a href="#contact">9. お問い合わせ</a></li>
+        <li><a href="#tips">5. 開発の裏技・豆知識まとめ</a></li>
+        <li><a href="#mob">6. 独自モブ・ボス図鑑</a></li>
+        <li><a href="#db">7. 装備データベース</a></li>
+        <li><a href="#log">8. 最新開発ログ</a></li>
+        <li><a href="#privacy">9. プライバシーポリシー</a></li>
+        <li><a href="#contact">10. お問い合わせ</a></li>
       </ul>
     </div>
 
@@ -459,6 +469,24 @@ world.afterEvents.entityHitEntity.subscribe((event) => {
     <p style="font-size: 14px; color: #666;">
       ※本コードは学習および汎用的な導入を目的としたサンプルです。実際のプロジェクトでは、さらに複雑な条件分岐や座標検知を組み合わせて、唯一無二のゲーム体験を構築しています。
     </p>
+    <p>
+      このコードのポイントは、<code style="background:#2d3436;color:#fab1a0;padding:2px 6px;border-radius:4px;">addTag()</code>と<code style="background:#2d3436;color:#fab1a0;padding:2px 6px;border-radius:4px;">hasTag()</code>を組み合わせて「今、詠唱中かどうか」という一時的な状態を管理している部分です。RPG風の複雑な魔法システムほど、変数だけで状態を管理しようとすると処理が煩雑になりがちですが、タグを使えばエンティティごとの状態をシンプルに読み書きできます。今回の魔法剣も、この「タグによる状態管理」の考え方をベースに、詠唱時間や属性のバリエーションを何十パターンも積み重ねて実装しています。
+    </p>
+
+    <h2 id="tips">🧪 開発の裏技・豆知識まとめ</h2>
+    <p>ここでは、本プロジェクトを開発する過程で見つけた、実践的な小技をいくつか紹介します。RPG系アドオンを作りたい人はぜひ参考にしてみてください。</p>
+    <div class="experience-story">
+      <strong>💡 現場で使っている裏技集</strong>
+      <p>
+        <strong>①ボスのフェーズ管理はダイナミックプロパティで永続化：</strong> ボスのHPやフェーズ状態を通常の変数だけで管理すると、ワールドを再読み込みした瞬間にリセットされてしまいます。<code style="background:#2d3436;color:#fab1a0;padding:2px 6px;border-radius:4px;">setDynamicProperty()</code>でエンティティに直接フェーズ情報を保存しておくことで、途中でゲームを終了してもボス戦の状態を正確に引き継げるようになります。
+      </p>
+      <p>
+        <strong>②スコアボードとタグを併用して条件分岐を整理：</strong> 「アイテムを何個集めたか」「クエストを何番まで進めたか」のような数値はスコアボード、「今どんな状態にあるか」というフラグはタグ、と役割を分けて管理すると、条件分岐がぐっと見通しやすくなります。
+      </p>
+      <p>
+        <strong>③エフェクト演出は「音・パーティクル・メッセージ」の3点セットで作る：</strong> 魔法や必殺技の「気持ちよさ」は、実は見た目のパーティクルだけでなく、効果音とテキスト演出の掛け合わせで決まります。今回の魔導共鳴の剣も、この3点セットを毎回意識して実装しています。
+      </p>
+    </div>
 
     <h2 id="mob">👾 独自モブ・ボス図鑑（抜粋）</h2>
     <div class="data-table-wrapper">
@@ -470,15 +498,19 @@ world.afterEvents.entityHitEntity.subscribe((event) => {
           <tr><td style="color:#ff4757;">不死帝・ソウラー</td><td class="rarity-legend">WORLD BOSS</td><td>最強の不死者。全3段階のフェーズを持つ。</td></tr>
           <tr><td style="color:#2196f3;">凍土の災厄・グラシヴエイ</td><td class="rarity-epic">AREA BOSS</td><td>プレイヤーの移動速度を奪う氷結デバフを使用。</td></tr>
           <tr><td style="color:#9c27b0;">炎獄の魔獣・焔牙イグニス</td><td class="rarity-epic">AREA BOSS</td><td>足元からのマグマ噴出攻撃が脅威。</td></tr>
+          <tr><td style="color:#4caf50;">森の番人・シルヴァウルフ</td><td class="rarity-epic">AREA BOSS</td><td>群れで襲ってくる召喚型ボス。仲間を呼び寄せる遠吠えを持つ。</td></tr>
+          <tr><td style="color:#ffc107;">雷鳴の使者・トールヴェイン</td><td class="rarity-epic">AREA BOSS</td><td>高台から範囲雷撃を落とす、遠距離型のボス。</td></tr>
         </tbody>
       </table>
     </div>
+    <p>それぞれのボスは、単なるステータス違いではなく「戦い方そのもの」が変わるように設計しています。例えば凍土の災厄は近づかれるほど不利になる遠距離型、炎獄の魔獣は足元を意識して立ち回る必要がある近接型というように、プレイヤーに「考えて戦う」楽しさを感じてもらえるよう、フェーズごとの行動パターンを一つ一つ手作業で調整しています。</p>
 
     <h2 id="db">⚔️ 装備・アクセサリーデータベース</h2>
     <div class="item-preview-box">
       <img src="copper_sword.png" alt="独自開発したカスタム武器のモデル" style="max-width: 150px;">
       <p style="font-weight: bold; margin-top: 10px;">すべてBlockbenchで1から制作しています！</p>
     </div>
+    <p>装備は「攻撃力・防御力」だけでなく、「戦闘スタイルを変えるパッシブ効果」を必ず1つ以上持たせるようにデザインしています。例えば指輪や首飾りといったアクセサリー枠は、単体では小さな効果でも、複数を組み合わせることで大きなシナジーが生まれるように調整しており、プレイヤーごとに違うビルド（装備構成）を楽しめるようになっています。</p>
 
     <h2 id="log">🗓️ 最新開発ログ</h2>
     <div class="log-item"><span class="ver-tag">2026/03/16</span> ボス「フロストヴァルゼオン」の攻撃パターンを3種追加。</div>

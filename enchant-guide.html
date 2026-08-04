@@ -231,21 +231,7 @@
     .emp-boldcolor strong, .emp-boldcolor b { color: var(--accent-dark); font-weight: 900; font-size: 1.06em; }
     .emp-underline strong, .emp-underline b { text-decoration: underline wavy var(--accent); text-decoration-thickness: 2px; font-weight: 900; }
     .emp-badge strong, .emp-badge b { background: var(--accent); color:#fff; padding: 1px 8px; border-radius: 6px; font-weight: 900; font-size: 0.92em; }
-
-    /* ---- スクロールアニメーション（記事ごとに種類が違う） ---- */
-    .reveal { opacity: 0; }
-    .reveal.in-view { opacity: 1; }
-    .anim-fadeup .reveal { transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .anim-fadeup .reveal.in-view { transform: translateY(0); }
-    .anim-fadein .reveal { transition: opacity .9s ease; }
-    .anim-zoom .reveal { transform: scale(.92); transition: opacity .6s ease, transform .6s ease; }
-    .anim-zoom .reveal.in-view { transform: scale(1); }
-    .anim-slideleft .reveal { transform: translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
-    .anim-slideleft .reveal.in-view { transform: translateX(0); }
-    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
-    @keyframes pulseGlow { 0%,100%{box-shadow:0 10px 20px rgba(0,0,0,0.1);} 50%{box-shadow:0 10px 30px var(--accent);} }
-    .anim-float .image-box.hero-image img { animation: floatY 3.5s ease-in-out infinite; }
-    .anim-pulseglow .image-box.hero-image img { animation: pulseGlow 3s ease-in-out infinite; }
+    .insta-banner strong, .insta-banner b { background: none; text-decoration: none; padding: 0; border-radius: 0; color: #fff; font-weight: 900; font-size: 1em; }
 
     @media (max-width: 1200px) {
       .sidebar-right { display: none; }
@@ -270,14 +256,14 @@
 
   </style>
 </head>
-<body id="top" class="anim-float emp-mark">
+<body id="top" class="emp-mark">
 
 <div class="lang-switch">
   <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
 </div>
 
 <header>
-  <div class="header-logo">SC</div>
+  <div class="header-logo"><img src="sorann_logo.png" alt="SORANNCRAFT" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"></div>
   <div class="header-text">
     <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
     <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
@@ -348,14 +334,14 @@
   </aside>
 
   <main>
-    <div class="hero-title-box reveal">
+    <div class="hero-title-box">
       <h2 class="hero-h1">エンチャント優先順位ガイド</h2>
       <p class="hero-sub">知らないと損する、つける順番のセオリー</p>
     </div>
 
 
 
-    <div class="insta-banner reveal">
+    <div class="insta-banner">
       <span class="insta-banner-emoji">📸</span>
       <div class="insta-banner-text">
         <strong>Instagramでも活動中！</strong><br>
@@ -388,55 +374,55 @@
     </div>
 
 
-    <h2 id="intro" class="reveal">はじめに：エンチャントは「順番」が9割</h2>
-    <p class="reveal">エンチャントテーブルの前に立って「どれを選べばいいかわからない」と固まった経験がある人は多いはずです。せっかく貯めた経験値レベルを使うのに、外れを引いてしまったらどうしよう…と不安になる気持ち、すごくよくわかります。実はエンチャントには<strong>装備の種類ごとにつけるべき優先順位</strong>があり、それを知っているかどうかでレベル消費の効率が大きく変わります。本記事では、統合版での実践に基づいた優先順位を紹介します。</p>
+    <h2 id="intro">はじめに：エンチャントは「順番」が9割</h2>
+    <p>エンチャントテーブルの前に立って「どれを選べばいいかわからない」と固まった経験がある人は多いはずです。せっかく貯めた経験値レベルを使うのに、外れを引いてしまったらどうしよう…と不安になる気持ち、すごくよくわかります。実はエンチャントには<strong>装備の種類ごとにつけるべき優先順位</strong>があり、それを知っているかどうかでレベル消費の効率が大きく変わります。本記事では、統合版での実践に基づいた優先順位を紹介します。</p>
 
-    <h2 id="sec1" class="reveal">1. エンチャントテーブルの基本</h2>
-    <p class="reveal">エンチャントテーブルは、周囲に本棚を設置することで最大レベル30までのエンチャントが選べるようになります。本棚とテーブルの間には1マスの隙間を空ける必要があり、テーブルを中心に本棚をびっしり15冊分配置するのが理想的な配置です。この配置を知らずに本棚を数個だけ置いていた頃の自分を思い出すと、もっと早く知りたかったと感じます。</p>
-    <ul class="check-list reveal">
+    <h2 id="sec1">1. エンチャントテーブルの基本</h2>
+    <p>エンチャントテーブルは、周囲に本棚を設置することで最大レベル30までのエンチャントが選べるようになります。本棚とテーブルの間には1マスの隙間を空ける必要があり、テーブルを中心に本棚をびっしり15冊分配置するのが理想的な配置です。この配置を知らずに本棚を数個だけ置いていた頃の自分を思い出すと、もっと早く知りたかったと感じます。</p>
+    <ul class="check-list">
       <li><strong>本棚の配置：</strong> テーブルとの間に1マスの隙間を空けて設置するのがルール。</li>
       <li><strong>ラピスラズリ：</strong> エンチャントには経験値レベルに加えてラピスラズリも必要。</li>
       <li><strong>レベル30を狙う：</strong> 本棚をしっかり配置し、常に最大レベルで挑戦するのが基本。</li>
     </ul>
 
-    <h2 id="sec2" class="reveal">2. 武器につけるべき優先順位</h2>
-    <p class="reveal">剣には「ダメージ増加」系と「特殊効果」系のエンチャントがありますが、初心者がまず優先すべきは<strong>耐久力</strong>と<strong>ダメージ増加</strong>系です。特に序盤は道具を頻繁に作り直すのが面倒なので、耐久力を早めにつけておくと快適さが段違いになります。「せっかく育てた剣がすぐ壊れる」というストレスからも解放されます。</p>
+    <h2 id="sec2">2. 武器につけるべき優先順位</h2>
+    <p>剣には「ダメージ増加」系と「特殊効果」系のエンチャントがありますが、初心者がまず優先すべきは<strong>耐久力</strong>と<strong>ダメージ増加</strong>系です。特に序盤は道具を頻繁に作り直すのが面倒なので、耐久力を早めにつけておくと快適さが段違いになります。「せっかく育てた剣がすぐ壊れる」というストレスからも解放されます。</p>
 
-    <h2 id="sec3" class="reveal">3. 防具につけるべき優先順位</h2>
-    <p class="reveal">防具については、まず「耐久力」、次に「防御力向上」系のエンチャントを優先するのが定番です。長時間の探索を前提にするなら、経験値の吸収効率を上げるエンチャントもあわせて狙うと、その後のエンチャント効率がさらに上がっていきます。防具が整うと、単純に安心して探索できる範囲がぐっと広がるので、精神的な余裕にも直結します。</p>
+    <h2 id="sec3">3. 防具につけるべき優先順位</h2>
+    <p>防具については、まず「耐久力」、次に「防御力向上」系のエンチャントを優先するのが定番です。長時間の探索を前提にするなら、経験値の吸収効率を上げるエンチャントもあわせて狙うと、その後のエンチャント効率がさらに上がっていきます。防具が整うと、単純に安心して探索できる範囲がぐっと広がるので、精神的な余裕にも直結します。</p>
 
-    <h2 id="sec4" class="reveal">4. 道具（ツルハシ・斧）の優先順位</h2>
-    <p class="reveal">ツルハシは「効率強化」を最優先にするのが鉄則です。採掘速度が大幅に上がり、鉱石集めの効率が段違いになります。次点で「幸運」を狙うと、ダイヤモンドや貴重な鉱石のドロップ数が増えるため、経済的なメリットも大きくなります。地道な採掘作業も、この2つがあるだけで驚くほど快適に感じられるようになります。</p>
+    <h2 id="sec4">4. 道具（ツルハシ・斧）の優先順位</h2>
+    <p>ツルハシは「効率強化」を最優先にするのが鉄則です。採掘速度が大幅に上がり、鉱石集めの効率が段違いになります。次点で「幸運」を狙うと、ダイヤモンドや貴重な鉱石のドロップ数が増えるため、経済的なメリットも大きくなります。地道な採掘作業も、この2つがあるだけで驚くほど快適に感じられるようになります。</p>
 
-    <h2 id="sec5" class="reveal">5. レベルがなかなか貯まらず焦っている人へ</h2>
-    <p class="reveal">「エンチャントしたいのに、経験値レベルがなかなか貯まらない」という悩みを抱えている人も多いと思います。焦って狩りや採掘を急ぐと、思わぬ事故につながることもあるので、まずは落ち着いて、日々の探索の中で少しずつ貯めていく気持ちで大丈夫です。無理に一気に貯めようとせず、日常のプレイの延長線上で自然に貯まっていくものだと考えると、気持ちがかなり楽になります。</p>
+    <h2 id="sec5">5. レベルがなかなか貯まらず焦っている人へ</h2>
+    <p>「エンチャントしたいのに、経験値レベルがなかなか貯まらない」という悩みを抱えている人も多いと思います。焦って狩りや採掘を急ぐと、思わぬ事故につながることもあるので、まずは落ち着いて、日々の探索の中で少しずつ貯めていく気持ちで大丈夫です。無理に一気に貯めようとせず、日常のプレイの延長線上で自然に貯まっていくものだと考えると、気持ちがかなり楽になります。</p>
 
-    <div class="twist-box reveal" id="twist">
+    <div class="twist-box" id="twist">
       <span class="twist-label">本棚の数で結果が変わると知らなかった頃の話</span>
       <p style="margin-bottom:0;">筆者が統合版を始めたばかりの頃、本棚を3個くらいしか置かずに「レベル30が全然出てこない…」と不満に思っていた時期がありました。実は本棚の数と配置場所には明確なルールがあり、それを守るだけで結果は劇的に変わります。正しい配置図と、レベル別のおすすめエンチャント早見表はサイト本編にまとめています。</p>
     </div>
 
 
-    <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
-    <div class="info-box reveal"><strong>Q. 本棚は何冊あれば最大レベルになりますか？</strong><br>A. テーブルの周囲、1マスの隙間を空けた位置に本棚を最大15冊分配置すると、エンチャントの最大レベルである30まで選択できるようになります。</div>
-    <div class="info-box reveal"><strong>Q. エンチャント本と直接エンチャントするのはどちらがいいですか？</strong><br>A. 狙ったエンチャントだけを確実につけたい場合は金床とエンチャント本の組み合わせがおすすめです。効率重視でとにかく色々試したい場合はエンチャントテーブルが向いています。</div>
-    <div class="info-box reveal"><strong>Q. エンチャントの経験値はどうやって集めればいいですか？</strong><br>A. モンスターを倒す、鉱石を採掘する、動物を繁殖させるなど様々な方法で経験値が手に入ります。序盤は洞窟での採掘と並行して経験値を稼ぐのが効率的です。</div>
-    <div class="info-box reveal"><strong>Q. 欲しいエンチャントが全然出てきません。運が悪いのでしょうか？</strong><br>A. 運の要素はありますが、本棚の配置が正しくない場合、そもそも高レベルの選択肢自体が出ていない可能性があります。まずは配置を見直し、常にレベル30で挑戦できる環境を整えましょう。</div>
+    <h2 id="faq">よくある質問（FAQ）</h2>
+    <div class="info-box"><strong>Q. 本棚は何冊あれば最大レベルになりますか？</strong><br>A. テーブルの周囲、1マスの隙間を空けた位置に本棚を最大15冊分配置すると、エンチャントの最大レベルである30まで選択できるようになります。</div>
+    <div class="info-box"><strong>Q. エンチャント本と直接エンチャントするのはどちらがいいですか？</strong><br>A. 狙ったエンチャントだけを確実につけたい場合は金床とエンチャント本の組み合わせがおすすめです。効率重視でとにかく色々試したい場合はエンチャントテーブルが向いています。</div>
+    <div class="info-box"><strong>Q. エンチャントの経験値はどうやって集めればいいですか？</strong><br>A. モンスターを倒す、鉱石を採掘する、動物を繁殖させるなど様々な方法で経験値が手に入ります。序盤は洞窟での採掘と並行して経験値を稼ぐのが効率的です。</div>
+    <div class="info-box"><strong>Q. 欲しいエンチャントが全然出てきません。運が悪いのでしょうか？</strong><br>A. 運の要素はありますが、本棚の配置が正しくない場合、そもそも高レベルの選択肢自体が出ていない可能性があります。まずは配置を見直し、常にレベル30で挑戦できる環境を整えましょう。</div>
 
-    <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
-    <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
-    <ul class="check-list reveal">
+    <h2 id="references">参考資料・公式ドキュメント</h2>
+    <p>本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
+    <ul class="check-list">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
       <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
-    <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
-    <p class="reveal" id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+    <h2 id="admin-policy"><span id="h2Policy">サイト運営指針</span></h2>
+    <p id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
 
     <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
 
-    <section id="privacy" class="section-full reveal">
+    <section id="privacy" class="section-full">
       <h2>プライバシーポリシー</h2>
       <div class="pp-box">
         <p><strong>広告の配信について</strong><br>
@@ -462,7 +448,7 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <section id="cheer" class="message-hero reveal">
+    <section id="cheer" class="message-hero">
       <h2>順番を知っているだけで、限られたレベルが何倍にも輝く。</h2>
       <p>エンチャントは運の要素も大きいですが、優先順位を知っているかどうかで納得のいく結果に近づくスピードは大きく変わります。何度も本棚の配置をやり直した経験も、今となっては良い思い出です。今日紹介した優先順位を参考に、自分だけの最強装備を焦らず育てていってください。</p>
     </section>
@@ -522,10 +508,6 @@
     for (let id in t) { const el = document.getElementById(id); if (el) el.innerText = t[id]; }
     document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>

@@ -231,21 +231,7 @@
     .emp-boldcolor strong, .emp-boldcolor b { color: var(--accent-dark); font-weight: 900; font-size: 1.06em; }
     .emp-underline strong, .emp-underline b { text-decoration: underline wavy var(--accent); text-decoration-thickness: 2px; font-weight: 900; }
     .emp-badge strong, .emp-badge b { background: var(--accent); color:#fff; padding: 1px 8px; border-radius: 6px; font-weight: 900; font-size: 0.92em; }
-
-    /* ---- スクロールアニメーション（記事ごとに種類が違う） ---- */
-    .reveal { opacity: 0; }
-    .reveal.in-view { opacity: 1; }
-    .anim-fadeup .reveal { transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .anim-fadeup .reveal.in-view { transform: translateY(0); }
-    .anim-fadein .reveal { transition: opacity .9s ease; }
-    .anim-zoom .reveal { transform: scale(.92); transition: opacity .6s ease, transform .6s ease; }
-    .anim-zoom .reveal.in-view { transform: scale(1); }
-    .anim-slideleft .reveal { transform: translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
-    .anim-slideleft .reveal.in-view { transform: translateX(0); }
-    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
-    @keyframes pulseGlow { 0%,100%{box-shadow:0 10px 20px rgba(0,0,0,0.1);} 50%{box-shadow:0 10px 30px var(--accent);} }
-    .anim-float .image-box.hero-image img { animation: floatY 3.5s ease-in-out infinite; }
-    .anim-pulseglow .image-box.hero-image img { animation: pulseGlow 3s ease-in-out infinite; }
+    .insta-banner strong, .insta-banner b { background: none; text-decoration: none; padding: 0; border-radius: 0; color: #fff; font-weight: 900; font-size: 1em; }
 
     @media (max-width: 1200px) {
       .sidebar-right { display: none; }
@@ -270,14 +256,14 @@
 
   </style>
 </head>
-<body id="top" class="anim-zoom emp-mark">
+<body id="top" class="emp-mark">
 
 <div class="lang-switch">
   <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
 </div>
 
 <header>
-  <div class="header-logo">SC</div>
+  <div class="header-logo"><img src="sorann_logo.png" alt="SORANNCRAFT" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"></div>
   <div class="header-text">
     <h1>SORANNCRAFT <span class="grade-badge" id="gradeBadge">中学一年生</span></h1>
     <p id="headerSub">統合版マイクラ攻略・アドオン開発の最前線</p>
@@ -348,17 +334,17 @@
   </aside>
 
   <main>
-    <div class="hero-title-box reveal">
+    <div class="hero-title-box">
       <h2 class="hero-h1">村人取引を極める攻略ガイド</h2>
       <p class="hero-sub">エメラルドが貯まらない人がやってしまっている勘違い</p>
     </div>
 
-    <div class="image-box hero-image reveal">
+    <div class="image-box hero-image">
       <img src="minecraft_hero.png" alt="Minecraft 統合版 プレイイメージ">
       <p>村人との信頼関係を築ければ、序盤の装備集めが劇的にラクになる。</p>
     </div>
 
-    <div class="insta-banner reveal">
+    <div class="insta-banner">
       <span class="insta-banner-emoji">📸</span>
       <div class="insta-banner-text">
         <strong>Instagramでも活動中！</strong><br>
@@ -391,56 +377,56 @@
     </div>
 
 
-    <h2 id="intro" class="reveal">はじめに：村人取引は「知識ゲー」</h2>
-    <p class="reveal">村人との取引は、統合版の中でも特に「知っているかどうか」で結果が大きく変わるシステムです。何も知らずに取引を繰り返していると、いつの間にか価格が高騰してまったく得しない…なんてこともよくあります。「せっかく貴重な素材を持って行ったのに全然もらえない」と悔しい思いをしたことがある人も多いはずです。この記事では、<strong>村人取引の仕組みを理解して、効率よくエメラルドや装備を集める方法</strong>を紹介します。</p>
+    <h2 id="intro">はじめに：村人取引は「知識ゲー」</h2>
+    <p>村人との取引は、統合版の中でも特に「知っているかどうか」で結果が大きく変わるシステムです。何も知らずに取引を繰り返していると、いつの間にか価格が高騰してまったく得しない…なんてこともよくあります。「せっかく貴重な素材を持って行ったのに全然もらえない」と悔しい思いをしたことがある人も多いはずです。この記事では、<strong>村人取引の仕組みを理解して、効率よくエメラルドや装備を集める方法</strong>を紹介します。</p>
 
-    <h2 id="sec1" class="reveal">1. 職業ブロックの仕組み</h2>
-    <p class="reveal">村人の職業は、近くに置かれた職業ブロックによって決まります。例えば「合成台」の近くにいる村人は道具鍛冶、「醸造台」の近くにいる村人は聖職者になります。すでに職業を持った村人でも、職業ブロックを一時的に壊してから別のものを置き直すことで、職業をリセットできる場合があります。</p>
-    <ul class="check-list reveal">
+    <h2 id="sec1">1. 職業ブロックの仕組み</h2>
+    <p>村人の職業は、近くに置かれた職業ブロックによって決まります。例えば「合成台」の近くにいる村人は道具鍛冶、「醸造台」の近くにいる村人は聖職者になります。すでに職業を持った村人でも、職業ブロックを一時的に壊してから別のものを置き直すことで、職業をリセットできる場合があります。</p>
+    <ul class="check-list">
       <li><strong>合成台：</strong> 道具鍛冶（ツルハシや斧のエンチャント武器が手に入りやすい）</li>
       <li><strong>高炉：</strong> 武器鍛冶（剣や防具のエンチャント品が手に入りやすい）</li>
       <li><strong>樽：</strong> 農民（作物や食料関連のアイテムを取引できる）</li>
       <li><strong>醸造台：</strong> 聖職者（エンダーパールやポーション関連の取引ができる）</li>
     </ul>
 
-    <h2 id="sec2" class="reveal">2. 取引価格が上がってしまう原因</h2>
-    <p class="reveal">同じ取引を繰り返すと、そのたびに価格がじわじわと上がっていきます。<strong>価格をリセットするには、一定時間村人を放置するか、村人を新しく職業ブロックで生成し直す</strong>必要があります。焦って同じ取引を連発すると損をしやすいので、複数の村人と交互に取引するのがコツです。仕組みさえ知っておけば、無駄に損をすることはなくなります。</p>
+    <h2 id="sec2">2. 取引価格が上がってしまう原因</h2>
+    <p>同じ取引を繰り返すと、そのたびに価格がじわじわと上がっていきます。<strong>価格をリセットするには、一定時間村人を放置するか、村人を新しく職業ブロックで生成し直す</strong>必要があります。焦って同じ取引を連発すると損をしやすいので、複数の村人と交互に取引するのがコツです。仕組みさえ知っておけば、無駄に損をすることはなくなります。</p>
 
-    <h2 id="sec3" class="reveal">3. エメラルドを効率よく稼ぐ方法</h2>
-    <p class="reveal">エメラルドを稼ぐ王道は、農民の村人に小麦やニンジンなどの作物を売ることです。畑を広げて作物を大量生産できる環境を整えれば、安定してエメラルドを稼ぎ続けられます。序盤の資金源として、まず畑作りとセットで考えるのがおすすめです。地道な作業に見えて、実は一番堅実な稼ぎ方だったりします。</p>
+    <h2 id="sec3">3. エメラルドを効率よく稼ぐ方法</h2>
+    <p>エメラルドを稼ぐ王道は、農民の村人に小麦やニンジンなどの作物を売ることです。畑を広げて作物を大量生産できる環境を整えれば、安定してエメラルドを稼ぎ続けられます。序盤の資金源として、まず畑作りとセットで考えるのがおすすめです。地道な作業に見えて、実は一番堅実な稼ぎ方だったりします。</p>
 
-    <h2 id="sec4" class="reveal">4. 村人を増やして村を発展させる</h2>
-    <p class="reveal">村人はベッドが十分にあり、食料が足りている状態が続くと自然に繁殖します。村人の数が増えるほど職業の種類も増え、取引の選択肢が広がっていきます。ベッドの数を増やし、村全体の食料備蓄を意識して管理すると、村がどんどん発展していきます。</p>
+    <h2 id="sec4">4. 村人を増やして村を発展させる</h2>
+    <p>村人はベッドが十分にあり、食料が足りている状態が続くと自然に繁殖します。村人の数が増えるほど職業の種類も増え、取引の選択肢が広がっていきます。ベッドの数を増やし、村全体の食料備蓄を意識して管理すると、村がどんどん発展していきます。</p>
 
-    <h2 id="sec5" class="reveal">5. なかなかうまくいかず落ち込んでいる人へ</h2>
-    <p class="reveal">村人取引は、ルールを知らないうちは本当に理不尽に感じるシステムです。「なんでこんなに高いんだ」「さっきまで安かったのに」と、モヤモヤした気持ちになるのも当然だと思います。でも、それはあなたが悪いわけではなく、単に仕組みを知らなかっただけです。今日紹介した内容を知った今のあなたは、もう昨日までのあなたとは違います。</p>
+    <h2 id="sec5">5. なかなかうまくいかず落ち込んでいる人へ</h2>
+    <p>村人取引は、ルールを知らないうちは本当に理不尽に感じるシステムです。「なんでこんなに高いんだ」「さっきまで安かったのに」と、モヤモヤした気持ちになるのも当然だと思います。でも、それはあなたが悪いわけではなく、単に仕組みを知らなかっただけです。今日紹介した内容を知った今のあなたは、もう昨日までのあなたとは違います。</p>
 
-    <div class="twist-box reveal" id="twist">
+    <div class="twist-box" id="twist">
       <span class="twist-label">価格が高騰して絶望した日の話</span>
       <p style="margin-bottom:0;">筆者がまだ仕組みを知らなかった頃、お気に入りのエンチャント本欲しさに同じ村人と何十回も取引を続け、最終的にとんでもない価格に高騰してしまい絶望したことがあります。あの失敗があったからこそ知った「価格リセットの正しいタイミング」は、サイト本編で詳しく紹介しています。</p>
     </div>
 
 
-    <h2 id="faq" class="reveal">よくある質問（FAQ）</h2>
-    <div class="info-box reveal"><strong>Q. 村人の職業はあとから変更できますか？</strong><br>A. 職業ブロックを壊すことで、条件次第では職業がリセットされ、別の職業ブロックを近くに置くことで新しい職業に変わる場合があります。ただし一度「名前付き」の取引が確定した村人は変更できないこともあるため注意してください。</div>
-    <div class="info-box reveal"><strong>Q. 取引価格を元に戻す方法はありますか？</strong><br>A. 村人を一定時間そのままにしておくと、少しずつ取引価格が下がっていきます。複数の村人を用意して交互に取引するのも、価格高騰を避ける有効な方法です。</div>
-    <div class="info-box reveal"><strong>Q. 村人を安全に増やすにはどうすればいいですか？</strong><br>A. ベッドを人数分以上用意し、食料（パンや野菜など）を十分に村内へ供給することで自然に繁殖します。ゾンビなどの襲撃から守るため、村の周囲を柵や壁で囲っておくとより安全です。</div>
-    <div class="info-box reveal"><strong>Q. 価格が高騰してしまい、もう取り返しがつかないのでしょうか？</strong><br>A. 時間が経てば少しずつ価格は落ち着いていきます。焦らず別の村人と取引しながら、その村人を休ませてあげるつもりで待ってみてください。</div>
+    <h2 id="faq">よくある質問（FAQ）</h2>
+    <div class="info-box"><strong>Q. 村人の職業はあとから変更できますか？</strong><br>A. 職業ブロックを壊すことで、条件次第では職業がリセットされ、別の職業ブロックを近くに置くことで新しい職業に変わる場合があります。ただし一度「名前付き」の取引が確定した村人は変更できないこともあるため注意してください。</div>
+    <div class="info-box"><strong>Q. 取引価格を元に戻す方法はありますか？</strong><br>A. 村人を一定時間そのままにしておくと、少しずつ取引価格が下がっていきます。複数の村人を用意して交互に取引するのも、価格高騰を避ける有効な方法です。</div>
+    <div class="info-box"><strong>Q. 村人を安全に増やすにはどうすればいいですか？</strong><br>A. ベッドを人数分以上用意し、食料（パンや野菜など）を十分に村内へ供給することで自然に繁殖します。ゾンビなどの襲撃から守るため、村の周囲を柵や壁で囲っておくとより安全です。</div>
+    <div class="info-box"><strong>Q. 価格が高騰してしまい、もう取り返しがつかないのでしょうか？</strong><br>A. 時間が経てば少しずつ価格は落ち着いていきます。焦らず別の村人と取引しながら、その村人を休ませてあげるつもりで待ってみてください。</div>
 
-    <h2 id="references" class="reveal">参考資料・公式ドキュメント</h2>
-    <p class="reveal">本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
-    <ul class="check-list reveal">
+    <h2 id="references">参考資料・公式ドキュメント</h2>
+    <p>本記事の内容は実際のプレイ経験と検証をもとにまとめていますが、仕様は今後のアップデートで変更される可能性があります。より正確で最新の一次情報を確認したい場合は、以下の公式リソースもあわせてご参照ください。</p>
+    <ul class="check-list">
       <li><a href="https://help.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft公式ヘルプセンター</a> — アカウントや購入、動作不具合など公式のサポート情報を確認できます。</li>
       <li><a href="https://learn.microsoft.com/minecraft/creator/" target="_blank" rel="noopener noreferrer">Minecraft Creator Documentation（Microsoft公式）</a> — コマンドやワールド設定など、統合版の一次情報がまとまっています。</li>
       <li><a href="https://www.minecraft.net/ja-jp" target="_blank" rel="noopener noreferrer">Minecraft公式サイト</a> — 最新アップデート情報や公式のお知らせを確認できます。</li>
     </ul>
 
-    <h2 id="admin-policy" class="reveal"><span id="h2Policy">サイト運営指針</span></h2>
-    <p class="reveal" id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
+    <h2 id="admin-policy"><span id="h2Policy">サイト運営指針</span></h2>
+    <p id="pPolicy1">当サイト「SORANNCRAFT」では、最新のアップデート情報を踏まえた「動く」解説を提供することを約束します。マイクラの仕様変更は激しいですが、常に自分の手でプレイと検証を続けている開発者としての誇りを持って、正確でワクワクする情報をお届けします。</p>
 
     <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
 
-    <section id="privacy" class="section-full reveal">
+    <section id="privacy" class="section-full">
       <h2>プライバシーポリシー</h2>
       <div class="pp-box">
         <p><strong>広告の配信について</strong><br>
@@ -466,7 +452,7 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <section id="cheer" class="message-hero reveal">
+    <section id="cheer" class="message-hero">
       <h2>小さな村との付き合い方が、冒険の質を変える。</h2>
       <p>村人との関係は、丁寧に付き合うほど大きなリターンを返してくれます。焦って取引を繰り返すのではなく、じっくり時間をかけて村を育てていく感覚を大事にしてみてください。今日紹介した知識が、君の冒険をもっと豊かなものにしてくれるはずです。</p>
     </section>
@@ -526,10 +512,6 @@
     for (let id in t) { const el = document.getElementById(id); if (el) el.innerText = t[id]; }
     document.documentElement.lang = currentLang === 'jp' ? 'ja' : 'en';
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
